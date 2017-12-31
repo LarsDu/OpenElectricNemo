@@ -1,0 +1,13 @@
+import string
+from PIL import Image,ImageFont, ImageDraw
+
+# use a truetype font
+fsize=16
+font = ImageFont.truetype("kongtext.ttf", fsize)
+all_chars = string.printable
+
+for char in all_chars:
+    image = Image.new('RGBA',(fsize,fsize))
+    draw = ImageDraw.Draw(image)
+    image.save
+
