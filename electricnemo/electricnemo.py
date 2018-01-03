@@ -1,7 +1,17 @@
-#TODO:
-#auto-rescale phys object sizes
-#Implement enemy AI system
-#Add front facing menu
+'''
+Author: Lawrence Du
+Contact: larrydu88@gmail.com
+
+This is the open sourced portion of a hobby mobile application I am working on.
+I am posting this as an educational resource for anyone interested in
+building a game with Kivent.
+
+I have kept all systems in this single source file to more easily experiment with different 
+types of components and systems.
+
+
+'''
+
 
 import os
 from os import sep
@@ -45,8 +55,8 @@ from kivy.config import Config
 from kivy.core.window import Window
 
 """ Load custom Sfx renderer """
-from nemo_sfx.sfx import SfxComponent,SfxSystem
-from nemo_sfx.sfx_renderer import SfxRenderer
+#from nemo_sfx.sfx import SfxComponent,SfxSystem
+#from nemo_sfx.sfx_renderer import SfxRenderer
 
 Config.set('graphics', 'width', str(params.screen_width))
 Config.set('graphics', 'height', str(params.screen_height))
@@ -60,6 +70,35 @@ Window.size = (params.screen_width,params.screen_height)
 atlas_dir = join(params.res_path,'img')
 spritesheet_kdict = texture_manager.load_atlas(atlas_dir+os.sep+'spritesheet.atlas')
 textsheet_kdict = texture_manager.load_atlas(atlas_dir+os.sep+'textsheet.atlas')
+
+
+
+        
+class DefaultGameSystem(GameSystem):
+    """
+    Loads default arguments when initializing any component for this 
+    gamesystem. This allows the programmer to define a 
+    default_args dict. Default args can save a lot of typing for complex components
+    
+    """	
+	
+    default_args = {}
+
+    def __init__(self,**kwargs):
+        super(DefaultGameSystem,self).__init__(**kwargs)
+
+    def init_component(self, component_index, entity_id, zone, args):
+        #Start with default arguments and replace entries with user defined args
+        # on initialization (pre-filtering)
+        combined_args = self.default_args.copy()
+        combined_args.update(args)
+        super(DefaultGameSystem,self).init_component(component_index,entity_id,zone,combined_args)
+        self.create_sys_entity(component_index,entity_id,zone,args)
+        
+    def create_sys_entity(self,component_index,entity_id,zone,args):
+        pass
+        
+Factory.register('DefaultGameSystem',cls=DefaultGameSystem)
 
 
 
@@ -82,21 +121,20 @@ class ElectricNemo(Widget):
             'top_renderer1',
             'mid_renderer1',
             'bg_renderer1',
-            'text_comp',
+            'text_sys',
             'camera1',
-            'health_comp',
-            'damage_comp',
-            'powerup_comp',
-            'robo_ai_comp',
-            'level_comp',
-            'off_camera_comp',
-            'thruster_comp',
-            'weapon_comp',
-            'destruct_comp',
-            'shield_comp', 
+            'health_sys',
+            'damage_sys',
+            'powerup_sys',
+            'robo_ai_sys',
+            'level_sys',
+            'off_camera_sys',
+            'thruster_sys',
+            'weapon_sys',
+            'destruct_sys',
             'player_control',
             'attach_to',
-            'pindown_comp'
+            'pindown_sys'
         ],
         callback=self.init_game)
         
@@ -114,14 +152,11 @@ class ElectricNemo(Widget):
 
     def load_entitylib(self):
         self.entitylib = EntityLib('electricnemo'+sep+'entity_templates.json',scale=params.scale)
-        #cd,io = self.entitylib.get_template('ring1')
 
     def register_collisions(self):
         """
-        Enumerate the types of collisions 
-        cymunk_physics will handle
-
-        Then tie each type of collision to a 
+        Enumerate the types of collisions cymunk_physics will handle and tie each collision
+        to a function.
         """
         physics_system = self.ids['cymunk_physics']
 
@@ -136,8 +171,7 @@ class ElectricNemo(Widget):
         physics_system.add_collision_handler(
             self.general_collision,
             self.general_collision,
-            separate_func=game.ids['damage_comp'].on_collision_separate_general)
-
+            separate_func=game.ids['damage_sys'].on_collision_separate_general)
 
         #Collision which doesn't get solved, but exchanges damage
         #The longer the colision, the more the damage
@@ -146,7 +180,7 @@ class ElectricNemo(Widget):
         physics_system.add_collision_handler(
             self.general_collision,
             self.laser_collision,
-            begin_func = game.ids['damage_comp'].on_collision_begin_laser,
+            begin_func = game.ids['damage_sys'].on_collision_begin_laser,
             pre_solve_func=None,
             post_solve_func=None,
             separate_func=None)
@@ -159,10 +193,8 @@ class ElectricNemo(Widget):
         physics_system.add_collision_handler(
             self.general_collision,
             self.powerup_collision,
-            begin_func=game.ids['powerup_comp'].on_collision_powerup,
-            pre_solve_func = game.ids['damage_comp'].on_collision_separate_general)
-
-
+            begin_func=game.ids['powerup_sys'].on_collision_powerup,
+            pre_solve_func = game.ids['damage_sys'].on_collision_separate_general)
 
         self.collisions = {
             'general':self.general_collision,
@@ -170,38 +202,24 @@ class ElectricNemo(Widget):
             'powerup':self.powerup_collision
         }
         
-    def no_collision(self,space,arbiter):
-        return False
-            
 
     def load_models(self):
+        """
+        Load vertex models
+        """
         print "Vertex formats", id(vertex_formats)
         model_manager = self.gameworld.model_manager
         stdw = 32.*params.scale
         stdh = 32.*params.scale
-        '''
-        model_manager.load_textured_rectangle('vertex_format_4f', stdw, stdh,
-                                                            'star1', 'star1a')
+        #Load background texture
 
-        
-        model_manager.load_textured_rectangle('vertex_format_4f',
-                                              stdw,
-                                              stdh,
-                                             'ship1','ship1_mod')
-
-        model_manager.load_textured_rectangle( 'vertex_format_4f',
-                                               stdw*2,
-                                               stdw*2,
-                                               'shield1','shield1a')
-        '''                                
-        #Get all text sprites
-        
         model_manager.load_textured_rectangle('vertex_format_4f',
                                               params.screen_width,
                                               params.screen_height,
                                               'space1','space1_bg')
 
-        
+
+        #Load non-text game textures
         for texname,texkey in spritesheet_kdict.items():
             w,h=texutils.get_tex_size(texture_manager,texkey,groupkey=0)
             
@@ -216,7 +234,7 @@ class ElectricNemo(Widget):
                                                   texname+'_mod')
                                                   #do_copy=True)
             
-        
+        #Load text textures
         for key in textsheet_kdict.viewkeys():
             text_size = params.scale*params.text_size
             model_manager.load_textured_rectangle('vertex_format_4f',
@@ -239,28 +257,20 @@ class ElectricNemo(Widget):
             systems_added=[
                 'position',
                 'rotate',
-                'sfx',
+#                'sfx',
                 'rotate_renderer1',
                 'rotate_renderer2',
                 'bg_renderer1',
                 'mid_renderer1',
                 'top_renderer1',
-             #              'camera1',
-             #              'input',
-             #              'player_control',
-             #              'attach_to',
-             #              'text_comp',
-                           'off_camera_comp',
-             #              'health_comp',
-             #              'damage_comp',
-             #              'powerup_comp',
-             #              'robo_ai_comp',
-                           'level_comp'],
+                'off_camera_sys',
+                'level_sys'],
+
             systems_removed=[], systems_paused=[],
             systems_unpaused=[
                 'position',
                 'rotate',
-                'sfx',
+ #               'sfx',
                 'movement',
                 'acceleration',
                 'bg_renderer1',
@@ -270,17 +280,16 @@ class ElectricNemo(Widget):
                 'camera1',
                 'player_control',
                 'attach_to',
-                'text_comp',
-                'off_camera_comp',
-                'health_comp',
-                'powerup_comp',
-                'robo_ai_comp',
-                'level_comp',
-                'damage_comp',
-                'thruster_comp',
-                'weapon_comp',
-                'shield_comp',
-                'destruct_comp'],
+                'text_sys',
+                'off_camera_sys',
+                'health_sys',
+                'powerup_sys',
+                'robo_ai_sys',
+                'level_sys',
+                'damage_sys',
+                'thruster_sys',
+                'weapon_sys',
+                'destruct_sys'],
             screenmanager_screen='main')
         
 
@@ -293,7 +302,10 @@ class ElectricNemo(Widget):
 
         
     def create_player_ship(self):
-
+        '''
+        Create the player ship entity. Most of this data may be moved to a json file
+        in the future
+        '''
         shape_dict = {
             'width':31.*params.scale,
             'height':16.*params.scale,
@@ -344,35 +356,35 @@ class ElectricNemo(Widget):
         
         ship_dict = {
             'player_control': {'state':'default','do_tap':False},
-            'thruster_comp':{'up':(0,700),'down':(0,-100)},
+            'thruster_sys':{'up':(0,700),'down':(0,-100)},
             'rotate_renderer1': rotate_render_dict,
             'rotate_renderer2':rotate_render_dict2,
             'rotate':0,
             'cymunk_physics':physics_dict,
-            'pindown_comp':{'px':pos[0],'vx':5,'angle':0,'angular_velocity':0},
+            'pindown_sys':{'px':pos[0],'vx':5,'angle':0,'angular_velocity':0},
             'position': pos,
-            'off_camera_comp':{'kill_off_camera':True},
+            'off_camera_sys':{'kill_off_camera':True},
             'acceleration':{'ax':0,'ay':-5}, #-.8.5
-            'health_comp': {'health': 300},
-            'damage_comp': {'damage': -10},
-            'destruct_comp':{'explosion':'explode1',
+            'health_sys': {'health': 300},
+            'damage_sys': {'damage': -10},
+            'destruct_sys':{'explosion':'explode1',
                              'explosion_damage': 0},
-            'weapon_comp': weapon_dict
+            'weapon_sys': weapon_dict
             }
         init_order = ['player_control',
-                      'thruster_comp',
+                      'thruster_sys',
                       'position',
                       'rotate',
                       'rotate_renderer1',
                       'rotate_renderer2',
                       'cymunk_physics',
-                      'pindown_comp',
+                      'pindown_sys',
                       'acceleration',
-                      'weapon_comp',
-                      'off_camera_comp',
-                      'damage_comp',
-                      'health_comp',
-                      'destruct_comp']
+                      'weapon_sys',
+                      'off_camera_sys',
+                      'damage_sys',
+                      'health_sys',
+                      'destruct_sys']
 
         #assert sorted(ship_dict.keys()) == sorted(init_order),"Error in ship init order"
         #print ship_dict
@@ -386,6 +398,15 @@ class ElectricNemo(Widget):
         self.player_id = ent_id
 
 
+
+
+
+
+
+
+
+
+        
 class MainMenu(Widget):
     def __init__(self,**kwargs):
         super(MainMenu,self).__init__(**kwargs)
@@ -393,32 +414,12 @@ class MainMenu(Widget):
         sys.exit(0)
 
 
-        
-class DefaultGameSystem(GameSystem):
-    """
-    Loads default arguments when initializing any component for this 
-    gamesystem.
-    
-    """	
-	
-    default_args = {}
 
-    def __init__(self,**kwargs):
-        super(DefaultGameSystem,self).__init__(**kwargs)
 
-    def init_component(self, component_index, entity_id, zone, args):
-        #Start with default arguments and replace entries with user defined args
-        # on initialization (pre-filtering)
-        combined_args = self.default_args.copy()
-        combined_args.update(args)
-        super(DefaultGameSystem,self).init_component(component_index,entity_id,zone,combined_args)
-        self.create_sys_entity(component_index,entity_id,zone,args)
-        
-    def create_sys_entity(self,component_index,entity_id,zone,args):
-        pass
-        
-Factory.register('DefaultGameSystem',cls=DefaultGameSystem)
 
+
+
+        
 
 class DebugPanel(Widget):
     fps = StringProperty(None)
@@ -432,6 +433,13 @@ class DebugPanel(Widget):
         Clock.schedule_once(self.update_fps, .05)
 
 
+
+
+
+
+
+
+
         
 class ElectricNemoApp(App):
     def build(self):
@@ -442,6 +450,19 @@ class ElectricNemoApp(App):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         
 class SimpleMovementSystem2D(DefaultGameSystem):
@@ -474,6 +495,12 @@ class SimpleMovementSystem2D(DefaultGameSystem):
     
 Factory.register('SimpleMovementSystem2D',cls=SimpleMovementSystem2D)
 
+
+
+
+
+
+
 class AccelerationSystem2D(DefaultGameSystem):
     """
     Applies acceleration 
@@ -505,31 +532,12 @@ Factory.register('AccelerationSystem2D',cls=AccelerationSystem2D)
 
 
 
-#class ShipSystem(DefaultGameSystem):
-#    def __init__(self,**kwargs):
-#        super(ShipSystem,self).__init__(**kwargs)
-#        pass
-#Factory.register('ShipSystem',cls=ShipSystem)
-
-
-#Note this may be better as a state
-class DeathSystem(DefaultGameSystem):
-    def __init__(self,**kwargs):
-        super(DeathSystem,self).__init__(**kwargs)
-        pass
-Factory.register('DeathSystem',cls=DeathSystem)
 
 class DestructSystem(DefaultGameSystem):
     '''
     Depends on HealthSystem
     When an entity with a destruction system and a health system reaches 0 health,
-    Remove the entity, and replace it with an explosion entity that may cause damage
-    
-
-    Default component args:
-         explosion_damage:
-         explosion_timer: How many ticks the explosion entity lasts before disappearing
-
+    Remove the entity and potentially replace it with a different 'explosion' entity
     
     '''
     default_args = { 'xoff':0,
@@ -553,8 +561,8 @@ class DestructSystem(DefaultGameSystem):
             if component is not None:
                 entity_id = component.entity_id
                 entity = self.gameworld.entities[entity_id]
-                if hasattr(entity,'health_comp'):
-                    if entity.health_comp.health <= 0:
+                if hasattr(entity,'health_sys'):
+                    if entity.health_sys.health <= 0:
                         collision_type = self.gameworld.parent.laser_collision
                         create_explosion = self.explosions[component.explosion]
                         pos = (entity.position.x, entity.position.y)
@@ -572,10 +580,6 @@ class DestructSystem(DefaultGameSystem):
                         explode_ent = self.gameworld.init_entity(explode_dict,init_order)
                         self.gameworld.remove_entity(entity_id)
 
-
-
-
-
                         
     def create_explode1(self,pos,vel,damage,collision_type):
         elib = self.gameworld.parent.entitylib
@@ -585,8 +589,8 @@ class DestructSystem(DefaultGameSystem):
                                                     vel=vel)
 
         #Apply custom damage
-        if 'damage_comp' in create_dict:
-            create_dict['damage_comp']['damage'] = damage
+        if 'damage_sys' in create_dict:
+            create_dict['damage_sys']['damage'] = damage
         return create_dict,init_order
 
 
@@ -597,12 +601,14 @@ class DestructSystem(DefaultGameSystem):
                                                     pos=pos,
                                                     vel=vel)
         #Apply custom damage
-        if 'damage_comp' in create_dict:
-            create_dict['damage_comp']['damage'] = damage
+        if 'damage_sys' in create_dict:
+            create_dict['damage_sys']['damage'] = damage
         return create_dict,init_order
 
     
 Factory.register('DestructSystem',cls=DestructSystem)
+
+
 
 
 
@@ -635,6 +641,11 @@ class AttachSystem(DefaultGameSystem):
 Factory.register('AttachSystem',cls=AttachSystem)
 
 
+
+
+
+
+
 class TextSystem(DefaultGameSystem):
     """
     Create text entities with position and movement components
@@ -649,24 +660,24 @@ class TextSystem(DefaultGameSystem):
     def __init__(self,**kwargs):
         super(TextSystem,self).__init__(**kwargs)
 
-    #def update(self,dt):
-    #    for component in self.components:
-    #        if component is not None:
-    #            entity_id = component.entity_id
-    #            entity = self.gameworld.entities[entity_id]
-    #            pos = entity.position
+    '''
+    def update(self,dt):
+        for component in self.components:
+            if component is not None:
+                entity_id = component.entity_id
+                entity = self.gameworld.entities[entity_id]
+                pos = entity.position
 
-    #def on_touch_down(self,touch):
-        
-    #    self.create_chars()
-        #component = self.components[0]
-        #entity = self.gameworld.entities[component.entity_id]
-        #for component in self.components:
-        #    print component.text
-        #self.create_chars()
-        #print self.gameworld.ids
+    def on_touch_down(self,touch):
+        self.create_chars()
+        component = self.components[0]
+        entity = self.gameworld.entities[component.entity_id]
+        for component in self.components:
+            print component.text
+        self.create_chars()
+        print self.gameworld.ids
         pass
-        
+    '''
             
     def create_chars(self):
         """
@@ -694,14 +705,14 @@ class TextSystem(DefaultGameSystem):
                     y = yorg + let_yoff
                     let_key = 'let_'+ char
 
-                    #player_control_comp = self.gameworld.parent.ids['player_control']
+                    #player_control_sys = self.gameworld.parent.ids['player_control']
                     game = self.gameworld.parent
                     create_dict = {'movement': {'vx':0,
                                                 'vy':0},
                                    'position':(x,y),
                                     self.renderer: {'texture':let_key,
                                                      'model_key':let_key+'_mod'},
-                                   'off_camera_comp':{'kill_off_camera':True},
+                                   'off_camera_sys':{'kill_off_camera':True},
                                    'attach_to': {'parent_id':game.player_id,
                                                  'lifespan':25,
                                                  'xoff':let_xoff,
@@ -712,7 +723,7 @@ class TextSystem(DefaultGameSystem):
                                       ['position',
                                        'movement',
                                        'attach_to',
-                                       'off_camera_comp',
+                                       'off_camera_sys',
                                        self.renderer] )
                     
 Factory.register('TextSystem',cls=TextSystem)
@@ -731,10 +742,6 @@ class OffCameraSystem(DefaultGameSystem):
     """
     
     gameview = 'camera1'
-    #kill_off_camera = True
-    #def __init__(self,**kwargs):
-    #    super(OffScreenSystem,self).__init__(**kwargs)
-    #    pass
 
     def update(self,dt):
         gview = self.gameworld.system_manager[self.gameview]
@@ -761,29 +768,14 @@ Factory.register('OffCameraSystem',cls=OffCameraSystem)
 
 
 
+
+
 class HealthSystem(DefaultGameSystem):
-    #Offset from x,y (lower left corner) of entity with
-    #this shield system
-    
-    xoff = 0
-    yoff = 0 
 
     default_args = {'health':100}
         
     def __init__(self,**kwargs):
         super(HealthSystem,self).__init__(**kwargs)
-
-        
-    '''
-    def update(self,dt):
-        entities = self.gameworld.entities
-        for component in self.components:
-            if component is not None:
-                entity_id = component.entity_id
-                entity = entities[entity_id]
-                if hasattr(entity,'position'):
-                    pass
-    '''
                 
 Factory.register('HealthSystem',cls=HealthSystem)
 
@@ -792,14 +784,12 @@ Factory.register('HealthSystem',cls=HealthSystem)
 class PowerUpSystem(DefaultGameSystem):
     '''
     A powerup component contains data on new component parameters
-	An entity with a powerup collision type and a powerup component 
-	will transfer its component data to a target entity on collision.
+    An entity with a powerup collision type and a powerup component 
+    will transfer its component data to a target entity on collision.
 	
-	If the target entity has the components described in the 'new_comps'
-	dict, these components will have their data overwritten. 
+    If the target entity has the components described in the 'new_comps'
+    dict, these components will have their data overwritten. 
 	
-	
-    
     Note that certain powerups such as health boosting powerups
     don't require this component as such powerups can have qualities
     like positive damage which adds health to the health bar of the target.
@@ -847,18 +837,18 @@ class PowerUpSystem(DefaultGameSystem):
         phys_sys = game.ids['cymunk_physics']
         while self._phys_replace_stack:
             #Pop off physics elements to be replaced
-            old_comp_idx,ent_id,new_args = self._phys_replace_stack.pop()
-            old_comp = phys_sys.components[old_comp_idx]
-            if old_comp is not None:
-                overwrite_utils.replace_cymunk_physics_shapes(old_comp,new_args,phys_sys.space)
+            old_sys_idx,ent_id,new_args = self._phys_replace_stack.pop()
+            old_sys = phys_sys.components[old_sys_idx]
+            if old_sys is not None:
+                overwrite_utils.replace_cymunk_physics_shapes(old_sys,new_args,phys_sys.space)
              
 
     
     def apply_powerup(self,ent_id,powerup_id):
         ent = self.gameworld.entities[ent_id]
         powerup_ent = self.gameworld.entities[powerup_id]
-        if hasattr(powerup_ent,'powerup_comp'):
-            new_comps = powerup_ent.powerup_comp.new_comps
+        if hasattr(powerup_ent,'powerup_sys'):
+            new_comps = powerup_ent.powerup_sys.new_comps
 
             if new_comps is not None and new_comps != {}:
                 game = self.gameworld.parent
@@ -896,7 +886,6 @@ class PowerUpSystem(DefaultGameSystem):
                             old_comp.texture_key = new_args['texture']
                             old_comp.render = new_args['render']
                             
-
                             '''
                             model_manager = self.gameworld.model_manager
                             model_manager.register_entity_with_model(ent_id,
@@ -920,8 +909,8 @@ class PlayerControlSystem(DefaultGameSystem):
     '''
     touch_down_state = 'up'
 
-    default_args = {'weapon_key': 'weapon_comp',
-                    'thruster_key':'thruster_comp',
+    default_args = {'weapon_key': 'weapon_sys',
+                    'thruster_key':'thruster_sys',
                     'state': 'default',
                     'fire_weapon':False,
 
@@ -933,19 +922,12 @@ class PlayerControlSystem(DefaultGameSystem):
         self._keyboard = Window.request_keyboard(self._keyboard_closed,self)
         self._keyboard.bind(on_key_down=self._on_keyboard_down)
         self._keyboard.bind(on_key_up=self._on_keyboard_up)
-                
-    '''
-    def update(self,dt):
-        for component in self.components:
-            if component is not None:
-                print component.state,component.prev_state
-    '''
 
     def thrust(self,component):
         game = self.gameworld.parent
         ent_id = component.entity_id
         thruster_key = component.thruster_key
-        thruster_sys = game.ids.get(thruster_key,game.ids['thruster_comp'])
+        thruster_sys = game.ids.get(thruster_key,game.ids['thruster_sys'])
         if component.state !='stop':
             thruster_sys.apply_delta_v(component)
         else:
@@ -956,7 +938,7 @@ class PlayerControlSystem(DefaultGameSystem):
         game = self.gameworld.parent
         ent_id = component.entity_id
         weapon_key = component.weapon_key
-        weapon_sys = game.ids.get(weapon_key,game.ids['weapon_comp'])
+        weapon_sys = game.ids.get(weapon_key,game.ids['weapon_sys'])
         weapon_sys.fire_weapon(component)
 
  
@@ -1020,8 +1002,6 @@ class PlayerControlSystem(DefaultGameSystem):
                 #self.thrust(component)
                 component.fire_weapon = False
         return True
-
-
     
 Factory.register('PlayerControlSystem',cls=PlayerControlSystem)                
 
@@ -1029,28 +1009,29 @@ Factory.register('PlayerControlSystem',cls=PlayerControlSystem)
 
 
 
-
-
-
 class DamageSystem(DefaultGameSystem):
-    #Note, an entity with negative damage will actually
-    #Give health
+    """
+    Holds damage information. Upon collision with entity B, an entity A's damage component will
+    be added to the health component of entity B.
+    #TODO Move collision methods to separate file
+    """
     
     default_args = {'damage':0}
     def __init__(self,**kwargs):
         super(DamageSystem,self).__init__(**kwargs)
 
     def apply_damage(self,damage_entity,target_entity):
-        if (hasattr(damage_entity,'damage_comp') and
-            hasattr(target_entity,'health_comp') ):
-            target_health = target_entity.health_comp.health
-            damage = damage_entity.damage_comp.damage
-            target_entity.health_comp.health = max(target_health+damage, 0)
+        if (hasattr(damage_entity,'damage_sys') and
+            hasattr(target_entity,'health_sys') ):
+            target_health = target_entity.health_sys.health
+            damage = damage_entity.damage_sys.damage
+            target_entity.health_sys.health = max(target_health+damage, 0)
             #print "Entity {} target_health {}".format(target_entity.entity_id,
-            #                                          target_entity.health_comp.health)
+            #                                          target_entity.health_sys.health)
              
         #else:
-        #    print "Has damage",hasattr(damage_entity,'damage_comp')
+        #    print "Has damage",hasattr(damage_entity,'damage_sys')
+        
     def on_collision_damage(self,space,arbiter):
         id1 = arbiter.shapes[0].body.data
         id2 = arbiter.shapes[1].body.data
@@ -1077,6 +1058,9 @@ class DamageSystem(DefaultGameSystem):
         return False
     
 Factory.register('DamageSystem',cls=DamageSystem)
+
+
+
 
 
 
@@ -1152,7 +1136,7 @@ class ThrusterSystem(DefaultGameSystem):
         
     def set_vel(self,control_component):
         """
-        The input source will call this function
+        The input source will call this function to set a specific velocity
         """
         ent_id = control_component.entity_id
         state = control_component.state
@@ -1169,7 +1153,7 @@ class ThrusterSystem(DefaultGameSystem):
 
     def apply_delta_v(self,control_component):
         """
-        The input source will call this function
+        The input source will call this function to apply a change in velocity
         """
         ent_id = control_component.entity_id
         state = control_component.state
@@ -1188,7 +1172,7 @@ class ThrusterSystem(DefaultGameSystem):
 
     def stop(self,control_component):
         """
-        The input source will call this function
+        The input source calls this function to halt all movement
         """
         ent_id = control_component.entity_id
         state = control_component.state
@@ -1231,7 +1215,17 @@ Factory.register('ThrusterSystem',cls=ThrusterSystem)
 
 
 
+
+
+
+
 class ScrollEntGenSystem(DefaultGameSystem):
+    """
+    System for generating entities. 
+    Will replace this system with a generic generator system for
+    generating any entity in the future.
+
+    """
     renderer = 'bg_renderer1'
     gameview = 'camera1'
     models = ListProperty([('star1','star1a'),
@@ -1280,13 +1274,13 @@ class ScrollEntGenSystem(DefaultGameSystem):
                     'movement': {'vx':randint(*self.vx_range),
                                  'vy':randint(*self.vy_range)},
                     self.renderer: render_dict,
-                    'off_camera_comp': {'kill_off_camera':True}
+                    'off_camera_sys': {'kill_off_camera':True}
                 }
 
                 init_entity(create_dict,['position',
                                          'movement',
                                          self.renderer,
-                                         'off_camera_comp'] )
+                                         'off_camera_sys'] )
 
 
     
@@ -1323,7 +1317,6 @@ class WeaponSystem(DefaultGameSystem):
         super(WeaponSystem,self).__init__(**kwargs)
         self.projectiles = {
             'rocket1': self.create_rocket1_dict,
-#            'laser1': self.create_laser1_dict
         }
 
 
@@ -1339,24 +1332,24 @@ class WeaponSystem(DefaultGameSystem):
     
 
 
-    def fire_weapon(self,control_comp):
-        entity = self.gameworld.entities[control_comp.entity_id]
+    def fire_weapon(self,control_sys):
+        entity = self.gameworld.entities[control_sys.entity_id]
 
         if hasattr(entity,'position') and hasattr(entity,self.system_id):
-            weapon_comp = getattr(entity,self.system_id)
-            projectile_method = self.projectiles[weapon_comp.projectile]
+            weapon_sys = getattr(entity,self.system_id)
+            projectile_method = self.projectiles[weapon_sys.projectile]
             if hasattr(entity,'cymunk_physics'):
                 if entity.cymunk_physics.shape_type == 'box':
                     box_info = entity.cymunk_physics.shapes[0]
-                    weap_xpos = entity.position.x+box_info.width+weapon_comp.xoff
-                    weap_ypos = entity.position.y+weapon_comp.yoff
+                    weap_xpos = entity.position.x+box_info.width+weapon_sys.xoff
+                    weap_ypos = entity.position.y+weapon_sys.yoff
                 elif entity.cymunk_physics.shape_type == 'circle':
                     circ_info = entity.cymunk_physics.shapes[0]
-                    weap_xpos = entity.position.x+circ_info.radius*2+weapon_comp.xoff
-                    weap_ypos = entity.position.y+weapon_comp.yoff
+                    weap_xpos = entity.position.x+circ_info.radius*2+weapon_sys.xoff
+                    weap_ypos = entity.position.y+weapon_sys.yoff
 
             else:
-                weap_xpos = entity.position.x+weapon_comp.xoff
+                weap_xpos = entity.position.x+weapon_sys.xoff
                 weap_ypos = entity.position.y
 
             collision_type = self.gameworld.parent.general_collision
@@ -1367,38 +1360,6 @@ class WeaponSystem(DefaultGameSystem):
             projectile_ent = self.gameworld.init_entity(projectile_dict,init_order)
        
         
-    """
-    def update(self,dt):
-       
-        for component in self.components:
-            if component is not None:
-                entity_id = component.entity_id
-                entity = self.gameworld.entities[entity_id]
-                
-                if hasattr(entity,'position') and hasattr(entity,component.input_source):
-                    input_source = getattr(entity,component.input_source)
-                    fire_weapon = input_source.fire_weapon
-                
-                    if fire_weapon and not input_source.prev_fire_weapon:
-                        projectile_method = self.projectiles[component.projectile]
-                        weap_xpos = entity.position.x+60
-                        print "Reminder: adapt weapon offset to parent body"
-                        weap_ypos = entity.position.y
-                        collision_type = self.gameworld.parent.general_collision
-                        projectile_dict,init_order = projectile_method(weap_xpos,
-                                                                       weap_ypos,
-                                                                       collision_type)
-                        #print "Fire away",entity_id
-                                                
-                        #Create the projectile entity
-                        projectile_ent = self.gameworld.init_entity(projectile_dict,init_order)
-                        '''
-                        input_source.prev_fire_weapon = True
-                    elif not fire_weapon and input_source.prev_fire_weapon:
-                        input_source.prev_fire_weapon = False
-                        '''
-
-                        """
 Factory.register('WeaponSystem',cls=WeaponSystem)
 
 
@@ -1416,65 +1377,7 @@ Factory.register('RoboAiSystem',cls=RoboAiSystem)
 
 
 class ShieldSystem(DefaultGameSystem):
-    default_args = { 
-                     'shield_type':'shield1',
-                     'xoff':-16,
-                     'yoff':-16,
-    }
-    
-    def __init__(self,**kwargs):
-        super(ShieldSystem,self).__init__(**kwargs)
-        self.shields = {
-            'shield1': self.create_shield1}
-        
-    def create_sys_entity(self,component_index,entity_id,zone,args):
-        
-        """ 
-        Every times shield component is created, a shield entity is created as well
-        #Note: Deprecated
-        """
-        pass
-        '''
-        parent_ent = self.gameworld.entities[entity_id]
-        component = self.components[component_index]
-        if (component is not None and hasattr(parent_ent,'position')
-           and hasattr(parent_ent,'health_comp')):
-            #Create shield
-            vel = parent_ent.velocity
-            xoff = component.xoff
-            yoff = component.yoff
-            pos = (parent_ent.position.x+xoff,parent_ent.position.y+yoff)
-            outer_radius =component.outer_radius
-            collision_type = self.gameworld.parent.general_collision
-            #Ex: ShieldSystem.create_shield1()
-            shield_dict,init_order = self.shields[component.shield_type](
-                collision_type,
-                pos,
-                vel
-            )
-            
-            shield_ent_id = self.gameworld.init_entity(shield_dict,init_order)
-            component.shield_ent_id = shield_ent_id
-           '''             
-
-    def create_shield1(self,pos,vel,collision_type,xoff=0,yoff=0):
-        elib = self.gameworld.parent.entitylib
-        create_dict, init_order = elib.get_template('shield1',
-                                                    collision_type,
-                                                    pos=pos,
-                                                    vel=vel)
-        return create_dict,init_order
-
-    
-    
-    def update(self,dt):
-        for component in self.components:
-            if component is not None and component.parent_ent is not None:
-                pass
-            #either ensure the shield entity stays on parent position,
-            # OR render a shield around the target while replacing its renderering
-                
-        
+    pass
 
 Factory.register('ShieldSystem',cls=ShieldSystem)
 
@@ -1503,12 +1406,6 @@ class TimerSystem(DefaultGameSystem):
 Factory.register('TimerSystem',cls=TimerSystem)
 
 
-class TemplateSystem(DefaultGameSystem):
-    default_args = {'target_id': None}
-    def __init__(self,**kwargs):
-        super(TemplateSystem,self).__init__(**kwargs)
-
-Factory.register('TemplateSystem',cls=TemplateSystem)
 
 
 
@@ -1523,19 +1420,4 @@ Factory.register('LevelSystem',cls=LevelSystem)
 
 
 
-#Refcode snippets
-#print texutils.get_tex_region(texture_manager,'ship1',0)
-    
-#body.position.x = 255
-#entity.position.x = 255
-
-#body.movement += cymunk.Vec2d(0,100)
-#body.movement = (0,300)
-#print dir(body)
-#print self.parent.parent.ids
-        
-    
-#    
-#if __name__ == '__main__':
-#    ElectricNemoApp().run()
                             

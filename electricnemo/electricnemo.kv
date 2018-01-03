@@ -29,11 +29,11 @@ ElectricNemo:
             gameworld: gameworld
             zones: ['general']
 
-        SfxSystem:
-            id: 'sfx'
-            system_id: 'sfx'
-            gameworld: gameworld
-            zones: ['general']
+#        SfxSystem:
+#            id: 'sfx'
+#            system_id: 'sfx'
+#            gameworld: gameworld
+#            zones: ['general']
             
         SimpleMovementSystem2D:
             id: movement
@@ -107,8 +107,8 @@ ElectricNemo:
             gameworld: gameworld
             gameview: 'camera1'
             zones: ['general']
-            #shader_source: params.res_path+sep+'glsl'+sep+'positionrotateshader.glsl'
-            shader_source: params.res_path+sep+'glsl'+sep+'sfx_shader1.glsl'
+            shader_source: params.res_path+sep+'glsl'+sep+'positionrotateshader.glsl'
+            #shader_source: params.res_path+sep+'glsl'+sep+'sfx_shader1.glsl'
             system_names: ['rotate_renderer1','position','rotate']
             
         
@@ -203,8 +203,8 @@ ElectricNemo:
             
             
         OffCameraSystem:
-            id: off_camera_comp    
-            system_id: 'off_camera_comp'
+            id: off_camera_sys    
+            system_id: 'off_camera_sys'
             gameworld: gameworld
             gameview: 'camera1'
             updateable: True
@@ -218,8 +218,8 @@ ElectricNemo:
             frame_count: 1
             
         TextSystem:
-            id: text_comp
-            system_id: 'text_comp'
+            id: text_sys
+            system_id: 'text_sys'
             renderer: 'mid_renderer1'
             gameworld: gameworld
             updateable: True
@@ -240,68 +240,68 @@ ElectricNemo:
             #updateable: True
             
         PinDownSystem:
-            id: pindown_comp
-            system_id: 'pindown_comp'
+            id: pindown_sys
+            system_id: 'pindown_sys'
             gameworld: gameworld
             updateable: True
 
         PowerUpSystem:
-            id: powerup_comp
-            system_id: 'powerup_comp'
+            id: powerup_sys
+            system_id: 'powerup_sys'
             gameworld: gameworld
             updateable: True
             frame_count: 60
             
         RoboAiSystem:
-            id: robo_ai_comp
-            system_id: 'robo_ai_comp'
+            id: robo_ai_sys
+            system_id: 'robo_ai_sys'
             gameworld: gameworld
             updateable: True
 
         HealthSystem:
-            id: health_comp    
-            system_id: 'health_comp'
+            id: health_sys    
+            system_id: 'health_sys'
             gameworld: gameworld
             updateable: True
             #frame_count: 60
             update_time: 1
         DamageSystem:
-            id: damage_comp    
-            system_id: 'damage_comp'
+            id: damage_sys    
+            system_id: 'damage_sys'
             gameworld: gameworld
             updateable: True
             #frame_count: 60
             update_time: 1
             
         ThrusterSystem:
-            id: thruster_comp
-            system_id: 'thruster_comp'
+            id: thruster_sys
+            system_id: 'thruster_sys'
             gameworld: gameworld
             updateable: True
             #frame_count: 60
             #update_time: .1
             
         WeaponSystem:
-            id: weapon_comp
-            system_id: 'weapon_comp'
+            id: weapon_sys
+            system_id: 'weapon_sys'
             gameworld: gameworld
             updateable: True
             
         DestructSystem:
-            id: destruct_comp
-            system_id: 'destruct_comp'
+            id: destruct_sys
+            system_id: 'destruct_sys'
             gameworld: gameworld
             updateable: True
             
         LevelSystem:
-            id: level_comp    
-            system_id: 'level_comp'
+            id: level_sys    
+            system_id: 'level_sys'
             gameworld: gameworld
             updateable: True
 
         ShieldSystem:
-            id: shield_comp
-            system_id: 'shield_comp'
+            id: shield_sys
+            system_id: 'shield_sys'
             gameworld: gameworld
             updateable: True
 

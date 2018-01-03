@@ -33,14 +33,14 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": -10
         }, 
-        "destruct_comp": {
+        "destruct_sys": {
             "explosion": "explode1", 
             "explosion_damage": -10
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 75
         }, 
         "init_order": [
@@ -49,12 +49,12 @@
             "rotate_renderer1",
 	    "rotate_renderer2",
             "cymunk_physics", 
-            "damage_comp", 
-            "health_comp", 
-            "destruct_comp", 
-            "off_camera_comp"
+            "damage_sys", 
+            "health_sys", 
+            "destruct_sys", 
+            "off_camera_sys"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -122,20 +122,20 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": -10
         }, 
-        "destruct_comp": {
+        "destruct_sys": {
             "explosion": "explode1", 
             "explosion_damage": -1000
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 5
         }, 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
-        "pindown_comp": {
+        "pindown_sys": {
             "angle": 0, 
             "angular_velocity": 0, 
             "px": 0, 
@@ -159,26 +159,26 @@
         }, 
         "ship_init": [
             "player_control", 
-            "thruster_comp", 
+            "thruster_sys", 
             "position", 
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "pindown_comp", 
+            "pindown_sys", 
             "acceleration", 
-            "weapon_comp", 
-            "text_comp", 
-            "off_camera_comp", 
-            "damage_comp", 
-            "health_comp", 
-            "destruct_comp"
+            "weapon_sys", 
+            "text_sys", 
+            "off_camera_sys", 
+            "damage_sys", 
+            "health_sys", 
+            "destruct_sys"
         ], 
-        "text_comp": {
+        "text_sys": {
             "text": "Click!", 
             "xoff": 0, 
             "yoff": 0
         }, 
-        "thruster_comp": {
+        "thruster_sys": {
             "down": [
                 0, 
                 -25
@@ -188,7 +188,7 @@
                 25
             ]
         }, 
-        "weapon_comp": {
+        "weapon_sys": {
             "input_source": "player_control", 
             "projectile": "rocket1", 
             "xoff": 0, 
@@ -236,14 +236,14 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": -10
         }, 
-        "destruct_comp": {
+        "destruct_sys": {
             "explosion": "explode1", 
             "explosion_damage":-25
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 1
         }, 
         "init_order": [
@@ -252,13 +252,13 @@
             "rotate_renderer1",
 	    "rotate_renderer2",
             "cymunk_physics", 
-            "off_camera_comp", 
+            "off_camera_sys", 
             "acceleration", 
-            "health_comp", 
-            "damage_comp", 
-            "destruct_comp"
+            "health_sys", 
+            "damage_sys", 
+            "destruct_sys"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -327,10 +327,10 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": -50
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 300
         }, 
         "init_order": [
@@ -338,12 +338,12 @@
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "off_camera_comp", 
+            "off_camera_sys", 
             "acceleration", 
-            "health_comp", 
-            "damage_comp"
+            "health_sys", 
+            "damage_sys"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -400,10 +400,10 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": -1000
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 1000
         }, 
         "init_order": [
@@ -411,13 +411,13 @@
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "off_camera_comp", 
+            "off_camera_sys", 
             "acceleration", 
-            "health_comp", 
-            "damage_comp",
+            "health_sys", 
+            "damage_sys",
 	    "timer"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -479,10 +479,10 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": 5
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 1
         }, 
         "init_order": [
@@ -490,13 +490,13 @@
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "off_camera_comp", 
+            "off_camera_sys", 
             "acceleration", 
-            "health_comp", 
-            "damage_comp",
+            "health_sys", 
+            "damage_sys",
 	    "timer"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -554,14 +554,14 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": 0
         }, 
-        "destruct_comp": {
+        "destruct_sys": {
             "explosion": "spark1", 
             "explosion_damage": 0
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 1
         }, 
         "init_order": [
@@ -569,12 +569,12 @@
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "damage_comp", 
-            "health_comp", 
-            "destruct_comp", 
-            "off_camera_comp"
+            "damage_sys", 
+            "health_sys", 
+            "destruct_sys", 
+            "off_camera_sys"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -628,14 +628,14 @@
                 0
             ]
         }, 
-        "damage_comp": {
+        "damage_sys": {
             "damage": 200
         }, 
-        "destruct_comp": {
+        "destruct_sys": {
             "explosion": "spark1", 
             "explosion_damage": 0
         }, 
-        "health_comp": {
+        "health_sys": {
             "health": 1
         }, 
         "init_order": [
@@ -643,13 +643,13 @@
             "rotate", 
             "rotate_renderer1", 
             "cymunk_physics", 
-            "damage_comp", 
-            "health_comp", 
-            "destruct_comp", 
-            "off_camera_comp",
-	    "powerup_comp"
+            "damage_sys", 
+            "health_sys", 
+            "destruct_sys", 
+            "off_camera_sys",
+	    "powerup_sys"
         ], 
-        "off_camera_comp": {
+        "off_camera_sys": {
             "kill_off_camera": true
         }, 
         "position": [
@@ -665,7 +665,7 @@
             ], 
             "texture": "jewel1"
         },
-	"powerup_comp": {
+	"powerup_sys": {
 	    "new_comps": {
 		"rotate_renderer2":{ "texture":"shield2",
 				     "size": [58,58],
