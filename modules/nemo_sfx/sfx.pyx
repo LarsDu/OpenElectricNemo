@@ -1,6 +1,5 @@
 # cython: embedsignature=True
-from kivent_core.systems.staticmemgamesystem cimport (StaticMemGameSystem, 
-    MemComponent)
+from kivent_core.systems.staticmemgamesystem cimport StaticMemGameSystem, MemComponent
 from kivy.properties import (StringProperty, NumericProperty, ListProperty,
     BooleanProperty, ObjectProperty)
 from kivy.factory import Factory
@@ -41,12 +40,12 @@ cdef class SfxComponent(MemComponent):
     property scale:
         def __get__(self):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
-            return (data.scale[0] + data.scale[1])/2.
+            return (data.scale[0], data.scale[1])
 
-        def __set__(self, float value):
+        def __set__(self, tuple values):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
-            data.scale[0] = value
-            data.scale[1]= value
+            data.scale[0] = values[0]
+            data.scale[1]= values[1]
 
     property scale_x:
         def __get__(self):
@@ -255,7 +254,7 @@ cdef class SfxSystem(StaticMemGameSystem):
         "y_shear": 0.,
         "edge_effect_color": (255,255,255,255),
         "edge_effect_thresh":0.,
-        "sfx_flag": 0.
+        "sfx_flag": 1.
     }
 
 
@@ -263,70 +262,36 @@ cdef class SfxSystem(StaticMemGameSystem):
         #Start with default arguments and replace entries with user defined args
         # on initialization (pre-filtering)
         
-        cargs = self.default_args.copy() #combined args
-        cargs.update(args)
-
+        cargs = SfxSystem.default_args.copy() #combined args
+        for key,value in cargs.items():
+            new_val = args.get(key,False)
+            if new_val:
+                cargs[key] = new_val
+        
         cdef MemoryZone memory_zone = self.imz_components.memory_zone
         cdef SfxStruct2D* component = <SfxStruct2D*>(
             memory_zone.get_pointer(component_index))
         component.entity_id = entity_id
-        for i in xrange(2):
-            component.scale[i] = cargs['scale'][i]
+        component.scale[0] = cargs['scale'][0]
+        component.scale[1] = cargs['scale'][1]
         component.render_rotate = cargs['render_rotate']
-        component.v_color[0] =  cargs['v_color'][0]
-        component.v_color[1] =  cargs['v_color'][1]
-        component.v_color[2] =  cargs['v_color'][2]
-        component.v_color[3] =  cargs['v_color'][3]
+        component.v_color[0] =  int(cargs['v_color'][0])
+        component.v_color[1] =  int(cargs['v_color'][1])
+        component.v_color[2] =  int(cargs['v_color'][2])
+        component.v_color[3] =  int(cargs['v_color'][3])
         component.x_trans =  float(cargs['x_trans'])
         component.y_trans =  float(cargs['y_trans'])
         component.x_shear =  float(cargs['x_shear'])
         component.y_shear =  float(cargs['y_shear'])
-        component.edge_effect_color[0] = cargs['edge_effect_color'][0]
-        component.edge_effect_color[1] = cargs['edge_effect_color'][1]
-        component.edge_effect_color[2] = cargs['edge_effect_color'][2]
-        component.edge_effect_color[3] = cargs['edge_effect_color'][3]
+        component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])
+        component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])
+        component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
+        component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])
-        component.sfx_flag =  cargs['sfx_flag']
-
+        component.sfx_flag =  float(cargs['sfx_flag'])
+        
         #super(DefaultGameSystem,self).init_component(component_index,entity_id,zone,combined_args)
         #self.create_sys_entity(component_index,entity_id,zone,args)
-
-
-    '''
-    def init_component(self,
-                       unsigned int component_index,
-                       unsigned int entity_id,
-                       str zone,
-                       float render_rotate,
-                       tuple v_color,
-                       float x_trans,
-                       float y_trans,
-                       float x_shear,
-                       float y_shear,
-                       tuple edge_effect_color,
-                       float edge_effect_thresh,
-                       int sfx_flag):
-
-        cdef MemoryZone memory_zone = self.imz_components.memory_zone
-        cdef SfxStruct2D* component = <SfxStruct2D*>(
-            memory_zone.get_pointer(component_index))
-        component.entity_id = entity_id
-        component.render_rotate = render_rotate
-        component.v_color[0] = v_color[0]
-        component.v_color[1] = v_color[1]
-        component.v_color[2] = v_color[2]
-        component.v_color[3] = v_color[3]
-        component.x_trans = x_trans
-        component.y_trans = y_trans
-        component.x_shear = x_shear
-        component.y_shear = y_shear
-        component.edge_effect_color[0] = edge_effect_color[0]
-        component.edge_effect_color[1] = edge_effect_color[1]
-        component.edge_effect_color[2] = edge_effect_color[2]
-        component.edge_effect_color[3] = edge_effect_color[3]
-        component.edge_effect_thresh = edge_effect_thresh
-        component.sfx_flag = sfx_flag
-    '''
 
 
     

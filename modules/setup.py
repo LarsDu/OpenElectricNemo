@@ -38,7 +38,7 @@ elif environ.get('KIVYIOSROOT'):
     libraries = ['GLESv2']
     sysroot = environ.get('IOSSDKROOT', environ.get('SDKROOT'))
     global_include_dirs = [sysroot]
-    extra_compile_args = ['-isysroot', sysroot]
+    extra_compile_args = ['-isysroot', sysroot] #v da Q for GDB debugging
     extra_link_args = ['-isysroot', sysroot, '-framework', 'OpenGLES']
 elif exists('/opt/vc/include/bcm_host.h'):
     platform = 'rpi'
@@ -88,15 +88,17 @@ elif platform == 'darwin':
 do_clear_existing = True
 
 nemo_sfx_modules = {
+    'nemo_sfx.sfx':['nemo_sfx/sfx.pyx'],
     'nemo_sfx.sfx_renderer': ['nemo_sfx/sfx_renderer.pyx'],
     'nemo_sfx.sfx_formats': ['nemo_sfx/sfx_formats.pyx',],
-    'nemo_sfx.sfx':['nemo_sfx/sfx.pyx']
+    
 }
 
 nemo_sfx_modules_c = {
+    'nemo_sfx.sfx': ['nemo_sfx/sfx.c'],
     'nemo_sfx.sfx_renderer': ['nemo_sfx/sfx_renderer.c'],
     'nemo_sfx.sfx_formats': ['nemo_sfx/sfx_formats.c',],
-    'nemo_sfx.sfx': ['nemo_sfx/sfx.c']
+
 }
 
 check_for_removal = [

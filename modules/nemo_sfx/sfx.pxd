@@ -1,5 +1,4 @@
-from kivent_core.systems.staticmemgamesystem cimport (StaticMemGameSystem, 
-    MemComponent)
+from kivent_core.systems.staticmemgamesystem cimport StaticMemGameSystem, MemComponent
 #from kivent_core.systems.renderers cimport RenderComponent
 #from kivent_core.systems.rotate_systems cimport RotateComponent2D, RotateSystem2D
 #import rotate renderer component?
@@ -11,14 +10,14 @@ https://github.com/kivy/kivent/tree/master/modules/core/kivent_core/systems
 
 ctypedef struct SfxStruct2D:
     unsigned int entity_id
-    float scale[2]
+    float[2] scale
     float render_rotate
-    unsigned char v_color[4]
+    unsigned char[4] v_color
     float x_trans
     float y_trans
     float x_shear
     float y_shear
-    unsigned char  edge_effect_color[4]
+    unsigned char[4] edge_effect_color
     float edge_effect_thresh
     float sfx_flag
 

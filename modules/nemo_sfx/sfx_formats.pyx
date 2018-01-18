@@ -3,21 +3,21 @@ cdef extern from "Python.h":
     ctypedef int Py_intptr_t
 from kivent_core.rendering.vertex_formats cimport format_registrar
 
-cdef VertexFormatSfx1* tmp1 = <VertexFormatSfx1*>NULL
-pos_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.pos) - <Py_intptr_t>(tmp1))
-uvs_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.uvs) - <Py_intptr_t>(tmp1))
-center_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.center) - <Py_intptr_t>(tmp1))
-rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.rotate) - <Py_intptr_t>(tmp1))
-scale_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.scale) - <Py_intptr_t>(tmp1))
-render_rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.render_rotate) - <Py_intptr_t>(tmp1))
-color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.v_color) - <Py_intptr_t>(tmp1))
-x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.x_trans) - <Py_intptr_t>(tmp1))#
-y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.y_trans) - <Py_intptr_t>(tmp1))#
-x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.x_shear) - <Py_intptr_t>(tmp1))#
-y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.y_shear) - <Py_intptr_t>(tmp1))#
-ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp1.edge_effect_color) - <Py_intptr_t>(tmp1))
-ee_thresh_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.edge_effect_thresh) - <Py_intptr_t>(tmp1))
-sfx_flag_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp1.sfx_flag) - <Py_intptr_t>(tmp1))
+cdef VertexFormatSfx1* tmp_var1 = <VertexFormatSfx1*>NULL
+pos_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.pos) - <Py_intptr_t>(tmp_var1))
+uvs_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.uvs) - <Py_intptr_t>(tmp_var1))
+center_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.center) - <Py_intptr_t>(tmp_var1))
+rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.rotate) - <Py_intptr_t>(tmp_var1))
+scale_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.scale) - <Py_intptr_t>(tmp_var1))
+render_rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.render_rotate) - <Py_intptr_t>(tmp_var1))
+color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_color) - <Py_intptr_t>(tmp_var1))
+x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
+y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
+x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
+y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#
+ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.edge_effect_color) - <Py_intptr_t>(tmp_var1))
+ee_thresh_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.edge_effect_thresh) - <Py_intptr_t>(tmp_var1))
+#sfx_flag_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.sfx_flag) - <Py_intptr_t>(tmp_var1))
 
 vertex_format_sfx1 = [
     (b'pos', 2, b'float', pos_offset,False),
@@ -33,7 +33,7 @@ vertex_format_sfx1 = [
     (b'y_shear', 1, b'float', y_shear_offset,False),
     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),
     (b'edge_effect_thresh', 1, b'float', ee_thresh_offset,False),
-    (b'sfx_flag', 1, b'float', sfx_flag_offset,False)
+#    (b'sfx_flag', 1, b'float', sfx_flag_offset,False),
     ]
 
 format_registrar.register_vertex_format('vertex_format_sfx1', 

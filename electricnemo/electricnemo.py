@@ -386,9 +386,6 @@ class ElectricNemo(Widget):
                       'health_sys',
                       'destruct_sys']
 
-        #assert sorted(ship_dict.keys()) == sorted(init_order),"Error in ship init order"
-        #print ship_dict
-        #print init_order
 
         ent_id = self.gameworld.init_entity(ship_dict,init_order )
 
@@ -399,19 +396,6 @@ class ElectricNemo(Widget):
 
 
 
-
-
-
-
-
-
-
-        
-class MainMenu(Widget):
-    def __init__(self,**kwargs):
-        super(MainMenu,self).__init__(**kwargs)
-    def exit():
-        sys.exit(0)
 
 
 
@@ -612,6 +596,120 @@ Factory.register('DestructSystem',cls=DestructSystem)
 
 
 
+class EntityGeneratorSys(DefaultGameSystem):
+    """
+    An entity with this component generates entities.
+    a list of positions at a specified range of velocities.
+ 
+    This is similar to TextGenSys in that an entity is created that 
+    is the source for the creation of other entities.
+
+    Generate multiple entities with this component to generate different objects
+
+       
+    component_args:
+        pos_list: List of discrete (x,y) locations to spawn entities from
+        pos_range: Pair of tuples with x_range and y_range from which to spawn
+                   entities.
+                    
+    
+    """
+
+    default_args = {
+        'template': 'asteroid1',
+        'collision_type': None, #String value
+        'pos_list': ((params.screen_width,400),(600,600)),
+        'pos_range':None,
+        'vx_range':(-300,-200),
+        'vy_range':(0,0),
+        'ax_range':(0,0),
+        'ay_range':(0,0),
+        'paused':False,
+        'kill_off_camera':True,
+        'timer_sys':'timer_sys'
+    }
+
+
+                
+                
+    def update(self, dt):
+        '''
+        On every tick, call each component
+        '''
+        
+        #init_entity = self.gameworld.init_entity
+        for component in self.components:
+            if component is not None:
+                if not component.paused:
+                    entity = self.gameworld.entities[component.entity_id]                 
+                    if hasattr(entity,component.timer_sys):
+                        component_timer = getattr(entity,component.timer_sys)
+                        if component_timer.flag:
+                            template = choice(component.templates)
+                            if component.pos_range is not None:
+                                px = randint(*component.pos_range[0])
+                                py = randint(*component.pos_range[1])
+                                pos = (px,py)
+                            elif component.pos_list is not None:
+                                pos = choice(component.pos_list)
+                            else:
+                                pos = (0,0)
+                            vx = randint(*component.vx_range)
+                            vy = randint(*component.vy_range)
+                            ax = randint(*component.ax_range)
+                            ay = randint(*component.ay_range)
+                            if component.collision_type is not None:
+                                collision_int= self.gameworld.parent.collisions[
+                                    component.collision_type]
+                            else:
+                                collision_int = None
+                            create_dict, init_order = \
+                                                self.create_entity_init(template,
+                                                                        collision_int,
+                                                                        pos,
+                                                                        (vx,vy),
+                                                                        (ax,ay),
+                                                                        component.kill_off_camera)
+                            self.gameworld.init_entity(create_dict, init_order)
+    
+
+
+                            
+    def create_entity_init(self,
+                           template,
+                           collision_type,
+                           pos,
+                           vel,
+                           accel,
+                           kill_off_camera = True):
+        """
+        This is just a template for methods which modify the 
+        assemlib entity.
+        """
+        alib = self.gameworld.parent.assemlib
+        create_dict, init_order = alib.get_template(template,
+                                                    collision_type=collision_type,
+                                                    pos = pos,
+                                                    vel = vel,
+                                                    accel = accel)
+
+        if kill_off_camera:
+            create_dict['off_camera_sys'] = {'kill_off_camera':True}
+            if 'off_camera_sys' not in init_order:
+                init_order.append('off_camera_sys')
+            
+        return create_dict,init_order
+
+    
+                
+    
+Factory.register('EntityGeneratorSys',cls=EntityGeneratorSys)
+
+
+
+
+
+
 class AttachSystem(DefaultGameSystem):
     """
     An attach entity will hook up two entities to each other
@@ -645,93 +743,108 @@ Factory.register('AttachSystem',cls=AttachSystem)
 
 
 
-
 class TextSystem(DefaultGameSystem):
     """
-    Create text entities with position and movement components
+    Holds text data and contains 
+    methods for generating text entities
+
     """
-    text = ''
-    xoff = 0
-    yoff = 0
-    spacing = params.scale*params.text_size-3
-    renderer = 'mid_renderer1'
-    longevity = 300
+
+    default_args={ 'text':'',
+                   'offsets':(0,0),
+                   'spacing': params.scale *9 ,
+                   'renderer': 'top_renderer1',
+                   'lifespan':4.0,
+                   'vx':0,
+                   'vy':0,
+                   'ax':0,
+                   'ay':0,
+                   'do_attach_parent':False}
     
     def __init__(self,**kwargs):
         super(TextSystem,self).__init__(**kwargs)
 
-    '''
-    def update(self,dt):
-        for component in self.components:
-            if component is not None:
-                entity_id = component.entity_id
-                entity = self.gameworld.entities[entity_id]
-                pos = entity.position
-
+   
     def on_touch_down(self,touch):
-        self.create_chars()
-        component = self.components[0]
-        entity = self.gameworld.entities[component.entity_id]
-        for component in self.components:
-            print component.text
-        self.create_chars()
-        print self.gameworld.ids
-        pass
-    '''
-            
-    def create_chars(self):
+
+        #Create chars for all entities with char components
+        self.create_all_text()
+        
+        
+       
+    def create_entity_text(self,entity_id):
+        entity = self.gameworld.entities[entity_id]
+        component = getattr(entity,self.system_id, None)
+        if component is not None:
+            comp_text = component.text
+            for i in xrange(len(comp_text)):
+                char = component.text[i].upper()
+                if char == ' ':
+                    continue
+                if hasattr(entity,'position'):
+                    xorg = entity.position.x
+                    yorg = entity.position.y
+                else:
+                    xorg = 0
+                    yorg = 0
+                let_xoff = component.offsets[0] + (i * component.spacing)
+                let_yoff = component.offsets[1]
+                x = xorg + let_xoff
+                y = yorg + let_yoff
+                let_key = 'let_'+ char
+
+                game = self.gameworld.parent
+                create_dict = {'movement': {'vx':component.vx,
+                                            'vy':component.vy},
+                               'position':(x,y),
+                               'rotate': 0.0,
+                               'acceleration':{'ax':component.ax,'ay':component.ay},
+                                component.renderer: {'texture':let_key,
+                                                     'model_key':let_key+'_mod'},
+                               'off_camera_sys':{'kill_off_camera':True},
+                }
+
+                init_order = ['position',
+                              'movement',
+                              'acceleration',
+                              'rotate',
+                              component.renderer,
+                              'off_camera_sys']
+
+                if component.do_attach_parent:
+                    create_dict.update({'attach_to':{'parent_id':entity_id},
+                                        'offsets':(let_xoff,let_yoff)})
+                    init_order.append('attach_to')
+
+
+                if component.lifespan > 0.0:
+                    create_dict.update({
+                        'timer_sys':{
+                            'countdown':component.lifespan,
+                            'do_remove':True
+                                        }
+                    })
+                    init_order.append('timer_sys')
+
+                ent = self.gameworld.init_entity(create_dict,init_order )
+
+
+    def create_all_text(self):
         """
-        Create letter entities to display text at a given position
+        Create letter entities to display text
+        for all text_sys components
+
+        No physics implemented
         """
-        init_entity = self.gameworld.init_entity
+
         for component in self.components:
             if component is not None:
                 entity_id = component.entity_id
-                entity = self.gameworld.entities[entity_id]
-                comp_text = component.text
-                for i in xrange(len(comp_text)):
-                    char = component.text[i]
-                    if char == ' ':
-                        continue
-                    if hasattr(entity,'position'):
-                        xorg = entity.position.x
-                        yorg = entity.position.y
-                    else:
-                        xorg = 0
-                        yorg = 0
-                    let_xoff = component.xoff + i*TextSystem.spacing
-                    let_yoff = component.yoff
-                    x = xorg + let_xoff
-                    y = yorg + let_yoff
-                    let_key = 'let_'+ char
-
-                    #player_control_sys = self.gameworld.parent.ids['player_control']
-                    game = self.gameworld.parent
-                    create_dict = {'movement': {'vx':0,
-                                                'vy':0},
-                                   'position':(x,y),
-                                    self.renderer: {'texture':let_key,
-                                                     'model_key':let_key+'_mod'},
-                                   'off_camera_sys':{'kill_off_camera':True},
-                                   'attach_to': {'parent_id':game.player_id,
-                                                 'lifespan':25,
-                                                 'xoff':let_xoff,
-                                                 'yoff':let_yoff}
-                                   
-                    }
-                    ent = init_entity(create_dict,
-                                      ['position',
-                                       'movement',
-                                       'attach_to',
-                                       'off_camera_sys',
-                                       self.renderer] )
-                    
+                #entity = self.gameworld.entities[entity_id]
+                self.create_entity_text(entity_id)
+                             
 Factory.register('TextSystem',cls=TextSystem)
 
-
-
-
-                    
 
 
 
@@ -1221,10 +1334,8 @@ Factory.register('ThrusterSystem',cls=ThrusterSystem)
 
 class ScrollEntGenSystem(DefaultGameSystem):
     """
+    DEPRECATED (Use EntityGeneratorSys instead)
     System for generating entities. 
-    Will replace this system with a generic generator system for
-    generating any entity in the future.
-
     """
     renderer = 'bg_renderer1'
     gameview = 'camera1'
