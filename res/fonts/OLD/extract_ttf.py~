@@ -1,9 +1,0 @@
-
-from PIL import ImageFont, ImageDraw
-
-draw = ImageDraw.Draw(image)
-
-# use a truetype font
-font = ImageFont.truetype("kongtext.ttf", 15)
-
-draw.text((10, 25), "world", font=font)
