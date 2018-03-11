@@ -2076,6 +2076,7 @@ struct __pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1 {
   GLfloat scale[2];
   GLfloat rotate;
   GLubyte v_color[4];
+  GLfloat v_tint[4];
   GLfloat render_rotate;
   GLfloat x_trans;
   GLfloat y_trans;
@@ -2307,6 +2308,7 @@ static const char __pyx_k_scale[] = "scale";
 static const char __pyx_k_ubyte[] = "ubyte";
 static const char __pyx_k_center[] = "center";
 static const char __pyx_k_rotate[] = "rotate";
+static const char __pyx_k_v_tint[] = "v_tint";
 static const char __pyx_k_v_color[] = "v_color";
 static const char __pyx_k_x_shear[] = "x_shear";
 static const char __pyx_k_x_trans[] = "x_trans";
@@ -2315,6 +2317,7 @@ static const char __pyx_k_y_trans[] = "y_trans";
 static const char __pyx_k_pos_offset[] = "pos_offset";
 static const char __pyx_k_rot_offset[] = "rot_offset";
 static const char __pyx_k_uvs_offset[] = "uvs_offset";
+static const char __pyx_k_tint_offset[] = "tint_offset";
 static const char __pyx_k_color_offset[] = "color_offset";
 static const char __pyx_k_scale_offset[] = "scale_offset";
 static const char __pyx_k_center_offset[] = "center_offset";
@@ -2349,10 +2352,12 @@ static PyObject *__pyx_n_b_rotate;
 static PyObject *__pyx_n_b_scale;
 static PyObject *__pyx_n_s_scale_offset;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_tint_offset;
 static PyObject *__pyx_n_b_ubyte;
 static PyObject *__pyx_n_b_uvs;
 static PyObject *__pyx_n_s_uvs_offset;
 static PyObject *__pyx_n_b_v_color;
+static PyObject *__pyx_n_b_v_tint;
 static PyObject *__pyx_n_s_vertex_format_sfx1;
 static PyObject *__pyx_n_b_x_shear;
 static PyObject *__pyx_n_s_x_shear_offset;
@@ -2408,10 +2413,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_b_scale, __pyx_k_scale, sizeof(__pyx_k_scale), 0, 0, 0, 1},
   {&__pyx_n_s_scale_offset, __pyx_k_scale_offset, sizeof(__pyx_k_scale_offset), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_tint_offset, __pyx_k_tint_offset, sizeof(__pyx_k_tint_offset), 0, 0, 1, 1},
   {&__pyx_n_b_ubyte, __pyx_k_ubyte, sizeof(__pyx_k_ubyte), 0, 0, 0, 1},
   {&__pyx_n_b_uvs, __pyx_k_uvs, sizeof(__pyx_k_uvs), 0, 0, 0, 1},
   {&__pyx_n_s_uvs_offset, __pyx_k_uvs_offset, sizeof(__pyx_k_uvs_offset), 0, 0, 1, 1},
   {&__pyx_n_b_v_color, __pyx_k_v_color, sizeof(__pyx_k_v_color), 0, 0, 0, 1},
+  {&__pyx_n_b_v_tint, __pyx_k_v_tint, sizeof(__pyx_k_v_tint), 0, 0, 0, 1},
   {&__pyx_n_s_vertex_format_sfx1, __pyx_k_vertex_format_sfx1, sizeof(__pyx_k_vertex_format_sfx1), 0, 0, 1, 1},
   {&__pyx_n_b_x_shear, __pyx_k_x_shear, sizeof(__pyx_k_x_shear), 0, 0, 0, 1},
   {&__pyx_n_s_x_shear_offset, __pyx_k_x_shear_offset, sizeof(__pyx_k_x_shear_offset), 0, 0, 1, 1},
@@ -2468,7 +2475,8 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyObject *__pyx_t_14 = NULL;
   PyObject *__pyx_t_15 = NULL;
   PyObject *__pyx_t_16 = NULL;
-  int __pyx_t_17;
+  PyObject *__pyx_t_17 = NULL;
+  int __pyx_t_18;
   __Pyx_RefNannyDeclarations
   #if CYTHON_REFNANNY
   __Pyx_RefNanny = __Pyx_RefNannyImportAPI("refnanny");
@@ -2636,7 +2644,7 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
  * scale_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.scale) - <Py_intptr_t>(tmp_var1))
  * render_rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.render_rotate) - <Py_intptr_t>(tmp_var1))             # <<<<<<<<<<<<<<
  * color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_color) - <Py_intptr_t>(tmp_var1))
- * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
+ * tint_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_tint) - <Py_intptr_t>(tmp_var1))
  */
   __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->render_rotate)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2647,8 +2655,8 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
  * scale_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.scale) - <Py_intptr_t>(tmp_var1))
  * render_rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.render_rotate) - <Py_intptr_t>(tmp_var1))
  * color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_color) - <Py_intptr_t>(tmp_var1))             # <<<<<<<<<<<<<<
+ * tint_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_tint) - <Py_intptr_t>(tmp_var1))
  * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
- * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
  */
   __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->v_color) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2658,85 +2666,97 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   /* "nemo_sfx/sfx_formats.pyx":14
  * render_rot_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.render_rotate) - <Py_intptr_t>(tmp_var1))
  * color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_color) - <Py_intptr_t>(tmp_var1))
- * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#             # <<<<<<<<<<<<<<
+ * tint_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_tint) - <Py_intptr_t>(tmp_var1))             # <<<<<<<<<<<<<<
+ * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
  * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
- * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->x_trans)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->v_tint) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_x_trans_offset, __pyx_t_3) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tint_offset, __pyx_t_3) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "nemo_sfx/sfx_formats.pyx":15
  * color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_color) - <Py_intptr_t>(tmp_var1))
+ * tint_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_tint) - <Py_intptr_t>(tmp_var1))
+ * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#             # <<<<<<<<<<<<<<
+ * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
+ * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
+ */
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->x_trans)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_x_trans_offset, __pyx_t_3) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "nemo_sfx/sfx_formats.pyx":16
+ * tint_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.v_tint) - <Py_intptr_t>(tmp_var1))
  * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
  * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#             # <<<<<<<<<<<<<<
  * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
  * y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->y_trans)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->y_trans)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_y_trans_offset, __pyx_t_3) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_y_trans_offset, __pyx_t_3) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":16
+  /* "nemo_sfx/sfx_formats.pyx":17
  * x_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_trans) - <Py_intptr_t>(tmp_var1))#
  * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
  * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#             # <<<<<<<<<<<<<<
  * y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#
  * ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.edge_effect_color) - <Py_intptr_t>(tmp_var1))
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->x_shear)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->x_shear)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_x_shear_offset, __pyx_t_3) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_x_shear_offset, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":17
+  /* "nemo_sfx/sfx_formats.pyx":18
  * y_trans_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_trans) - <Py_intptr_t>(tmp_var1))#
  * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
  * y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#             # <<<<<<<<<<<<<<
  * ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.edge_effect_color) - <Py_intptr_t>(tmp_var1))
  * ee_thresh_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.edge_effect_thresh) - <Py_intptr_t>(tmp_var1))
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->y_shear)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->y_shear)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_y_shear_offset, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_y_shear_offset, __pyx_t_3) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":18
+  /* "nemo_sfx/sfx_formats.pyx":19
  * x_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.x_shear) - <Py_intptr_t>(tmp_var1))#
  * y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#
  * ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.edge_effect_color) - <Py_intptr_t>(tmp_var1))             # <<<<<<<<<<<<<<
  * ee_thresh_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.edge_effect_thresh) - <Py_intptr_t>(tmp_var1))
  * #sfx_flag_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.sfx_flag) - <Py_intptr_t>(tmp_var1))
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->edge_effect_color) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->edge_effect_color) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ee_color_offset, __pyx_t_3) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ee_color_offset, __pyx_t_3) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":19
+  /* "nemo_sfx/sfx_formats.pyx":20
  * y_shear_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.y_shear) - <Py_intptr_t>(tmp_var1))#
  * ee_color_offset = <Py_ssize_t> (<Py_intptr_t>(tmp_var1.edge_effect_color) - <Py_intptr_t>(tmp_var1))
  * ee_thresh_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.edge_effect_thresh) - <Py_intptr_t>(tmp_var1))             # <<<<<<<<<<<<<<
  * #sfx_flag_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.sfx_flag) - <Py_intptr_t>(tmp_var1))
  * 
  */
-  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->edge_effect_thresh)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)(((Py_intptr_t)(&__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1->edge_effect_thresh)) - ((Py_intptr_t)__pyx_v_8nemo_sfx_11sfx_formats_tmp_var1)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ee_thresh_offset, __pyx_t_3) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ee_thresh_offset, __pyx_t_3) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":23
+  /* "nemo_sfx/sfx_formats.pyx":24
  * 
  * vertex_format_sfx1 = [
  *     (b'pos', 2, b'float', pos_offset,False),             # <<<<<<<<<<<<<<
  *     (b'uvs', 2, b'float', uvs_offset,False),
  *     (b'center', 2, b'float', center_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pos_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pos_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_b_pos);
   __Pyx_GIVEREF(__pyx_n_b_pos);
@@ -2754,16 +2774,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_4, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":24
+  /* "nemo_sfx/sfx_formats.pyx":25
  * vertex_format_sfx1 = [
  *     (b'pos', 2, b'float', pos_offset,False),
  *     (b'uvs', 2, b'float', uvs_offset,False),             # <<<<<<<<<<<<<<
  *     (b'center', 2, b'float', center_offset,False),
  *     (b'scale', 2, b'float', scale_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_uvs_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_uvs_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_n_b_uvs);
   __Pyx_GIVEREF(__pyx_n_b_uvs);
@@ -2781,16 +2801,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_5, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":25
+  /* "nemo_sfx/sfx_formats.pyx":26
  *     (b'pos', 2, b'float', pos_offset,False),
  *     (b'uvs', 2, b'float', uvs_offset,False),
  *     (b'center', 2, b'float', center_offset,False),             # <<<<<<<<<<<<<<
  *     (b'scale', 2, b'float', scale_offset,False),
  *     (b'rotate', 1, b'float', rot_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_center_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_center_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_n_b_center);
   __Pyx_GIVEREF(__pyx_n_b_center);
@@ -2808,16 +2828,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_6, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":26
+  /* "nemo_sfx/sfx_formats.pyx":27
  *     (b'uvs', 2, b'float', uvs_offset,False),
  *     (b'center', 2, b'float', center_offset,False),
  *     (b'scale', 2, b'float', scale_offset,False),             # <<<<<<<<<<<<<<
  *     (b'rotate', 1, b'float', rot_offset,False),
  *     (b'render_rotate', 1, b'float', render_rot_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_scale_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_scale_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyTuple_New(5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_n_b_scale);
   __Pyx_GIVEREF(__pyx_n_b_scale);
@@ -2835,16 +2855,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_7, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":27
+  /* "nemo_sfx/sfx_formats.pyx":28
  *     (b'center', 2, b'float', center_offset,False),
  *     (b'scale', 2, b'float', scale_offset,False),
  *     (b'rotate', 1, b'float', rot_offset,False),             # <<<<<<<<<<<<<<
  *     (b'render_rotate', 1, b'float', render_rot_offset,False),
  *     (b'v_color', 4, b'ubyte', color_offset,True),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_rot_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_rot_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = PyTuple_New(5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_INCREF(__pyx_n_b_rotate);
   __Pyx_GIVEREF(__pyx_n_b_rotate);
@@ -2862,16 +2882,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_8, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":28
+  /* "nemo_sfx/sfx_formats.pyx":29
  *     (b'scale', 2, b'float', scale_offset,False),
  *     (b'rotate', 1, b'float', rot_offset,False),
  *     (b'render_rotate', 1, b'float', render_rot_offset,False),             # <<<<<<<<<<<<<<
  *     (b'v_color', 4, b'ubyte', color_offset,True),
- *     (b'x_trans', 1, b'float', x_trans_offset,False),
+ *     (b'v_tint', 4, b'float', tint_offset,False),#True normalizes 255 values to between 0 and 1
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_render_rot_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_render_rot_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = PyTuple_New(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_n_b_render_rotate);
   __Pyx_GIVEREF(__pyx_n_b_render_rotate);
@@ -2889,16 +2909,16 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_9, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":29
+  /* "nemo_sfx/sfx_formats.pyx":30
  *     (b'rotate', 1, b'float', rot_offset,False),
  *     (b'render_rotate', 1, b'float', render_rot_offset,False),
  *     (b'v_color', 4, b'ubyte', color_offset,True),             # <<<<<<<<<<<<<<
+ *     (b'v_tint', 4, b'float', tint_offset,False),#True normalizes 255 values to between 0 and 1
  *     (b'x_trans', 1, b'float', x_trans_offset,False),
- *     (b'y_trans', 1, b'float',  y_trans_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_color_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_color_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_INCREF(__pyx_n_b_v_color);
   __Pyx_GIVEREF(__pyx_n_b_v_color);
@@ -2916,23 +2936,23 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_10, 4, Py_True);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":30
+  /* "nemo_sfx/sfx_formats.pyx":31
  *     (b'render_rotate', 1, b'float', render_rot_offset,False),
  *     (b'v_color', 4, b'ubyte', color_offset,True),
- *     (b'x_trans', 1, b'float', x_trans_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'v_tint', 4, b'float', tint_offset,False),#True normalizes 255 values to between 0 and 1             # <<<<<<<<<<<<<<
+ *     (b'x_trans', 1, b'float', x_trans_offset,False),
  *     (b'y_trans', 1, b'float',  y_trans_offset,False),
- *     (b'x_shear', 1, b'float', x_shear_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_x_trans_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_tint_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __Pyx_INCREF(__pyx_n_b_x_trans);
-  __Pyx_GIVEREF(__pyx_n_b_x_trans);
-  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_b_x_trans);
-  __Pyx_INCREF(__pyx_int_1);
-  __Pyx_GIVEREF(__pyx_int_1);
-  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_1);
+  __Pyx_INCREF(__pyx_n_b_v_tint);
+  __Pyx_GIVEREF(__pyx_n_b_v_tint);
+  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_b_v_tint);
+  __Pyx_INCREF(__pyx_int_4);
+  __Pyx_GIVEREF(__pyx_int_4);
+  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_4);
   __Pyx_INCREF(__pyx_n_b_float);
   __Pyx_GIVEREF(__pyx_n_b_float);
   PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_b_float);
@@ -2943,20 +2963,20 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_11, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":31
+  /* "nemo_sfx/sfx_formats.pyx":32
  *     (b'v_color', 4, b'ubyte', color_offset,True),
- *     (b'x_trans', 1, b'float', x_trans_offset,False),
- *     (b'y_trans', 1, b'float',  y_trans_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'v_tint', 4, b'float', tint_offset,False),#True normalizes 255 values to between 0 and 1
+ *     (b'x_trans', 1, b'float', x_trans_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'y_trans', 1, b'float',  y_trans_offset,False),
  *     (b'x_shear', 1, b'float', x_shear_offset,False),
- *     (b'y_shear', 1, b'float', y_shear_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_y_trans_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_x_trans_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_12 = PyTuple_New(5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_New(5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_INCREF(__pyx_n_b_y_trans);
-  __Pyx_GIVEREF(__pyx_n_b_y_trans);
-  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_b_y_trans);
+  __Pyx_INCREF(__pyx_n_b_x_trans);
+  __Pyx_GIVEREF(__pyx_n_b_x_trans);
+  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_b_x_trans);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
   PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_int_1);
@@ -2970,20 +2990,20 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_12, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":32
+  /* "nemo_sfx/sfx_formats.pyx":33
+ *     (b'v_tint', 4, b'float', tint_offset,False),#True normalizes 255 values to between 0 and 1
  *     (b'x_trans', 1, b'float', x_trans_offset,False),
- *     (b'y_trans', 1, b'float',  y_trans_offset,False),
- *     (b'x_shear', 1, b'float', x_shear_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'y_trans', 1, b'float',  y_trans_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'x_shear', 1, b'float', x_shear_offset,False),
  *     (b'y_shear', 1, b'float', y_shear_offset,False),
- *     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_x_shear_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_y_trans_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_13 = PyTuple_New(5); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(5); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __Pyx_INCREF(__pyx_n_b_x_shear);
-  __Pyx_GIVEREF(__pyx_n_b_x_shear);
-  PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_b_x_shear);
+  __Pyx_INCREF(__pyx_n_b_y_trans);
+  __Pyx_GIVEREF(__pyx_n_b_y_trans);
+  PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_b_y_trans);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
   PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_int_1);
@@ -2997,20 +3017,20 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_13, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":33
+  /* "nemo_sfx/sfx_formats.pyx":34
+ *     (b'x_trans', 1, b'float', x_trans_offset,False),
  *     (b'y_trans', 1, b'float',  y_trans_offset,False),
- *     (b'x_shear', 1, b'float', x_shear_offset,False),
- *     (b'y_shear', 1, b'float', y_shear_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'x_shear', 1, b'float', x_shear_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'y_shear', 1, b'float', y_shear_offset,False),
  *     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),
- *     (b'edge_effect_thresh', 1, b'float', ee_thresh_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_y_shear_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_x_shear_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_INCREF(__pyx_n_b_y_shear);
-  __Pyx_GIVEREF(__pyx_n_b_y_shear);
-  PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_n_b_y_shear);
+  __Pyx_INCREF(__pyx_n_b_x_shear);
+  __Pyx_GIVEREF(__pyx_n_b_x_shear);
+  PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_n_b_x_shear);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
   PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_int_1);
@@ -3024,68 +3044,95 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyTuple_SET_ITEM(__pyx_t_14, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":34
+  /* "nemo_sfx/sfx_formats.pyx":35
+ *     (b'y_trans', 1, b'float',  y_trans_offset,False),
+ *     (b'x_shear', 1, b'float', x_shear_offset,False),
+ *     (b'y_shear', 1, b'float', y_shear_offset,False),             # <<<<<<<<<<<<<<
+ *     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),
+ *     (b'edge_effect_thresh', 1, b'float', ee_thresh_offset,False),
+ */
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_y_shear_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_15 = PyTuple_New(5); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __Pyx_INCREF(__pyx_n_b_y_shear);
+  __Pyx_GIVEREF(__pyx_n_b_y_shear);
+  PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_n_b_y_shear);
+  __Pyx_INCREF(__pyx_int_1);
+  __Pyx_GIVEREF(__pyx_int_1);
+  PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_int_1);
+  __Pyx_INCREF(__pyx_n_b_float);
+  __Pyx_GIVEREF(__pyx_n_b_float);
+  PyTuple_SET_ITEM(__pyx_t_15, 2, __pyx_n_b_float);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_15, 3, __pyx_t_3);
+  __Pyx_INCREF(Py_False);
+  __Pyx_GIVEREF(Py_False);
+  PyTuple_SET_ITEM(__pyx_t_15, 4, Py_False);
+  __pyx_t_3 = 0;
+
+  /* "nemo_sfx/sfx_formats.pyx":36
  *     (b'x_shear', 1, b'float', x_shear_offset,False),
  *     (b'y_shear', 1, b'float', y_shear_offset,False),
  *     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),             # <<<<<<<<<<<<<<
  *     (b'edge_effect_thresh', 1, b'float', ee_thresh_offset,False),
  * #    (b'sfx_flag', 1, b'float', sfx_flag_offset,False),
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_ee_color_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_ee_color_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_15 = PyTuple_New(5); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_16 = PyTuple_New(5); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
   __Pyx_INCREF(__pyx_n_b_edge_effect_color);
   __Pyx_GIVEREF(__pyx_n_b_edge_effect_color);
-  PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_n_b_edge_effect_color);
+  PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_n_b_edge_effect_color);
   __Pyx_INCREF(__pyx_int_4);
   __Pyx_GIVEREF(__pyx_int_4);
-  PyTuple_SET_ITEM(__pyx_t_15, 1, __pyx_int_4);
+  PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_4);
   __Pyx_INCREF(__pyx_n_b_ubyte);
   __Pyx_GIVEREF(__pyx_n_b_ubyte);
-  PyTuple_SET_ITEM(__pyx_t_15, 2, __pyx_n_b_ubyte);
+  PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_n_b_ubyte);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_15, 3, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_16, 3, __pyx_t_3);
   __Pyx_INCREF(Py_True);
   __Pyx_GIVEREF(Py_True);
-  PyTuple_SET_ITEM(__pyx_t_15, 4, Py_True);
+  PyTuple_SET_ITEM(__pyx_t_16, 4, Py_True);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":35
+  /* "nemo_sfx/sfx_formats.pyx":37
  *     (b'y_shear', 1, b'float', y_shear_offset,False),
  *     (b'edge_effect_color', 4, b'ubyte', ee_color_offset,True),
  *     (b'edge_effect_thresh', 1, b'float', ee_thresh_offset,False),             # <<<<<<<<<<<<<<
  * #    (b'sfx_flag', 1, b'float', sfx_flag_offset,False),
  *     ]
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_ee_thresh_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_ee_thresh_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_16 = PyTuple_New(5); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_16);
+  __pyx_t_17 = PyTuple_New(5); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_17);
   __Pyx_INCREF(__pyx_n_b_edge_effect_thresh);
   __Pyx_GIVEREF(__pyx_n_b_edge_effect_thresh);
-  PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_n_b_edge_effect_thresh);
+  PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_n_b_edge_effect_thresh);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
-  PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_int_1);
+  PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_int_1);
   __Pyx_INCREF(__pyx_n_b_float);
   __Pyx_GIVEREF(__pyx_n_b_float);
-  PyTuple_SET_ITEM(__pyx_t_16, 2, __pyx_n_b_float);
+  PyTuple_SET_ITEM(__pyx_t_17, 2, __pyx_n_b_float);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_16, 3, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_17, 3, __pyx_t_3);
   __Pyx_INCREF(Py_False);
   __Pyx_GIVEREF(Py_False);
-  PyTuple_SET_ITEM(__pyx_t_16, 4, Py_False);
+  PyTuple_SET_ITEM(__pyx_t_17, 4, Py_False);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":22
+  /* "nemo_sfx/sfx_formats.pyx":23
  * #sfx_flag_offset = <Py_ssize_t> (<Py_intptr_t>(&tmp_var1.sfx_flag) - <Py_intptr_t>(tmp_var1))
  * 
  * vertex_format_sfx1 = [             # <<<<<<<<<<<<<<
  *     (b'pos', 2, b'float', pos_offset,False),
  *     (b'uvs', 2, b'float', uvs_offset,False),
  */
-  __pyx_t_3 = PyList_New(13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
@@ -3113,6 +3160,8 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   PyList_SET_ITEM(__pyx_t_3, 11, __pyx_t_15);
   __Pyx_GIVEREF(__pyx_t_16);
   PyList_SET_ITEM(__pyx_t_3, 12, __pyx_t_16);
+  __Pyx_GIVEREF(__pyx_t_17);
+  PyList_SET_ITEM(__pyx_t_3, 13, __pyx_t_17);
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -3126,79 +3175,80 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   __pyx_t_14 = 0;
   __pyx_t_15 = 0;
   __pyx_t_16 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_vertex_format_sfx1, __pyx_t_3) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_17 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_vertex_format_sfx1, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_formats.pyx":39
+  /* "nemo_sfx/sfx_formats.pyx":41
  *     ]
  * 
  * format_registrar.register_vertex_format('vertex_format_sfx1',             # <<<<<<<<<<<<<<
  * 	vertex_format_sfx1, sizeof(VertexFormatSfx1))
  */
-  __pyx_t_16 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_11kivent_core_9rendering_14vertex_formats_format_registrar), __pyx_n_s_register_vertex_format); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_16);
+  __pyx_t_17 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_11kivent_core_9rendering_14vertex_formats_format_registrar), __pyx_n_s_register_vertex_format); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_17);
 
-  /* "nemo_sfx/sfx_formats.pyx":40
+  /* "nemo_sfx/sfx_formats.pyx":42
  * 
  * format_registrar.register_vertex_format('vertex_format_sfx1',
  * 	vertex_format_sfx1, sizeof(VertexFormatSfx1))             # <<<<<<<<<<<<<<
  */
-  __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_vertex_format_sfx1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_vertex_format_sfx1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __pyx_t_15 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1))); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1))); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_13 = NULL;
-  __pyx_t_17 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_16))) {
-    __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_16);
-    if (likely(__pyx_t_13)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_16);
-      __Pyx_INCREF(__pyx_t_13);
+  __pyx_t_14 = NULL;
+  __pyx_t_18 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_17))) {
+    __pyx_t_14 = PyMethod_GET_SELF(__pyx_t_17);
+    if (likely(__pyx_t_14)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_17);
+      __Pyx_INCREF(__pyx_t_14);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_16, function);
-      __pyx_t_17 = 1;
+      __Pyx_DECREF_SET(__pyx_t_17, function);
+      __pyx_t_18 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_16)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_n_s_vertex_format_sfx1, __pyx_t_15, __pyx_t_14};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_16, __pyx_temp+1-__pyx_t_17, 3+__pyx_t_17); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+  if (PyFunction_Check(__pyx_t_17)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_14, __pyx_n_s_vertex_format_sfx1, __pyx_t_16, __pyx_t_15};
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_16)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_n_s_vertex_format_sfx1, __pyx_t_15, __pyx_t_14};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_16, __pyx_temp+1-__pyx_t_17, 3+__pyx_t_17); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_17)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_14, __pyx_n_s_vertex_format_sfx1, __pyx_t_16, __pyx_t_15};
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_18, 3+__pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   } else
   #endif
   {
-    __pyx_t_12 = PyTuple_New(3+__pyx_t_17); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
-    if (__pyx_t_13) {
-      __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_13); __pyx_t_13 = NULL;
+    __pyx_t_13 = PyTuple_New(3+__pyx_t_18); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_13);
+    if (__pyx_t_14) {
+      __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_14); __pyx_t_14 = NULL;
     }
     __Pyx_INCREF(__pyx_n_s_vertex_format_sfx1);
     __Pyx_GIVEREF(__pyx_n_s_vertex_format_sfx1);
-    PyTuple_SET_ITEM(__pyx_t_12, 0+__pyx_t_17, __pyx_n_s_vertex_format_sfx1);
+    PyTuple_SET_ITEM(__pyx_t_13, 0+__pyx_t_18, __pyx_n_s_vertex_format_sfx1);
+    __Pyx_GIVEREF(__pyx_t_16);
+    PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_18, __pyx_t_16);
     __Pyx_GIVEREF(__pyx_t_15);
-    PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_17, __pyx_t_15);
-    __Pyx_GIVEREF(__pyx_t_14);
-    PyTuple_SET_ITEM(__pyx_t_12, 2+__pyx_t_17, __pyx_t_14);
+    PyTuple_SET_ITEM(__pyx_t_13, 2+__pyx_t_18, __pyx_t_15);
+    __pyx_t_16 = 0;
     __pyx_t_15 = 0;
-    __pyx_t_14 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   }
-  __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+  __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "nemo_sfx/sfx_formats.pyx":1
@@ -3231,6 +3281,7 @@ PyMODINIT_FUNC PyInit_sfx_formats(void)
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_15);
   __Pyx_XDECREF(__pyx_t_16);
+  __Pyx_XDECREF(__pyx_t_17);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init nemo_sfx.sfx_formats", __pyx_clineno, __pyx_lineno, __pyx_filename);

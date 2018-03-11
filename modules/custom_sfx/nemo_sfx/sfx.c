@@ -736,13 +736,13 @@ struct __pyx_t_8nemo_sfx_3sfx_SfxStruct2D {
   float scale[2];
   float render_rotate;
   unsigned char v_color[4];
+  float v_tint[4];
   float x_trans;
   float y_trans;
   float x_shear;
   float y_shear;
   unsigned char edge_effect_color[4];
   float edge_effect_thresh;
-  float sfx_flag;
 };
 
 /* "membuffer.pxd":3
@@ -1099,7 +1099,7 @@ struct __pyx_obj_11kivent_core_7systems_19staticmemgamesystem_ComponentPointerAg
 };
 
 
-/* "nemo_sfx/sfx.pxd":26
+/* "nemo_sfx/sfx.pxd":27
  * 
  * 
  * cdef class SfxComponent(MemComponent):             # <<<<<<<<<<<<<<
@@ -1111,7 +1111,7 @@ struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent {
 };
 
 
-/* "nemo_sfx/sfx.pxd":30
+/* "nemo_sfx/sfx.pxd":31
  * 
  * 
  * cdef class SfxSystem(StaticMemGameSystem):             # <<<<<<<<<<<<<<
@@ -1391,7 +1391,7 @@ struct __pyx_vtabstruct_11kivent_core_7systems_19staticmemgamesystem_ComponentPo
 static struct __pyx_vtabstruct_11kivent_core_7systems_19staticmemgamesystem_ComponentPointerAggregator *__pyx_vtabptr_11kivent_core_7systems_19staticmemgamesystem_ComponentPointerAggregator;
 
 
-/* "nemo_sfx/sfx.pyx":239
+/* "nemo_sfx/sfx.pyx":256
  * 
  * 
  * cdef class SfxSystem(StaticMemGameSystem):             # <<<<<<<<<<<<<<
@@ -1818,6 +1818,7 @@ static const char __pyx_k_zone[] = "zone";
 static const char __pyx_k_items[] = "items";
 static const char __pyx_k_scale[] = "scale";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_v_tint[] = "v_tint";
 static const char __pyx_k_Factory[] = "Factory";
 static const char __pyx_k_v_color[] = "v_color";
 static const char __pyx_k_x_shear[] = "x_shear";
@@ -1825,7 +1826,6 @@ static const char __pyx_k_x_trans[] = "x_trans";
 static const char __pyx_k_y_shear[] = "y_shear";
 static const char __pyx_k_y_trans[] = "y_trans";
 static const char __pyx_k_register[] = "register";
-static const char __pyx_k_sfx_flag[] = "sfx_flag";
 static const char __pyx_k_SfxSystem[] = "SfxSystem";
 static const char __pyx_k_entity_id[] = "entity_id";
 static const char __pyx_k_system_id[] = "system_id";
@@ -1871,11 +1871,11 @@ static PyObject *__pyx_n_s_register;
 static PyObject *__pyx_n_s_render_rotate;
 static PyObject *__pyx_n_s_scale;
 static PyObject *__pyx_n_s_sfx;
-static PyObject *__pyx_n_s_sfx_flag;
 static PyObject *__pyx_n_s_system_id;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_type_size;
 static PyObject *__pyx_n_s_v_color;
+static PyObject *__pyx_n_s_v_tint;
 static PyObject *__pyx_n_s_x_shear;
 static PyObject *__pyx_n_s_x_trans;
 static PyObject *__pyx_n_s_y_shear;
@@ -1900,6 +1900,8 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_9v_color_b___get__(struc
 static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_9v_color_b_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, unsigned char __pyx_v_value); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_9v_color_a___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
 static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_9v_color_a_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, unsigned char __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
+static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, PyObject *__pyx_v_v_tint); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
 static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, float __pyx_v_value); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
@@ -1920,8 +1922,6 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a___
 static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, unsigned char __pyx_v_value); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
 static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, float __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self); /* proto */
-static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, float __pyx_v_value); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem *__pyx_v_self, unsigned int __pyx_v_component_index, unsigned int __pyx_v_entity_id, CYTHON_UNUSED PyObject *__pyx_v_zone, PyObject *__pyx_v_args); /* proto */
 static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem *__pyx_v_self, unsigned int __pyx_v_component_index); /* proto */
 static PyObject *__pyx_tp_new_8nemo_sfx_3sfx_SfxComponent(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -1934,6 +1934,7 @@ static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__6;
 
 /* "nemo_sfx/sfx.pyx":36
  *     '''
@@ -3388,7 +3389,312 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_9v_color_a_2__set__(struct __p
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":127
+/* "nemo_sfx/sfx.pyx":128
+ * 
+ *     property v_tint:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint___get__(((struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self) {
+  __pyx_t_8nemo_sfx_3sfx_SfxStruct2D *__pyx_v_data;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "nemo_sfx/sfx.pyx":129
+ *     property v_tint:
+ *         def __get__(self):
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+ * 
+ */
+  __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
+
+  /* "nemo_sfx/sfx.pyx":130
+ *         def __get__(self):
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])             # <<<<<<<<<<<<<<
+ * 
+ *         def __set__(self, tuple v_tint):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_data->v_tint[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_data->v_tint[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_data->v_tint[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_data->v_tint[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = 0;
+  goto __pyx_L0;
+
+  /* "nemo_sfx/sfx.pyx":128
+ * 
+ *     property v_tint:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("nemo_sfx.sfx.SfxComponent.v_tint.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "nemo_sfx/sfx.pyx":132
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+ * 
+ *         def __set__(self, tuple v_tint):             # <<<<<<<<<<<<<<
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             data.v_tint[0] = max(0.0,v_tint[0])
+ */
+
+/* Python wrapper */
+static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_v_tint); /*proto*/
+static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_v_tint) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v_tint), (&PyTuple_Type), 1, "v_tint", 1))) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint_2__set__(((struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *)__pyx_v_self), ((PyObject*)__pyx_v_v_tint));
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_6v_tint_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, PyObject *__pyx_v_v_tint) {
+  __pyx_t_8nemo_sfx_3sfx_SfxStruct2D *__pyx_v_data;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  double __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  float __pyx_t_7;
+  __Pyx_RefNannySetupContext("__set__", 0);
+
+  /* "nemo_sfx/sfx.pyx":133
+ * 
+ *         def __set__(self, tuple v_tint):
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
+ *             data.v_tint[0] = max(0.0,v_tint[0])
+ *             data.v_tint[1] = max(0.0,v_tint[1])
+ */
+  __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
+
+  /* "nemo_sfx/sfx.pyx":134
+ *         def __set__(self, tuple v_tint):
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             data.v_tint[0] = max(0.0,v_tint[0])             # <<<<<<<<<<<<<<
+ *             data.v_tint[1] = max(0.0,v_tint[1])
+ *             data.v_tint[2] = max(0.0,v_tint[2])
+ */
+  if (unlikely(__pyx_v_v_tint == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 134, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_v_tint, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = 0.0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__pyx_t_6) {
+    __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_3 = __pyx_t_1;
+  } else {
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_5 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_data->v_tint[0]) = __pyx_t_7;
+
+  /* "nemo_sfx/sfx.pyx":135
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             data.v_tint[0] = max(0.0,v_tint[0])
+ *             data.v_tint[1] = max(0.0,v_tint[1])             # <<<<<<<<<<<<<<
+ *             data.v_tint[2] = max(0.0,v_tint[2])
+ *             data.v_tint[3] = max(0.0,v_tint[3])
+ */
+  if (unlikely(__pyx_v_v_tint == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 135, __pyx_L1_error)
+  }
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_v_tint, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = 0.0;
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_5, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_6) {
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_t_1 = __pyx_t_3;
+  } else {
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_t_4 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  (__pyx_v_data->v_tint[1]) = __pyx_t_7;
+
+  /* "nemo_sfx/sfx.pyx":136
+ *             data.v_tint[0] = max(0.0,v_tint[0])
+ *             data.v_tint[1] = max(0.0,v_tint[1])
+ *             data.v_tint[2] = max(0.0,v_tint[2])             # <<<<<<<<<<<<<<
+ *             data.v_tint[3] = max(0.0,v_tint[3])
+ * 
+ */
+  if (unlikely(__pyx_v_v_tint == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 136, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_v_tint, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = 0.0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__pyx_t_6) {
+    __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_3 = __pyx_t_1;
+  } else {
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_5 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_data->v_tint[2]) = __pyx_t_7;
+
+  /* "nemo_sfx/sfx.pyx":137
+ *             data.v_tint[1] = max(0.0,v_tint[1])
+ *             data.v_tint[2] = max(0.0,v_tint[2])
+ *             data.v_tint[3] = max(0.0,v_tint[3])             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  if (unlikely(__pyx_v_v_tint == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(0, 137, __pyx_L1_error)
+  }
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_v_tint, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = 0.0;
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_5, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_6) {
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_t_1 = __pyx_t_3;
+  } else {
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_t_4 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  (__pyx_v_data->v_tint[3]) = __pyx_t_7;
+
+  /* "nemo_sfx/sfx.pyx":132
+ *             return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+ * 
+ *         def __set__(self, tuple v_tint):             # <<<<<<<<<<<<<<
+ *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+ *             data.v_tint[0] = max(0.0,v_tint[0])
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("nemo_sfx.sfx.SfxComponent.v_tint.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "nemo_sfx/sfx.pyx":144
  * 
  *     property x_trans:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3416,7 +3722,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans___get__(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":128
+  /* "nemo_sfx/sfx.pyx":145
  *     property x_trans:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3425,7 +3731,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans___get__(struct 
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":129
+  /* "nemo_sfx/sfx.pyx":146
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.x_trans             # <<<<<<<<<<<<<<
@@ -3433,13 +3739,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans___get__(struct 
  *         def __set__(self,float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->x_trans); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->x_trans); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":127
+  /* "nemo_sfx/sfx.pyx":144
  * 
  *     property x_trans:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3458,7 +3764,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans___get__(struct 
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":131
+/* "nemo_sfx/sfx.pyx":148
  *             return data.x_trans
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3474,7 +3780,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_7x_trans_3__set__(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3495,7 +3801,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans_2__set__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":132
+  /* "nemo_sfx/sfx.pyx":149
  * 
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3504,7 +3810,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans_2__set__(struct __pyx
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":133
+  /* "nemo_sfx/sfx.pyx":150
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.x_trans = value             # <<<<<<<<<<<<<<
@@ -3513,7 +3819,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans_2__set__(struct __pyx
  */
   __pyx_v_data->x_trans = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":131
+  /* "nemo_sfx/sfx.pyx":148
  *             return data.x_trans
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3527,7 +3833,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_trans_2__set__(struct __pyx
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":136
+/* "nemo_sfx/sfx.pyx":153
  * 
  *     property y_trans:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3555,7 +3861,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans___get__(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":137
+  /* "nemo_sfx/sfx.pyx":154
  *     property y_trans:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3564,7 +3870,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans___get__(struct 
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":138
+  /* "nemo_sfx/sfx.pyx":155
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.y_trans             # <<<<<<<<<<<<<<
@@ -3572,13 +3878,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans___get__(struct 
  *         def __set__(self,float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->y_trans); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->y_trans); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":136
+  /* "nemo_sfx/sfx.pyx":153
  * 
  *     property y_trans:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3597,7 +3903,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans___get__(struct 
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":140
+/* "nemo_sfx/sfx.pyx":157
  *             return data.y_trans
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3613,7 +3919,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_7y_trans_3__set__(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3634,7 +3940,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans_2__set__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":141
+  /* "nemo_sfx/sfx.pyx":158
  * 
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3643,7 +3949,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans_2__set__(struct __pyx
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":142
+  /* "nemo_sfx/sfx.pyx":159
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.y_trans = value             # <<<<<<<<<<<<<<
@@ -3652,7 +3958,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans_2__set__(struct __pyx
  */
   __pyx_v_data->y_trans = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":140
+  /* "nemo_sfx/sfx.pyx":157
  *             return data.y_trans
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3666,7 +3972,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_trans_2__set__(struct __pyx
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":145
+/* "nemo_sfx/sfx.pyx":162
  * 
  *     property x_shear:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3694,7 +4000,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear___get__(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":146
+  /* "nemo_sfx/sfx.pyx":163
  *     property x_shear:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3703,7 +4009,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear___get__(struct 
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":147
+  /* "nemo_sfx/sfx.pyx":164
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.x_shear             # <<<<<<<<<<<<<<
@@ -3711,13 +4017,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear___get__(struct 
  *         def __set__(self,float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->x_shear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->x_shear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":145
+  /* "nemo_sfx/sfx.pyx":162
  * 
  *     property x_shear:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3736,7 +4042,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear___get__(struct 
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":149
+/* "nemo_sfx/sfx.pyx":166
  *             return data.x_shear
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3752,7 +4058,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_7x_shear_3__set__(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3773,7 +4079,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear_2__set__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":150
+  /* "nemo_sfx/sfx.pyx":167
  * 
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3782,7 +4088,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear_2__set__(struct __pyx
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":151
+  /* "nemo_sfx/sfx.pyx":168
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.x_shear = value             # <<<<<<<<<<<<<<
@@ -3791,7 +4097,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear_2__set__(struct __pyx
  */
   __pyx_v_data->x_shear = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":149
+  /* "nemo_sfx/sfx.pyx":166
  *             return data.x_shear
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3805,7 +4111,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7x_shear_2__set__(struct __pyx
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":154
+/* "nemo_sfx/sfx.pyx":171
  * 
  *     property y_shear:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3833,7 +4139,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear___get__(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":155
+  /* "nemo_sfx/sfx.pyx":172
  *     property y_shear:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3842,7 +4148,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear___get__(struct 
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":156
+  /* "nemo_sfx/sfx.pyx":173
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.y_shear             # <<<<<<<<<<<<<<
@@ -3850,13 +4156,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear___get__(struct 
  *         def __set__(self,float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->y_shear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->y_shear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":154
+  /* "nemo_sfx/sfx.pyx":171
  * 
  *     property y_shear:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3875,7 +4181,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear___get__(struct 
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":158
+/* "nemo_sfx/sfx.pyx":175
  *             return data.y_shear
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3891,7 +4197,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_7y_shear_3__set__(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3912,7 +4218,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear_2__set__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":159
+  /* "nemo_sfx/sfx.pyx":176
  * 
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3921,7 +4227,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear_2__set__(struct __pyx
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":160
+  /* "nemo_sfx/sfx.pyx":177
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.y_shear = value             # <<<<<<<<<<<<<<
@@ -3930,7 +4236,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear_2__set__(struct __pyx
  */
   __pyx_v_data->y_shear = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":158
+  /* "nemo_sfx/sfx.pyx":175
  *             return data.y_shear
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -3944,7 +4250,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_7y_shear_2__set__(struct __pyx
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":164
+/* "nemo_sfx/sfx.pyx":181
  * 
  *     property edge_effect_color:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3976,7 +4282,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color___ge
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":165
+  /* "nemo_sfx/sfx.pyx":182
  *     property edge_effect_color:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -3985,7 +4291,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color___ge
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":166
+  /* "nemo_sfx/sfx.pyx":183
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return (data.edge_effect_color[0],             # <<<<<<<<<<<<<<
@@ -3993,47 +4299,47 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color___ge
  *                     data.edge_effect_color[2],
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "nemo_sfx/sfx.pyx":167
+  /* "nemo_sfx/sfx.pyx":184
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return (data.edge_effect_color[0],
  *                     data.edge_effect_color[1],             # <<<<<<<<<<<<<<
  *                     data.edge_effect_color[2],
  *                     data.edge_effect_color[3])
  */
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "nemo_sfx/sfx.pyx":168
+  /* "nemo_sfx/sfx.pyx":185
  *             return (data.edge_effect_color[0],
  *                     data.edge_effect_color[1],
  *                     data.edge_effect_color[2],             # <<<<<<<<<<<<<<
  *                     data.edge_effect_color[3])
  * 
  */
-  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "nemo_sfx/sfx.pyx":169
+  /* "nemo_sfx/sfx.pyx":186
  *                     data.edge_effect_color[1],
  *                     data.edge_effect_color[2],
  *                     data.edge_effect_color[3])             # <<<<<<<<<<<<<<
  * 
  *         def __set__(self, tuple edge_effect_color):
  */
-  __pyx_t_4 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "nemo_sfx/sfx.pyx":166
+  /* "nemo_sfx/sfx.pyx":183
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return (data.edge_effect_color[0],             # <<<<<<<<<<<<<<
  *                     data.edge_effect_color[1],
  *                     data.edge_effect_color[2],
  */
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -4051,7 +4357,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color___ge
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":164
+  /* "nemo_sfx/sfx.pyx":181
  * 
  *     property edge_effect_color:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4074,7 +4380,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color___ge
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":171
+/* "nemo_sfx/sfx.pyx":188
  *                     data.edge_effect_color[3])
  * 
  *         def __set__(self, tuple edge_effect_color):             # <<<<<<<<<<<<<<
@@ -4088,7 +4394,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_3__set__(P
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_edge_effect_color), (&PyTuple_Type), 1, "edge_effect_color", 1))) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_edge_effect_color), (&PyTuple_Type), 1, "edge_effect_color", 1))) __PYX_ERR(0, 188, __pyx_L1_error)
   __pyx_r = __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(((struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *)__pyx_v_self), ((PyObject*)__pyx_v_edge_effect_color));
 
   /* function exit code */
@@ -4108,7 +4414,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
   unsigned char __pyx_t_2;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":172
+  /* "nemo_sfx/sfx.pyx":189
  * 
  *         def __set__(self, tuple edge_effect_color):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4117,7 +4423,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":173
+  /* "nemo_sfx/sfx.pyx":190
  *         def __set__(self, tuple edge_effect_color):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[0] = edge_effect_color[0]             # <<<<<<<<<<<<<<
@@ -4126,15 +4432,15 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
  */
   if (unlikely(__pyx_v_edge_effect_color == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 173, __pyx_L1_error)
+    __PYX_ERR(0, 190, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_data->edge_effect_color[0]) = __pyx_t_2;
 
-  /* "nemo_sfx/sfx.pyx":174
+  /* "nemo_sfx/sfx.pyx":191
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[0] = edge_effect_color[0]
  *             data.edge_effect_color[1] = edge_effect_color[1]             # <<<<<<<<<<<<<<
@@ -4143,15 +4449,15 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
  */
   if (unlikely(__pyx_v_edge_effect_color == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 174, __pyx_L1_error)
+    __PYX_ERR(0, 191, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_data->edge_effect_color[1]) = __pyx_t_2;
 
-  /* "nemo_sfx/sfx.pyx":175
+  /* "nemo_sfx/sfx.pyx":192
  *             data.edge_effect_color[0] = edge_effect_color[0]
  *             data.edge_effect_color[1] = edge_effect_color[1]
  *             data.edge_effect_color[2] = edge_effect_color[2]             # <<<<<<<<<<<<<<
@@ -4160,15 +4466,15 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
  */
   if (unlikely(__pyx_v_edge_effect_color == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 175, __pyx_L1_error)
+    __PYX_ERR(0, 192, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_data->edge_effect_color[2]) = __pyx_t_2;
 
-  /* "nemo_sfx/sfx.pyx":176
+  /* "nemo_sfx/sfx.pyx":193
  *             data.edge_effect_color[1] = edge_effect_color[1]
  *             data.edge_effect_color[2] = edge_effect_color[2]
  *             data.edge_effect_color[3] = edge_effect_color[3]             # <<<<<<<<<<<<<<
@@ -4177,15 +4483,15 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
  */
   if (unlikely(__pyx_v_edge_effect_color == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 176, __pyx_L1_error)
+    __PYX_ERR(0, 193, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_edge_effect_color, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_data->edge_effect_color[3]) = __pyx_t_2;
 
-  /* "nemo_sfx/sfx.pyx":171
+  /* "nemo_sfx/sfx.pyx":188
  *                     data.edge_effect_color[3])
  * 
  *         def __set__(self, tuple edge_effect_color):             # <<<<<<<<<<<<<<
@@ -4205,7 +4511,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_17edge_effect_color_2__set__(s
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":179
+/* "nemo_sfx/sfx.pyx":196
  * 
  *     property edge_effect_color_r:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4233,7 +4539,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":180
+  /* "nemo_sfx/sfx.pyx":197
  *     property edge_effect_color_r:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4242,7 +4548,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r___
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":181
+  /* "nemo_sfx/sfx.pyx":198
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[0]             # <<<<<<<<<<<<<<
@@ -4250,13 +4556,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r___
  *         def __set__(self, unsigned char value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":179
+  /* "nemo_sfx/sfx.pyx":196
  * 
  *     property edge_effect_color_r:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4275,7 +4581,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r___
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":183
+/* "nemo_sfx/sfx.pyx":200
  *             return data.edge_effect_color[0]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4291,7 +4597,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 200, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4312,7 +4618,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r_2__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":184
+  /* "nemo_sfx/sfx.pyx":201
  * 
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4321,7 +4627,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r_2__set__
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":185
+  /* "nemo_sfx/sfx.pyx":202
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[0] = value             # <<<<<<<<<<<<<<
@@ -4330,7 +4636,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r_2__set__
  */
   (__pyx_v_data->edge_effect_color[0]) = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":183
+  /* "nemo_sfx/sfx.pyx":200
  *             return data.edge_effect_color[0]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4344,7 +4650,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_r_2__set__
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":188
+/* "nemo_sfx/sfx.pyx":205
  * 
  *     property edge_effect_color_g:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4372,7 +4678,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":189
+  /* "nemo_sfx/sfx.pyx":206
  *     property edge_effect_color_g:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4381,7 +4687,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g___
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":190
+  /* "nemo_sfx/sfx.pyx":207
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[1]             # <<<<<<<<<<<<<<
@@ -4389,13 +4695,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g___
  *         def __set__(self, unsigned char value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":188
+  /* "nemo_sfx/sfx.pyx":205
  * 
  *     property edge_effect_color_g:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4414,7 +4720,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g___
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":192
+/* "nemo_sfx/sfx.pyx":209
  *             return data.edge_effect_color[1]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4430,7 +4736,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4451,7 +4757,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g_2__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":193
+  /* "nemo_sfx/sfx.pyx":210
  * 
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4460,7 +4766,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g_2__set__
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":194
+  /* "nemo_sfx/sfx.pyx":211
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[1] = value             # <<<<<<<<<<<<<<
@@ -4469,7 +4775,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g_2__set__
  */
   (__pyx_v_data->edge_effect_color[1]) = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":192
+  /* "nemo_sfx/sfx.pyx":209
  *             return data.edge_effect_color[1]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4483,7 +4789,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_g_2__set__
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":197
+/* "nemo_sfx/sfx.pyx":214
  * 
  *     property edge_effect_color_b:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4511,7 +4817,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":198
+  /* "nemo_sfx/sfx.pyx":215
  *     property edge_effect_color_b:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4520,7 +4826,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b___
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":199
+  /* "nemo_sfx/sfx.pyx":216
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[2]             # <<<<<<<<<<<<<<
@@ -4528,13 +4834,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b___
  *         def __set__(self, unsigned char value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[2])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[2])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":197
+  /* "nemo_sfx/sfx.pyx":214
  * 
  *     property edge_effect_color_b:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4553,7 +4859,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b___
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":201
+/* "nemo_sfx/sfx.pyx":218
  *             return data.edge_effect_color[2]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4569,7 +4875,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4590,7 +4896,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b_2__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":202
+  /* "nemo_sfx/sfx.pyx":219
  * 
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4599,7 +4905,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b_2__set__
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":203
+  /* "nemo_sfx/sfx.pyx":220
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[2] = value             # <<<<<<<<<<<<<<
@@ -4608,7 +4914,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b_2__set__
  */
   (__pyx_v_data->edge_effect_color[2]) = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":201
+  /* "nemo_sfx/sfx.pyx":218
  *             return data.edge_effect_color[2]
  * 
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4622,7 +4928,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_b_2__set__
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":207
+/* "nemo_sfx/sfx.pyx":224
  * 
  *     property edge_effect_color_a:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4650,7 +4956,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":208
+  /* "nemo_sfx/sfx.pyx":225
  *     property edge_effect_color_a:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4659,7 +4965,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a___
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":209
+  /* "nemo_sfx/sfx.pyx":226
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[3]             # <<<<<<<<<<<<<<
@@ -4667,13 +4973,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a___
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[3])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char((__pyx_v_data->edge_effect_color[3])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":207
+  /* "nemo_sfx/sfx.pyx":224
  * 
  *     property edge_effect_color_a:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4692,7 +4998,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a___
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":210
+/* "nemo_sfx/sfx.pyx":227
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[3]
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4708,7 +5014,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_unsigned_char(__pyx_arg_value); if (unlikely((__pyx_v_value == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4729,7 +5035,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_2__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":211
+  /* "nemo_sfx/sfx.pyx":228
  *             return data.edge_effect_color[3]
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4738,7 +5044,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_2__set__
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":212
+  /* "nemo_sfx/sfx.pyx":229
  *         def __set__(self, unsigned char value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_color[3] = value             # <<<<<<<<<<<<<<
@@ -4747,7 +5053,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_2__set__
  */
   (__pyx_v_data->edge_effect_color[3]) = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":210
+  /* "nemo_sfx/sfx.pyx":227
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_color[3]
  *         def __set__(self, unsigned char value):             # <<<<<<<<<<<<<<
@@ -4761,7 +5067,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_19edge_effect_color_a_2__set__
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":217
+/* "nemo_sfx/sfx.pyx":234
  * 
  *     property edge_effect_thresh:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4789,7 +5095,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh___g
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nemo_sfx/sfx.pyx":218
+  /* "nemo_sfx/sfx.pyx":235
  *     property edge_effect_thresh:
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
@@ -4798,7 +5104,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh___g
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":219
+  /* "nemo_sfx/sfx.pyx":236
  *         def __get__(self):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             return data.edge_effect_thresh             # <<<<<<<<<<<<<<
@@ -4806,13 +5112,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh___g
  *         def __set__(self,float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->edge_effect_thresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->edge_effect_thresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx.pyx":217
+  /* "nemo_sfx/sfx.pyx":234
  * 
  *     property edge_effect_thresh:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4831,7 +5137,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh___g
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":221
+/* "nemo_sfx/sfx.pyx":238
  *             return data.edge_effect_thresh
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -4847,7 +5153,7 @@ static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh_3__set__(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 238, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4868,25 +5174,25 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh_2__set__(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "nemo_sfx/sfx.pyx":222
+  /* "nemo_sfx/sfx.pyx":239
  * 
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
  *             data.edge_effect_thresh = value
- * 
+ * '''
  */
   __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
 
-  /* "nemo_sfx/sfx.pyx":223
+  /* "nemo_sfx/sfx.pyx":240
  *         def __set__(self,float value):
  *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
  *             data.edge_effect_thresh = value             # <<<<<<<<<<<<<<
- * 
+ * '''
  *     property sfx_flag:
  */
   __pyx_v_data->edge_effect_thresh = __pyx_v_value;
 
-  /* "nemo_sfx/sfx.pyx":221
+  /* "nemo_sfx/sfx.pyx":238
  *             return data.edge_effect_thresh
  * 
  *         def __set__(self,float value):             # <<<<<<<<<<<<<<
@@ -4900,146 +5206,7 @@ static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_18edge_effect_thresh_2__set__(
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":226
- * 
- *     property sfx_flag:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             return data.sfx_flag
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_1__get__(PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag___get__(((struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag___get__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self) {
-  __pyx_t_8nemo_sfx_3sfx_SfxStruct2D *__pyx_v_data;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("__get__", 0);
-
-  /* "nemo_sfx/sfx.pyx":227
- *     property sfx_flag:
- *         def __get__(self):
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
- *             return data.sfx_flag
- * 
- */
-  __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
-
-  /* "nemo_sfx/sfx.pyx":228
- *         def __get__(self):
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             return data.sfx_flag             # <<<<<<<<<<<<<<
- * 
- *         def __set__(self,float value):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_data->sfx_flag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "nemo_sfx/sfx.pyx":226
- * 
- *     property sfx_flag:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             return data.sfx_flag
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("nemo_sfx.sfx.SfxComponent.sfx_flag.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "nemo_sfx/sfx.pyx":230
- *             return data.sfx_flag
- * 
- *         def __set__(self,float value):             # <<<<<<<<<<<<<<
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             data.sfx_flag = value
- */
-
-/* Python wrapper */
-static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
-static int __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
-  float __pyx_v_value;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("nemo_sfx.sfx.SfxComponent.sfx_flag.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return -1;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_2__set__(((struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *)__pyx_v_self), ((float)__pyx_v_value));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_2__set__(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent *__pyx_v_self, float __pyx_v_value) {
-  __pyx_t_8nemo_sfx_3sfx_SfxStruct2D *__pyx_v_data;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__set__", 0);
-
-  /* "nemo_sfx/sfx.pyx":231
- * 
- *         def __set__(self,float value):
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer             # <<<<<<<<<<<<<<
- *             data.sfx_flag = value
- * 
- */
-  __pyx_v_data = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_v_self->__pyx_base.pointer);
-
-  /* "nemo_sfx/sfx.pyx":232
- *         def __set__(self,float value):
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             data.sfx_flag = value             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_v_data->sfx_flag = __pyx_v_value;
-
-  /* "nemo_sfx/sfx.pyx":230
- *             return data.sfx_flag
- * 
- *         def __set__(self,float value):             # <<<<<<<<<<<<<<
- *             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
- *             data.sfx_flag = value
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "nemo_sfx/sfx.pyx":261
+/* "nemo_sfx/sfx.pyx":279
  * 
  * 
  *     def init_component(self, unsigned int component_index, unsigned int entity_id, str zone, args):             # <<<<<<<<<<<<<<
@@ -5080,21 +5247,21 @@ static PyObject *__pyx_pw_8nemo_sfx_3sfx_9SfxSystem_1init_component(PyObject *__
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_entity_id)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 1); __PYX_ERR(0, 261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 1); __PYX_ERR(0, 279, __pyx_L3_error)
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_zone)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 2); __PYX_ERR(0, 261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 2); __PYX_ERR(0, 279, __pyx_L3_error)
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_args)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 3); __PYX_ERR(0, 261, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, 3); __PYX_ERR(0, 279, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "init_component") < 0)) __PYX_ERR(0, 261, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "init_component") < 0)) __PYX_ERR(0, 279, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -5104,20 +5271,20 @@ static PyObject *__pyx_pw_8nemo_sfx_3sfx_9SfxSystem_1init_component(PyObject *__
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
-    __pyx_v_component_index = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_component_index == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
-    __pyx_v_entity_id = __Pyx_PyInt_As_unsigned_int(values[1]); if (unlikely((__pyx_v_entity_id == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_component_index = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_component_index == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L3_error)
+    __pyx_v_entity_id = __Pyx_PyInt_As_unsigned_int(values[1]); if (unlikely((__pyx_v_entity_id == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L3_error)
     __pyx_v_zone = ((PyObject*)values[2]);
     __pyx_v_args = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 261, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("init_component", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 279, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("nemo_sfx.sfx.SfxSystem.init_component", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_zone), (&PyString_Type), 1, "zone", 1))) __PYX_ERR(0, 261, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_zone), (&PyString_Type), 1, "zone", 1))) __PYX_ERR(0, 279, __pyx_L1_error)
   __pyx_r = __pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(((struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem *)__pyx_v_self), __pyx_v_component_index, __pyx_v_entity_id, __pyx_v_zone, __pyx_v_args);
 
   /* function exit code */
@@ -5154,16 +5321,16 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
   double __pyx_t_14;
   __Pyx_RefNannySetupContext("init_component", 0);
 
-  /* "nemo_sfx/sfx.pyx":265
+  /* "nemo_sfx/sfx.pyx":283
  *         # on initialization (pre-filtering)
  * 
  *         cargs = SfxSystem.default_args.copy() #combined args             # <<<<<<<<<<<<<<
  *         for key,value in cargs.items():
  *             new_val = args.get(key,False)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem), __pyx_n_s_default_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem), __pyx_n_s_default_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -5177,24 +5344,24 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_cargs = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx.pyx":266
+  /* "nemo_sfx/sfx.pyx":284
  * 
  *         cargs = SfxSystem.default_args.copy() #combined args
  *         for key,value in cargs.items():             # <<<<<<<<<<<<<<
  *             new_val = args.get(key,False)
  *             if new_val:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_cargs, __pyx_n_s_items); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_cargs, __pyx_n_s_items); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -5207,10 +5374,10 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5218,9 +5385,9 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5228,17 +5395,17 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 284, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 284, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5248,7 +5415,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 266, __pyx_L1_error)
+          else __PYX_ERR(0, 284, __pyx_L1_error)
         }
         break;
       }
@@ -5264,7 +5431,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 266, __pyx_L1_error)
+        __PYX_ERR(0, 284, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5277,15 +5444,15 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -5293,7 +5460,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       __Pyx_GOTREF(__pyx_t_2);
       index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 284, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -5301,7 +5468,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 266, __pyx_L1_error)
+      __PYX_ERR(0, 284, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_2);
@@ -5309,14 +5476,14 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "nemo_sfx/sfx.pyx":267
+    /* "nemo_sfx/sfx.pyx":285
  *         cargs = SfxSystem.default_args.copy() #combined args
  *         for key,value in cargs.items():
  *             new_val = args.get(key,False)             # <<<<<<<<<<<<<<
  *             if new_val:
  *                 cargs[key] = new_val
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_args, __pyx_n_s_get); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_args, __pyx_n_s_get); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_2 = NULL;
     __pyx_t_9 = 0;
@@ -5333,7 +5500,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_key, Py_False};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -5341,13 +5508,13 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_key, Py_False};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_2) {
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -5358,7 +5525,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
       __Pyx_INCREF(Py_False);
       __Pyx_GIVEREF(Py_False);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_9, Py_False);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -5366,26 +5533,26 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
     __Pyx_XDECREF_SET(__pyx_v_new_val, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "nemo_sfx/sfx.pyx":268
+    /* "nemo_sfx/sfx.pyx":286
  *         for key,value in cargs.items():
  *             new_val = args.get(key,False)
  *             if new_val:             # <<<<<<<<<<<<<<
  *                 cargs[key] = new_val
  * 
  */
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_new_val); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_new_val); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
     if (__pyx_t_10) {
 
-      /* "nemo_sfx/sfx.pyx":269
+      /* "nemo_sfx/sfx.pyx":287
  *             new_val = args.get(key,False)
  *             if new_val:
  *                 cargs[key] = new_val             # <<<<<<<<<<<<<<
  * 
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone
  */
-      if (unlikely(PyObject_SetItem(__pyx_v_cargs, __pyx_v_key, __pyx_v_new_val) < 0)) __PYX_ERR(0, 269, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_cargs, __pyx_v_key, __pyx_v_new_val) < 0)) __PYX_ERR(0, 287, __pyx_L1_error)
 
-      /* "nemo_sfx/sfx.pyx":268
+      /* "nemo_sfx/sfx.pyx":286
  *         for key,value in cargs.items():
  *             new_val = args.get(key,False)
  *             if new_val:             # <<<<<<<<<<<<<<
@@ -5394,7 +5561,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
  */
     }
 
-    /* "nemo_sfx/sfx.pyx":266
+    /* "nemo_sfx/sfx.pyx":284
  * 
  *         cargs = SfxSystem.default_args.copy() #combined args
  *         for key,value in cargs.items():             # <<<<<<<<<<<<<<
@@ -5404,7 +5571,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx.pyx":271
+  /* "nemo_sfx/sfx.pyx":289
  *                 cargs[key] = new_val
  * 
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone             # <<<<<<<<<<<<<<
@@ -5416,16 +5583,16 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
   __pyx_v_memory_zone = ((struct __pyx_obj_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx.pyx":273
+  /* "nemo_sfx/sfx.pyx":291
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone
  *         cdef SfxStruct2D* component = <SfxStruct2D*>(
  *             memory_zone.get_pointer(component_index))             # <<<<<<<<<<<<<<
  *         component.entity_id = entity_id
  *         component.scale[0] = cargs['scale'][0]
  */
-  __pyx_t_11 = ((struct __pyx_vtabstruct_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_v_memory_zone->__pyx_vtab)->get_pointer(__pyx_v_memory_zone, __pyx_v_component_index); if (unlikely(__pyx_t_11 == NULL)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_11 = ((struct __pyx_vtabstruct_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_v_memory_zone->__pyx_vtab)->get_pointer(__pyx_v_memory_zone, __pyx_v_component_index); if (unlikely(__pyx_t_11 == NULL)) __PYX_ERR(0, 291, __pyx_L1_error)
 
-  /* "nemo_sfx/sfx.pyx":272
+  /* "nemo_sfx/sfx.pyx":290
  * 
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone
  *         cdef SfxStruct2D* component = <SfxStruct2D*>(             # <<<<<<<<<<<<<<
@@ -5434,7 +5601,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
  */
   __pyx_v_component = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_t_11);
 
-  /* "nemo_sfx/sfx.pyx":274
+  /* "nemo_sfx/sfx.pyx":292
  *         cdef SfxStruct2D* component = <SfxStruct2D*>(
  *             memory_zone.get_pointer(component_index))
  *         component.entity_id = entity_id             # <<<<<<<<<<<<<<
@@ -5443,282 +5610,345 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
  */
   __pyx_v_component->entity_id = __pyx_v_entity_id;
 
-  /* "nemo_sfx/sfx.pyx":275
+  /* "nemo_sfx/sfx.pyx":293
  *             memory_zone.get_pointer(component_index))
  *         component.entity_id = entity_id
  *         component.scale[0] = cargs['scale'][0]             # <<<<<<<<<<<<<<
  *         component.scale[1] = cargs['scale'][1]
  *         component.render_rotate = cargs['render_rotate']
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_scale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_scale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_component->scale[0]) = __pyx_t_12;
 
-  /* "nemo_sfx/sfx.pyx":276
+  /* "nemo_sfx/sfx.pyx":294
  *         component.entity_id = entity_id
  *         component.scale[0] = cargs['scale'][0]
  *         component.scale[1] = cargs['scale'][1]             # <<<<<<<<<<<<<<
  *         component.render_rotate = cargs['render_rotate']
  *         component.v_color[0] =  int(cargs['v_color'][0])
  */
-  __pyx_t_1 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_scale); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_scale); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->scale[1]) = __pyx_t_12;
 
-  /* "nemo_sfx/sfx.pyx":277
+  /* "nemo_sfx/sfx.pyx":295
  *         component.scale[0] = cargs['scale'][0]
  *         component.scale[1] = cargs['scale'][1]
  *         component.render_rotate = cargs['render_rotate']             # <<<<<<<<<<<<<<
  *         component.v_color[0] =  int(cargs['v_color'][0])
  *         component.v_color[1] =  int(cargs['v_color'][1])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_render_rotate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_render_rotate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->render_rotate = __pyx_t_12;
 
-  /* "nemo_sfx/sfx.pyx":278
+  /* "nemo_sfx/sfx.pyx":296
  *         component.scale[1] = cargs['scale'][1]
  *         component.render_rotate = cargs['render_rotate']
  *         component.v_color[0] =  int(cargs['v_color'][0])             # <<<<<<<<<<<<<<
  *         component.v_color[1] =  int(cargs['v_color'][1])
  *         component.v_color[2] =  int(cargs['v_color'][2])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->v_color[0]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":279
+  /* "nemo_sfx/sfx.pyx":297
  *         component.render_rotate = cargs['render_rotate']
  *         component.v_color[0] =  int(cargs['v_color'][0])
  *         component.v_color[1] =  int(cargs['v_color'][1])             # <<<<<<<<<<<<<<
  *         component.v_color[2] =  int(cargs['v_color'][2])
  *         component.v_color[3] =  int(cargs['v_color'][3])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->v_color[1]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":280
+  /* "nemo_sfx/sfx.pyx":298
  *         component.v_color[0] =  int(cargs['v_color'][0])
  *         component.v_color[1] =  int(cargs['v_color'][1])
  *         component.v_color[2] =  int(cargs['v_color'][2])             # <<<<<<<<<<<<<<
  *         component.v_color[3] =  int(cargs['v_color'][3])
- *         component.x_trans =  float(cargs['x_trans'])
+ * 
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->v_color[2]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":281
+  /* "nemo_sfx/sfx.pyx":299
  *         component.v_color[1] =  int(cargs['v_color'][1])
  *         component.v_color[2] =  int(cargs['v_color'][2])
  *         component.v_color[3] =  int(cargs['v_color'][3])             # <<<<<<<<<<<<<<
- *         component.x_trans =  float(cargs['x_trans'])
- *         component.y_trans =  float(cargs['y_trans'])
+ * 
+ *         component.v_tint[0] =  int(cargs['v_tint'][0])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->v_color[3]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":282
- *         component.v_color[2] =  int(cargs['v_color'][2])
+  /* "nemo_sfx/sfx.pyx":301
  *         component.v_color[3] =  int(cargs['v_color'][3])
+ * 
+ *         component.v_tint[0] =  int(cargs['v_tint'][0])             # <<<<<<<<<<<<<<
+ *         component.v_tint[1] =  int(cargs['v_tint'][1])
+ *         component.v_tint[2] =  int(cargs['v_tint'][2])
+ */
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_tint); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 301, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_component->v_tint[0]) = __pyx_t_12;
+
+  /* "nemo_sfx/sfx.pyx":302
+ * 
+ *         component.v_tint[0] =  int(cargs['v_tint'][0])
+ *         component.v_tint[1] =  int(cargs['v_tint'][1])             # <<<<<<<<<<<<<<
+ *         component.v_tint[2] =  int(cargs['v_tint'][2])
+ *         component.v_tint[3] =  int(cargs['v_tint'][3])
+ */
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_tint); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_component->v_tint[1]) = __pyx_t_12;
+
+  /* "nemo_sfx/sfx.pyx":303
+ *         component.v_tint[0] =  int(cargs['v_tint'][0])
+ *         component.v_tint[1] =  int(cargs['v_tint'][1])
+ *         component.v_tint[2] =  int(cargs['v_tint'][2])             # <<<<<<<<<<<<<<
+ *         component.v_tint[3] =  int(cargs['v_tint'][3])
+ * 
+ */
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_tint); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_component->v_tint[2]) = __pyx_t_12;
+
+  /* "nemo_sfx/sfx.pyx":304
+ *         component.v_tint[1] =  int(cargs['v_tint'][1])
+ *         component.v_tint[2] =  int(cargs['v_tint'][2])
+ *         component.v_tint[3] =  int(cargs['v_tint'][3])             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_v_tint); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 304, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  (__pyx_v_component->v_tint[3]) = __pyx_t_12;
+
+  /* "nemo_sfx/sfx.pyx":307
+ * 
+ * 
  *         component.x_trans =  float(cargs['x_trans'])             # <<<<<<<<<<<<<<
  *         component.y_trans =  float(cargs['y_trans'])
  *         component.x_shear =  float(cargs['x_shear'])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_x_trans); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_x_trans); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->x_trans = __pyx_t_14;
 
-  /* "nemo_sfx/sfx.pyx":283
- *         component.v_color[3] =  int(cargs['v_color'][3])
+  /* "nemo_sfx/sfx.pyx":308
+ * 
  *         component.x_trans =  float(cargs['x_trans'])
  *         component.y_trans =  float(cargs['y_trans'])             # <<<<<<<<<<<<<<
  *         component.x_shear =  float(cargs['x_shear'])
  *         component.y_shear =  float(cargs['y_shear'])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_y_trans); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_y_trans); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->y_trans = __pyx_t_14;
 
-  /* "nemo_sfx/sfx.pyx":284
+  /* "nemo_sfx/sfx.pyx":309
  *         component.x_trans =  float(cargs['x_trans'])
  *         component.y_trans =  float(cargs['y_trans'])
  *         component.x_shear =  float(cargs['x_shear'])             # <<<<<<<<<<<<<<
  *         component.y_shear =  float(cargs['y_shear'])
  *         component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_x_shear); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_x_shear); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->x_shear = __pyx_t_14;
 
-  /* "nemo_sfx/sfx.pyx":285
+  /* "nemo_sfx/sfx.pyx":310
  *         component.y_trans =  float(cargs['y_trans'])
  *         component.x_shear =  float(cargs['x_shear'])
  *         component.y_shear =  float(cargs['y_shear'])             # <<<<<<<<<<<<<<
  *         component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])
  *         component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_y_shear); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_y_shear); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->y_shear = __pyx_t_14;
 
-  /* "nemo_sfx/sfx.pyx":286
+  /* "nemo_sfx/sfx.pyx":311
  *         component.x_shear =  float(cargs['x_shear'])
  *         component.y_shear =  float(cargs['y_shear'])
  *         component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])             # <<<<<<<<<<<<<<
  *         component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])
  *         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->edge_effect_color[0]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":287
+  /* "nemo_sfx/sfx.pyx":312
  *         component.y_shear =  float(cargs['y_shear'])
  *         component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])
  *         component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])             # <<<<<<<<<<<<<<
  *         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
  *         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->edge_effect_color[1]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":288
+  /* "nemo_sfx/sfx.pyx":313
  *         component.edge_effect_color[0] = int(cargs['edge_effect_color'][0])
  *         component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])
  *         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])             # <<<<<<<<<<<<<<
  *         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
  *         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->edge_effect_color[2]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":289
+  /* "nemo_sfx/sfx.pyx":314
  *         component.edge_effect_color[1] = int(cargs['edge_effect_color'][1])
  *         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
  *         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])             # <<<<<<<<<<<<<<
  *         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])
- *         component.sfx_flag =  float(cargs['sfx_flag'])
+ * #        component.sfx_flag =  float(cargs['sfx_flag'])
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_char(__pyx_t_3); if (unlikely((__pyx_t_13 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_component->edge_effect_color[3]) = __pyx_t_13;
 
-  /* "nemo_sfx/sfx.pyx":290
+  /* "nemo_sfx/sfx.pyx":315
  *         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
  *         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
  *         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])             # <<<<<<<<<<<<<<
- *         component.sfx_flag =  float(cargs['sfx_flag'])
+ * #        component.sfx_flag =  float(cargs['sfx_flag'])
  * 
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_thresh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_edge_effect_thresh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_component->edge_effect_thresh = __pyx_t_14;
 
-  /* "nemo_sfx/sfx.pyx":291
- *         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
- *         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])
- *         component.sfx_flag =  float(cargs['sfx_flag'])             # <<<<<<<<<<<<<<
- * 
- *         #super(DefaultGameSystem,self).init_component(component_index,entity_id,zone,combined_args)
- */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_cargs, __pyx_n_s_sfx_flag); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_3); if (unlikely(__pyx_t_14 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 291, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_component->sfx_flag = __pyx_t_14;
-
-  /* "nemo_sfx/sfx.pyx":261
+  /* "nemo_sfx/sfx.pyx":279
  * 
  * 
  *     def init_component(self, unsigned int component_index, unsigned int entity_id, str zone, args):             # <<<<<<<<<<<<<<
@@ -5748,7 +5978,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_init_component(struct __pyx_
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx.pyx":298
+/* "nemo_sfx/sfx.pyx":323
  * 
  * 
  *     def clear_component(self, unsigned int component_index):             # <<<<<<<<<<<<<<
@@ -5765,7 +5995,7 @@ static PyObject *__pyx_pw_8nemo_sfx_3sfx_9SfxSystem_3clear_component(PyObject *_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("clear_component (wrapper)", 0);
   assert(__pyx_arg_component_index); {
-    __pyx_v_component_index = __Pyx_PyInt_As_unsigned_int(__pyx_arg_component_index); if (unlikely((__pyx_v_component_index == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L3_error)
+    __pyx_v_component_index = __Pyx_PyInt_As_unsigned_int(__pyx_arg_component_index); if (unlikely((__pyx_v_component_index == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5789,7 +6019,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
   void *__pyx_t_2;
   __Pyx_RefNannySetupContext("clear_component", 0);
 
-  /* "nemo_sfx/sfx.pyx":299
+  /* "nemo_sfx/sfx.pyx":324
  * 
  *     def clear_component(self, unsigned int component_index):
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone             # <<<<<<<<<<<<<<
@@ -5801,16 +6031,16 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
   __pyx_v_memory_zone = ((struct __pyx_obj_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx.pyx":301
+  /* "nemo_sfx/sfx.pyx":326
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone
  *         cdef SfxStruct2D* pointer = <SfxStruct2D*>(
  *             memory_zone.get_pointer(component_index))             # <<<<<<<<<<<<<<
  *         pointer.entity_id = -1
  *         pointer.render_rotate = 0.
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_v_memory_zone->__pyx_vtab)->get_pointer(__pyx_v_memory_zone, __pyx_v_component_index); if (unlikely(__pyx_t_2 == NULL)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_11kivent_core_15memory_handlers_4zone_MemoryZone *)__pyx_v_memory_zone->__pyx_vtab)->get_pointer(__pyx_v_memory_zone, __pyx_v_component_index); if (unlikely(__pyx_t_2 == NULL)) __PYX_ERR(0, 326, __pyx_L1_error)
 
-  /* "nemo_sfx/sfx.pyx":300
+  /* "nemo_sfx/sfx.pyx":325
  *     def clear_component(self, unsigned int component_index):
  *         cdef MemoryZone memory_zone = self.imz_components.memory_zone
  *         cdef SfxStruct2D* pointer = <SfxStruct2D*>(             # <<<<<<<<<<<<<<
@@ -5819,7 +6049,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)__pyx_t_2);
 
-  /* "nemo_sfx/sfx.pyx":302
+  /* "nemo_sfx/sfx.pyx":327
  *         cdef SfxStruct2D* pointer = <SfxStruct2D*>(
  *             memory_zone.get_pointer(component_index))
  *         pointer.entity_id = -1             # <<<<<<<<<<<<<<
@@ -5828,7 +6058,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer->entity_id = -1;
 
-  /* "nemo_sfx/sfx.pyx":303
+  /* "nemo_sfx/sfx.pyx":328
  *             memory_zone.get_pointer(component_index))
  *         pointer.entity_id = -1
  *         pointer.render_rotate = 0.             # <<<<<<<<<<<<<<
@@ -5837,7 +6067,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer->render_rotate = 0.;
 
-  /* "nemo_sfx/sfx.pyx":304
+  /* "nemo_sfx/sfx.pyx":329
  *         pointer.entity_id = -1
  *         pointer.render_rotate = 0.
  *         pointer.v_color[0] = 255             # <<<<<<<<<<<<<<
@@ -5846,7 +6076,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   (__pyx_v_pointer->v_color[0]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":305
+  /* "nemo_sfx/sfx.pyx":330
  *         pointer.render_rotate = 0.
  *         pointer.v_color[0] = 255
  *         pointer.v_color[1]= 255             # <<<<<<<<<<<<<<
@@ -5855,35 +6085,71 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   (__pyx_v_pointer->v_color[1]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":306
+  /* "nemo_sfx/sfx.pyx":331
  *         pointer.v_color[0] = 255
  *         pointer.v_color[1]= 255
  *         pointer.v_color[2] = 255             # <<<<<<<<<<<<<<
  *         pointer.v_color[3] = 255
- *         pointer.x_trans = 1.
+ *         pointer.v_tint[0] = 1.
  */
   (__pyx_v_pointer->v_color[2]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":307
+  /* "nemo_sfx/sfx.pyx":332
  *         pointer.v_color[1]= 255
  *         pointer.v_color[2] = 255
  *         pointer.v_color[3] = 255             # <<<<<<<<<<<<<<
- *         pointer.x_trans = 1.
- *         pointer.y_trans = 1.
+ *         pointer.v_tint[0] = 1.
+ *         pointer.v_tint[1]= 1.
  */
   (__pyx_v_pointer->v_color[3]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":308
+  /* "nemo_sfx/sfx.pyx":333
  *         pointer.v_color[2] = 255
  *         pointer.v_color[3] = 255
+ *         pointer.v_tint[0] = 1.             # <<<<<<<<<<<<<<
+ *         pointer.v_tint[1]= 1.
+ *         pointer.v_tint[2] = 1.
+ */
+  (__pyx_v_pointer->v_tint[0]) = 1.;
+
+  /* "nemo_sfx/sfx.pyx":334
+ *         pointer.v_color[3] = 255
+ *         pointer.v_tint[0] = 1.
+ *         pointer.v_tint[1]= 1.             # <<<<<<<<<<<<<<
+ *         pointer.v_tint[2] = 1.
+ *         pointer.v_tint[3] = 1.
+ */
+  (__pyx_v_pointer->v_tint[1]) = 1.;
+
+  /* "nemo_sfx/sfx.pyx":335
+ *         pointer.v_tint[0] = 1.
+ *         pointer.v_tint[1]= 1.
+ *         pointer.v_tint[2] = 1.             # <<<<<<<<<<<<<<
+ *         pointer.v_tint[3] = 1.
+ *         pointer.x_trans = 1.
+ */
+  (__pyx_v_pointer->v_tint[2]) = 1.;
+
+  /* "nemo_sfx/sfx.pyx":336
+ *         pointer.v_tint[1]= 1.
+ *         pointer.v_tint[2] = 1.
+ *         pointer.v_tint[3] = 1.             # <<<<<<<<<<<<<<
+ *         pointer.x_trans = 1.
+ *         pointer.y_trans = 1.
+ */
+  (__pyx_v_pointer->v_tint[3]) = 1.;
+
+  /* "nemo_sfx/sfx.pyx":337
+ *         pointer.v_tint[2] = 1.
+ *         pointer.v_tint[3] = 1.
  *         pointer.x_trans = 1.             # <<<<<<<<<<<<<<
  *         pointer.y_trans = 1.
  *         pointer.x_shear = 1.
  */
   __pyx_v_pointer->x_trans = 1.;
 
-  /* "nemo_sfx/sfx.pyx":309
- *         pointer.v_color[3] = 255
+  /* "nemo_sfx/sfx.pyx":338
+ *         pointer.v_tint[3] = 1.
  *         pointer.x_trans = 1.
  *         pointer.y_trans = 1.             # <<<<<<<<<<<<<<
  *         pointer.x_shear = 1.
@@ -5891,7 +6157,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer->y_trans = 1.;
 
-  /* "nemo_sfx/sfx.pyx":310
+  /* "nemo_sfx/sfx.pyx":339
  *         pointer.x_trans = 1.
  *         pointer.y_trans = 1.
  *         pointer.x_shear = 1.             # <<<<<<<<<<<<<<
@@ -5900,7 +6166,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer->x_shear = 1.;
 
-  /* "nemo_sfx/sfx.pyx":311
+  /* "nemo_sfx/sfx.pyx":340
  *         pointer.y_trans = 1.
  *         pointer.x_shear = 1.
  *         pointer.y_shear = 1.             # <<<<<<<<<<<<<<
@@ -5909,7 +6175,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   __pyx_v_pointer->y_shear = 1.;
 
-  /* "nemo_sfx/sfx.pyx":312
+  /* "nemo_sfx/sfx.pyx":341
  *         pointer.x_shear = 1.
  *         pointer.y_shear = 1.
  *         pointer.edge_effect_color[0] = 255             # <<<<<<<<<<<<<<
@@ -5918,7 +6184,7 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   (__pyx_v_pointer->edge_effect_color[0]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":313
+  /* "nemo_sfx/sfx.pyx":342
  *         pointer.y_shear = 1.
  *         pointer.edge_effect_color[0] = 255
  *         pointer.edge_effect_color[1] = 255             # <<<<<<<<<<<<<<
@@ -5927,34 +6193,25 @@ static PyObject *__pyx_pf_8nemo_sfx_3sfx_9SfxSystem_2clear_component(struct __py
  */
   (__pyx_v_pointer->edge_effect_color[1]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":314
+  /* "nemo_sfx/sfx.pyx":343
  *         pointer.edge_effect_color[0] = 255
  *         pointer.edge_effect_color[1] = 255
  *         pointer.edge_effect_color[2]= 255             # <<<<<<<<<<<<<<
  *         pointer.edge_effect_color[3] = 255
- *         pointer.sfx_flag = 0.
+ * #        pointer.sfx_flag = 0.
  */
   (__pyx_v_pointer->edge_effect_color[2]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":315
+  /* "nemo_sfx/sfx.pyx":344
  *         pointer.edge_effect_color[1] = 255
  *         pointer.edge_effect_color[2]= 255
  *         pointer.edge_effect_color[3] = 255             # <<<<<<<<<<<<<<
- *         pointer.sfx_flag = 0.
+ * #        pointer.sfx_flag = 0.
  * 
  */
   (__pyx_v_pointer->edge_effect_color[3]) = 0xFF;
 
-  /* "nemo_sfx/sfx.pyx":316
- *         pointer.edge_effect_color[2]= 255
- *         pointer.edge_effect_color[3] = 255
- *         pointer.sfx_flag = 0.             # <<<<<<<<<<<<<<
- * 
- * Factory.register('SfxSystem', cls=SfxSystem)
- */
-  __pyx_v_pointer->sfx_flag = 0.;
-
-  /* "nemo_sfx/sfx.pyx":298
+  /* "nemo_sfx/sfx.pyx":323
  * 
  * 
  *     def clear_component(self, unsigned int component_index):             # <<<<<<<<<<<<<<
@@ -6121,6 +6378,20 @@ static int __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_color_a(PyObject *o, Py
   }
 }
 
+static PyObject *__pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_v_tint(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_1__get__(o);
+}
+
+static int __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_tint(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_6v_tint_3__set__(o, v);
+  }
+  else {
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
+  }
+}
+
 static PyObject *__pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_x_trans(PyObject *o, CYTHON_UNUSED void *x) {
   return __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_7x_trans_1__get__(o);
 }
@@ -6261,20 +6532,6 @@ static int __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_thresh(PyObje
   }
 }
 
-static PyObject *__pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_sfx_flag(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_1__get__(o);
-}
-
-static int __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_sfx_flag(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
-  if (v) {
-    return __pyx_pw_8nemo_sfx_3sfx_12SfxComponent_8sfx_flag_3__set__(o, v);
-  }
-  else {
-    PyErr_SetString(PyExc_NotImplementedError, "__del__");
-    return -1;
-  }
-}
-
 static struct PyGetSetDef __pyx_getsets_8nemo_sfx_3sfx_SfxComponent[] = {
   {(char *)"entity_id", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_entity_id, 0, (char *)0, 0},
   {(char *)"scale", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_scale, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_scale, (char *)0, 0},
@@ -6286,6 +6543,7 @@ static struct PyGetSetDef __pyx_getsets_8nemo_sfx_3sfx_SfxComponent[] = {
   {(char *)"v_color_g", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_v_color_g, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_color_g, (char *)0, 0},
   {(char *)"v_color_b", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_v_color_b, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_color_b, (char *)0, 0},
   {(char *)"v_color_a", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_v_color_a, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_color_a, (char *)0, 0},
+  {(char *)"v_tint", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_v_tint, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_v_tint, (char *)0, 0},
   {(char *)"x_trans", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_x_trans, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_x_trans, (char *)0, 0},
   {(char *)"y_trans", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_y_trans, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_y_trans, (char *)0, 0},
   {(char *)"x_shear", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_x_shear, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_x_shear, (char *)0, 0},
@@ -6296,7 +6554,6 @@ static struct PyGetSetDef __pyx_getsets_8nemo_sfx_3sfx_SfxComponent[] = {
   {(char *)"edge_effect_color_b", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_color_b, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_color_b, (char *)0, 0},
   {(char *)"edge_effect_color_a", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_color_a, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_color_a, (char *)0, 0},
   {(char *)"edge_effect_thresh", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_thresh, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_edge_effect_thresh, (char *)0, 0},
-  {(char *)"sfx_flag", __pyx_getprop_8nemo_sfx_3sfx_12SfxComponent_sfx_flag, __pyx_setprop_8nemo_sfx_3sfx_12SfxComponent_sfx_flag, (char *)0, 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -6504,11 +6761,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_render_rotate, __pyx_k_render_rotate, sizeof(__pyx_k_render_rotate), 0, 0, 1, 1},
   {&__pyx_n_s_scale, __pyx_k_scale, sizeof(__pyx_k_scale), 0, 0, 1, 1},
   {&__pyx_n_s_sfx, __pyx_k_sfx, sizeof(__pyx_k_sfx), 0, 0, 1, 1},
-  {&__pyx_n_s_sfx_flag, __pyx_k_sfx_flag, sizeof(__pyx_k_sfx_flag), 0, 0, 1, 1},
   {&__pyx_n_s_system_id, __pyx_k_system_id, sizeof(__pyx_k_system_id), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_type_size, __pyx_k_type_size, sizeof(__pyx_k_type_size), 0, 0, 1, 1},
   {&__pyx_n_s_v_color, __pyx_k_v_color, sizeof(__pyx_k_v_color), 0, 0, 1, 1},
+  {&__pyx_n_s_v_tint, __pyx_k_v_tint, sizeof(__pyx_k_v_tint), 0, 0, 1, 1},
   {&__pyx_n_s_x_shear, __pyx_k_x_shear, sizeof(__pyx_k_x_shear), 0, 0, 1, 1},
   {&__pyx_n_s_x_trans, __pyx_k_x_trans, sizeof(__pyx_k_x_trans), 0, 0, 1, 1},
   {&__pyx_n_s_y_shear, __pyx_k_y_shear, sizeof(__pyx_k_y_shear), 0, 0, 1, 1},
@@ -6524,60 +6781,71 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "nemo_sfx/sfx.pyx":246
+  /* "nemo_sfx/sfx.pyx":263
  *     type_size = NumericProperty(sizeof(SfxStruct2D))
  *     component_type = ObjectProperty(SfxComponent)
  *     system_id = StringProperty('sfx')             # <<<<<<<<<<<<<<
  *     default_args = {
  *         "scale":(1.,1.),
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_sfx); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_sfx); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "nemo_sfx/sfx.pyx":248
+  /* "nemo_sfx/sfx.pyx":265
  *     system_id = StringProperty('sfx')
  *     default_args = {
  *         "scale":(1.,1.),             # <<<<<<<<<<<<<<
  *         "render_rotate":0.,
  *         "v_color": (255,255,255,255),
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_float_1_, __pyx_float_1_); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_float_1_, __pyx_float_1_); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "nemo_sfx/sfx.pyx":250
+  /* "nemo_sfx/sfx.pyx":267
  *         "scale":(1.,1.),
  *         "render_rotate":0.,
  *         "v_color": (255,255,255,255),             # <<<<<<<<<<<<<<
+ *         "v_tint": (1.,1.,1.,1.),
  *         "x_trans": 1.,
- *         "y_trans": 1.,
  */
-  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_int_255, __pyx_int_255, __pyx_int_255, __pyx_int_255); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_int_255, __pyx_int_255, __pyx_int_255, __pyx_int_255); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "nemo_sfx/sfx.pyx":255
+  /* "nemo_sfx/sfx.pyx":268
+ *         "render_rotate":0.,
+ *         "v_color": (255,255,255,255),
+ *         "v_tint": (1.,1.,1.,1.),             # <<<<<<<<<<<<<<
+ *         "x_trans": 1.,
+ *         "y_trans": 1.,
+ */
+  __pyx_tuple__4 = PyTuple_Pack(4, __pyx_float_1_, __pyx_float_1_, __pyx_float_1_, __pyx_float_1_); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+
+  /* "nemo_sfx/sfx.pyx":273
  *         "x_shear": 0.,
  *         "y_shear": 0.,
  *         "edge_effect_color": (255,255,255,255),             # <<<<<<<<<<<<<<
  *         "edge_effect_thresh":0.,
- *         "sfx_flag": 1.
+ * #        "sfx_flag": 1.
  */
-  __pyx_tuple__4 = PyTuple_Pack(4, __pyx_int_255, __pyx_int_255, __pyx_int_255, __pyx_int_255); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 255, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__5 = PyTuple_Pack(4, __pyx_int_255, __pyx_int_255, __pyx_int_255, __pyx_int_255); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "nemo_sfx/sfx.pyx":318
- *         pointer.sfx_flag = 0.
+  /* "nemo_sfx/sfx.pyx":347
+ * #        pointer.sfx_flag = 0.
  * 
  * Factory.register('SfxSystem', cls=SfxSystem)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_SfxSystem); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 318, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_SfxSystem); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6694,10 +6962,10 @@ PyMODINIT_FUNC PyInit_sfx(void)
   __pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem = &__pyx_vtable_8nemo_sfx_3sfx_SfxSystem;
   __pyx_vtable_8nemo_sfx_3sfx_SfxSystem.__pyx_base = *__pyx_vtabptr_11kivent_core_7systems_19staticmemgamesystem_StaticMemGameSystem;
   __pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_base = __pyx_ptype_11kivent_core_7systems_19staticmemgamesystem_StaticMemGameSystem;
-  if (PyType_Ready(&__pyx_type_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_dict, __pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "SfxSystem", (PyObject *)&__pyx_type_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_dict, __pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "SfxSystem", (PyObject *)&__pyx_type_8nemo_sfx_3sfx_SfxSystem) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   if (__pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_weaklistoffset == 0) __pyx_type_8nemo_sfx_3sfx_SfxSystem.tp_weaklistoffset = offsetof(struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem, __pyx_base.__pyx_base.__pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_8nemo_sfx_3sfx_SfxSystem = &__pyx_type_8nemo_sfx_3sfx_SfxSystem;
   /*--- Type import code ---*/
@@ -6819,16 +7087,16 @@ PyMODINIT_FUNC PyInit_sfx(void)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx.pyx":244
+  /* "nemo_sfx/sfx.pyx":261
  *     """
  * 
  *     type_size = NumericProperty(sizeof(SfxStruct2D))             # <<<<<<<<<<<<<<
  *     component_type = ObjectProperty(SfxComponent)
  *     system_id = StringProperty('sfx')
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_NumericProperty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_NumericProperty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_3sfx_SfxStruct2D))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_3sfx_SfxStruct2D))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6841,14 +7109,14 @@ PyMODINIT_FUNC PyInit_sfx(void)
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6857,37 +7125,37 @@ PyMODINIT_FUNC PyInit_sfx(void)
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_type_size, __pyx_t_1) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_type_size, __pyx_t_1) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem);
 
-  /* "nemo_sfx/sfx.pyx":245
+  /* "nemo_sfx/sfx.pyx":262
  * 
  *     type_size = NumericProperty(sizeof(SfxStruct2D))
  *     component_type = ObjectProperty(SfxComponent)             # <<<<<<<<<<<<<<
  *     system_id = StringProperty('sfx')
  *     default_args = {
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_ObjectProperty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_ObjectProperty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6900,13 +7168,13 @@ PyMODINIT_FUNC PyInit_sfx(void)
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -6914,99 +7182,107 @@ PyMODINIT_FUNC PyInit_sfx(void)
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_INCREF(((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent));
       __Pyx_GIVEREF(((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent));
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxComponent));
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_component_type, __pyx_t_1) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_component_type, __pyx_t_1) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem);
 
-  /* "nemo_sfx/sfx.pyx":246
+  /* "nemo_sfx/sfx.pyx":263
  *     type_size = NumericProperty(sizeof(SfxStruct2D))
  *     component_type = ObjectProperty(SfxComponent)
  *     system_id = StringProperty('sfx')             # <<<<<<<<<<<<<<
  *     default_args = {
  *         "scale":(1.,1.),
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_StringProperty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_StringProperty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_system_id, __pyx_t_2) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_system_id, __pyx_t_2) < 0) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem);
 
-  /* "nemo_sfx/sfx.pyx":248
+  /* "nemo_sfx/sfx.pyx":265
  *     system_id = StringProperty('sfx')
  *     default_args = {
  *         "scale":(1.,1.),             # <<<<<<<<<<<<<<
  *         "render_rotate":0.,
  *         "v_color": (255,255,255,255),
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_scale, __pyx_tuple__2) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_render_rotate, __pyx_float_0_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_scale, __pyx_tuple__2) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_render_rotate, __pyx_float_0_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
 
-  /* "nemo_sfx/sfx.pyx":250
+  /* "nemo_sfx/sfx.pyx":267
  *         "scale":(1.,1.),
  *         "render_rotate":0.,
  *         "v_color": (255,255,255,255),             # <<<<<<<<<<<<<<
+ *         "v_tint": (1.,1.,1.,1.),
+ *         "x_trans": 1.,
+ */
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_v_color, __pyx_tuple__3) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+
+  /* "nemo_sfx/sfx.pyx":268
+ *         "render_rotate":0.,
+ *         "v_color": (255,255,255,255),
+ *         "v_tint": (1.,1.,1.,1.),             # <<<<<<<<<<<<<<
  *         "x_trans": 1.,
  *         "y_trans": 1.,
  */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_v_color, __pyx_tuple__3) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_trans, __pyx_float_1_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_trans, __pyx_float_1_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_shear, __pyx_float_0_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_shear, __pyx_float_0_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_v_tint, __pyx_tuple__4) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_trans, __pyx_float_1_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_trans, __pyx_float_1_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_shear, __pyx_float_0_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_shear, __pyx_float_0_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
 
-  /* "nemo_sfx/sfx.pyx":255
+  /* "nemo_sfx/sfx.pyx":273
  *         "x_shear": 0.,
  *         "y_shear": 0.,
  *         "edge_effect_color": (255,255,255,255),             # <<<<<<<<<<<<<<
  *         "edge_effect_thresh":0.,
- *         "sfx_flag": 1.
+ * #        "sfx_flag": 1.
  */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_edge_effect_color, __pyx_tuple__4) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_edge_effect_thresh, __pyx_float_0_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_sfx_flag, __pyx_float_1_) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_default_args, __pyx_t_2) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_edge_effect_color, __pyx_tuple__5) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_edge_effect_thresh, __pyx_float_0_) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict, __pyx_n_s_default_args, __pyx_t_2) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem);
 
-  /* "nemo_sfx/sfx.pyx":318
- *         pointer.sfx_flag = 0.
+  /* "nemo_sfx/sfx.pyx":347
+ * #        pointer.sfx_flag = 0.
  * 
  * Factory.register('SfxSystem', cls=SfxSystem)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Factory); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Factory); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_register); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_register); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_cls, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem)) < 0) __PYX_ERR(0, 318, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__5, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_cls, ((PyObject *)__pyx_ptype_8nemo_sfx_3sfx_SfxSystem)) < 0) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;

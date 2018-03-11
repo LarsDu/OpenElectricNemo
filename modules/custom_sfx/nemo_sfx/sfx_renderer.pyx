@@ -50,6 +50,8 @@ cdef class SfxRenderer(Renderer):
             GLfloat[2] uvs
             GLfloat[2] center
             GLubyte[4] v_color
+            GLfloat[4] v_tint
+   
             #TODO rewrite comments
 
     '''
@@ -155,9 +157,11 @@ cdef class SfxRenderer(Renderer):
                                 vertex.scale[1] = sfx_comp.scale[1]
                                 #vertex.scale[0] = 1.
                                 #vertex.scale[1] = 1.
-
                                 for i in range(4):
                                     vertex.v_color[i] = sfx_comp.v_color[i]
+                                for i in range(4):
+                                    vertex.v_tint[i] = sfx_comp.v_tint[i]
+
                                 vertex.render_rotate = sfx_comp.render_rotate
                                 vertex.x_trans = sfx_comp.x_trans
                                 vertex.y_trans = sfx_comp.y_trans

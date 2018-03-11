@@ -2344,6 +2344,7 @@ struct __pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1 {
   GLfloat scale[2];
   GLfloat rotate;
   GLubyte v_color[4];
+  GLfloat v_tint[4];
   GLfloat render_rotate;
   GLfloat x_trans;
   GLfloat y_trans;
@@ -2382,13 +2383,13 @@ struct __pyx_t_8nemo_sfx_3sfx_SfxStruct2D {
   float scale[2];
   float render_rotate;
   unsigned char v_color[4];
+  float v_tint[4];
   float x_trans;
   float y_trans;
   float x_shear;
   float y_shear;
   unsigned char edge_effect_color[4];
   float edge_effect_thresh;
-  float sfx_flag;
 };
 struct __pyx_t_11kivent_core_7systems_14rotate_systems_RotateStruct2D;
 typedef struct __pyx_t_11kivent_core_7systems_14rotate_systems_RotateStruct2D __pyx_t_11kivent_core_7systems_14rotate_systems_RotateStruct2D;
@@ -3635,7 +3636,7 @@ struct __pyx_obj_11kivent_core_7systems_16position_systems_PositionSystem2D {
 };
 
 
-/* "nemo_sfx/sfx.pxd":26
+/* "nemo_sfx/sfx.pxd":27
  * 
  * 
  * cdef class SfxComponent(MemComponent):             # <<<<<<<<<<<<<<
@@ -3647,7 +3648,7 @@ struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent {
 };
 
 
-/* "nemo_sfx/sfx.pxd":30
+/* "nemo_sfx/sfx.pxd":31
  * 
  * 
  * cdef class SfxSystem(StaticMemGameSystem):             # <<<<<<<<<<<<<<
@@ -4798,7 +4799,7 @@ struct __pyx_vtabstruct_11kivent_core_7systems_16position_systems_PositionSystem
 static struct __pyx_vtabstruct_11kivent_core_7systems_16position_systems_PositionSystem2D *__pyx_vtabptr_11kivent_core_7systems_16position_systems_PositionSystem2D;
 
 
-/* "nemo_sfx/sfx.pxd":30
+/* "nemo_sfx/sfx.pxd":31
  * 
  * 
  * cdef class SfxSystem(StaticMemGameSystem):             # <<<<<<<<<<<<<<
@@ -5446,7 +5447,7 @@ static PyObject *__pyx_tp_new_8nemo_sfx_12sfx_renderer_SfxRenderer(PyTypeObject 
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 
-/* "nemo_sfx/sfx_renderer.pyx":66
+/* "nemo_sfx/sfx_renderer.pyx":68
  *     #vertex_format_size = NumericProperty(sizeof(VertexFormat4F))
  * 
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:             # <<<<<<<<<<<<<<
@@ -5470,91 +5471,91 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("setup_batch_manager", 0);
 
-  /* "nemo_sfx/sfx_renderer.pyx":68
+  /* "nemo_sfx/sfx_renderer.pyx":70
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:
  *         cdef KEVertexFormat batch_vertex_format = KEVertexFormat(
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)             # <<<<<<<<<<<<<<
  *         self.batch_manager = BatchManager(
  *             self.size_of_batches, self.max_batches, self.frame_count,
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(__pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "nemo_sfx/sfx_renderer.pyx":67
+  /* "nemo_sfx/sfx_renderer.pyx":69
  * 
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:
  *         cdef KEVertexFormat batch_vertex_format = KEVertexFormat(             # <<<<<<<<<<<<<<
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)
  *         self.batch_manager = BatchManager(
  */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":68
+  /* "nemo_sfx/sfx_renderer.pyx":70
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:
  *         cdef KEVertexFormat batch_vertex_format = KEVertexFormat(
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)             # <<<<<<<<<<<<<<
  *         self.batch_manager = BatchManager(
  *             self.size_of_batches, self.max_batches, self.frame_count,
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_vertex_format_sfx1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_vertex_format_sfx1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "nemo_sfx/sfx_renderer.pyx":67
+  /* "nemo_sfx/sfx_renderer.pyx":69
  * 
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:
  *         cdef KEVertexFormat batch_vertex_format = KEVertexFormat(             # <<<<<<<<<<<<<<
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)
  *         self.batch_manager = BatchManager(
  */
-  __pyx_t_3 = PySequence_Tuple(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = PySequence_Tuple(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11kivent_core_9rendering_13vertex_format_KEVertexFormat), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11kivent_core_9rendering_13vertex_format_KEVertexFormat), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_batch_vertex_format = ((struct __pyx_obj_11kivent_core_9rendering_13vertex_format_KEVertexFormat *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":70
+  /* "nemo_sfx/sfx_renderer.pyx":72
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)
  *         self.batch_manager = BatchManager(
  *             self.size_of_batches, self.max_batches, self.frame_count,             # <<<<<<<<<<<<<<
  *             batch_vertex_format, master_buffer, 'triangles', self.canvas,
  *             [x for x in self.system_names],
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size_of_batches); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size_of_batches); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_max_batches); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_max_batches); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_frame_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_frame_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "nemo_sfx/sfx_renderer.pyx":72
+  /* "nemo_sfx/sfx_renderer.pyx":74
  *             self.size_of_batches, self.max_batches, self.frame_count,
  *             batch_vertex_format, master_buffer, 'triangles', self.canvas,
  *             [x for x in self.system_names],             # <<<<<<<<<<<<<<
  *             self.smallest_vertex_count, self.gameworld)
  *         return <void*>self.batch_manager
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_system_names); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_system_names); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
     __pyx_t_6 = __pyx_t_5; __Pyx_INCREF(__pyx_t_6); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 74, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   for (;;) {
@@ -5562,17 +5563,17 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
       if (likely(PyList_CheckExact(__pyx_t_6))) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -5582,7 +5583,7 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 72, __pyx_L1_error)
+          else __PYX_ERR(0, 74, __pyx_L1_error)
         }
         break;
       }
@@ -5590,30 +5591,30 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_5);
     __pyx_t_5 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_x))) __PYX_ERR(0, 72, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_x))) __PYX_ERR(0, 74, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":73
+  /* "nemo_sfx/sfx_renderer.pyx":75
  *             batch_vertex_format, master_buffer, 'triangles', self.canvas,
  *             [x for x in self.system_names],
  *             self.smallest_vertex_count, self.gameworld)             # <<<<<<<<<<<<<<
  *         return <void*>self.batch_manager
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_smallest_vertex_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_smallest_vertex_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_gameworld); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_gameworld); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "nemo_sfx/sfx_renderer.pyx":69
+  /* "nemo_sfx/sfx_renderer.pyx":71
  *         cdef KEVertexFormat batch_vertex_format = KEVertexFormat(
  *             sizeof(VertexFormatSfx1), *vertex_format_sfx1)
  *         self.batch_manager = BatchManager(             # <<<<<<<<<<<<<<
  *             self.size_of_batches, self.max_batches, self.frame_count,
  *             batch_vertex_format, master_buffer, 'triangles', self.canvas,
  */
-  __pyx_t_9 = PyTuple_New(10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3);
@@ -5645,7 +5646,7 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
   __pyx_t_4 = 0;
   __pyx_t_6 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11kivent_core_9rendering_8batching_BatchManager), __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11kivent_core_9rendering_8batching_BatchManager), __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_GIVEREF(__pyx_t_5);
@@ -5654,7 +5655,7 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
   __pyx_v_self->__pyx_base.batch_manager = ((struct __pyx_obj_11kivent_core_9rendering_8batching_BatchManager *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":74
+  /* "nemo_sfx/sfx_renderer.pyx":76
  *             [x for x in self.system_names],
  *             self.smallest_vertex_count, self.gameworld)
  *         return <void*>self.batch_manager             # <<<<<<<<<<<<<<
@@ -5664,7 +5665,7 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
   __pyx_r = ((void *)__pyx_v_self->__pyx_base.batch_manager);
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":66
+  /* "nemo_sfx/sfx_renderer.pyx":68
  *     #vertex_format_size = NumericProperty(sizeof(VertexFormat4F))
  * 
  *     cdef void* setup_batch_manager(self, Buffer master_buffer) except NULL:             # <<<<<<<<<<<<<<
@@ -5690,7 +5691,7 @@ static void *__pyx_f_8nemo_sfx_12sfx_renderer_11SfxRenderer_setup_batch_manager(
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx_renderer.pyx":77
+/* "nemo_sfx/sfx_renderer.pyx":79
  * 
  * 
  *     def update(self, force_update, dt):             # <<<<<<<<<<<<<<
@@ -5727,11 +5728,11 @@ static PyObject *__pyx_pw_8nemo_sfx_12sfx_renderer_11SfxRenderer_1update(PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update", 1, 2, 2, 1); __PYX_ERR(0, 77, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update", 1, 2, 2, 1); __PYX_ERR(0, 79, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update") < 0)) __PYX_ERR(0, 77, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update") < 0)) __PYX_ERR(0, 79, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5744,7 +5745,7 @@ static PyObject *__pyx_pw_8nemo_sfx_12sfx_renderer_11SfxRenderer_1update(PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 77, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 79, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("nemo_sfx.sfx_renderer.SfxRenderer.update", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5807,7 +5808,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   unsigned int __pyx_t_16;
   __Pyx_RefNannySetupContext("update", 0);
 
-  /* "nemo_sfx/sfx_renderer.pyx":100
+  /* "nemo_sfx/sfx_renderer.pyx":102
  *         cdef unsigned int used, i, real_index, component_count, n, c
  *         cdef ComponentPointerAggregator entity_components
  *         cdef BatchManager batch_manager = self.batch_manager             # <<<<<<<<<<<<<<
@@ -5819,7 +5820,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   __pyx_v_batch_manager = ((struct __pyx_obj_11kivent_core_9rendering_8batching_BatchManager *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":101
+  /* "nemo_sfx/sfx_renderer.pyx":103
  *         cdef ComponentPointerAggregator entity_components
  *         cdef BatchManager batch_manager = self.batch_manager
  *         cdef dict batch_groups = batch_manager.batch_groups             # <<<<<<<<<<<<<<
@@ -5831,20 +5832,20 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   __pyx_v_batch_groups = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":105
+  /* "nemo_sfx/sfx_renderer.pyx":107
  *         cdef MemoryBlock components_block
  *         cdef void** component_data
  *         cdef bint static_rendering = self.static_rendering             # <<<<<<<<<<<<<<
  * 
  *         for batch_key in batch_groups:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_static_rendering); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_static_rendering); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_static_rendering = __pyx_t_2;
 
-  /* "nemo_sfx/sfx_renderer.pyx":107
+  /* "nemo_sfx/sfx_renderer.pyx":109
  *         cdef bint static_rendering = self.static_rendering
  * 
  *         for batch_key in batch_groups:             # <<<<<<<<<<<<<<
@@ -5854,9 +5855,9 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   __pyx_t_3 = 0;
   if (unlikely(__pyx_v_batch_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 107, __pyx_L1_error)
+    __PYX_ERR(0, 109, __pyx_L1_error)
   }
-  __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_batch_groups, 1, ((PyObject *)NULL), (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_batch_groups, 1, ((PyObject *)NULL), (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_6;
@@ -5864,13 +5865,13 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   while (1) {
     __pyx_t_7 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_4, &__pyx_t_3, &__pyx_t_6, NULL, NULL, __pyx_t_5);
     if (unlikely(__pyx_t_7 == 0)) break;
-    if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 107, __pyx_L1_error)
+    if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_unsigned_int(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_batch_key = __pyx_t_8;
 
-    /* "nemo_sfx/sfx_renderer.pyx":108
+    /* "nemo_sfx/sfx_renderer.pyx":110
  * 
  *         for batch_key in batch_groups:
  *             batches = batch_groups[batch_key]             # <<<<<<<<<<<<<<
@@ -5879,18 +5880,18 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
     if (unlikely(__pyx_v_batch_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 108, __pyx_L1_error)
+      __PYX_ERR(0, 110, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_batch_key); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_batch_key); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_batch_groups, __pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_batch_groups, __pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (!(likely(PyList_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_batches, ((PyObject*)__pyx_t_9));
     __pyx_t_9 = 0;
 
-    /* "nemo_sfx/sfx_renderer.pyx":109
+    /* "nemo_sfx/sfx_renderer.pyx":111
  *         for batch_key in batch_groups:
  *             batches = batch_groups[batch_key]
  *             for batch in batches:             # <<<<<<<<<<<<<<
@@ -5899,22 +5900,22 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
     if (unlikely(__pyx_v_batches == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 109, __pyx_L1_error)
+      __PYX_ERR(0, 111, __pyx_L1_error)
     }
     __pyx_t_9 = __pyx_v_batches; __Pyx_INCREF(__pyx_t_9); __pyx_t_10 = 0;
     for (;;) {
       if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_9)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_6 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_6); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_6 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_6); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 111, __pyx_L1_error)
       #else
-      __pyx_t_6 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
-      if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_11kivent_core_9rendering_8batching_IndexedBatch))))) __PYX_ERR(0, 109, __pyx_L1_error)
+      if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_11kivent_core_9rendering_8batching_IndexedBatch))))) __PYX_ERR(0, 111, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_batch, ((struct __pyx_obj_11kivent_core_9rendering_8batching_IndexedBatch *)__pyx_t_6));
       __pyx_t_6 = 0;
 
-      /* "nemo_sfx/sfx_renderer.pyx":110
+      /* "nemo_sfx/sfx_renderer.pyx":112
  *             batches = batch_groups[batch_key]
  *             for batch in batches:
  *                 if not static_rendering or force_update:             # <<<<<<<<<<<<<<
@@ -5927,12 +5928,12 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         __pyx_t_2 = __pyx_t_11;
         goto __pyx_L8_bool_binop_done;
       }
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_force_update); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_force_update); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
       __pyx_t_2 = __pyx_t_11;
       __pyx_L8_bool_binop_done:;
       if (__pyx_t_2) {
 
-        /* "nemo_sfx/sfx_renderer.pyx":111
+        /* "nemo_sfx/sfx_renderer.pyx":113
  *             for batch in batches:
  *                 if not static_rendering or force_update:
  *                     entity_components = batch.entity_components             # <<<<<<<<<<<<<<
@@ -5944,7 +5945,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         __Pyx_XDECREF_SET(__pyx_v_entity_components, ((struct __pyx_obj_11kivent_core_7systems_19staticmemgamesystem_ComponentPointerAggregator *)__pyx_t_6));
         __pyx_t_6 = 0;
 
-        /* "nemo_sfx/sfx_renderer.pyx":112
+        /* "nemo_sfx/sfx_renderer.pyx":114
  *                 if not static_rendering or force_update:
  *                     entity_components = batch.entity_components
  *                     components_block = entity_components.memory_block             # <<<<<<<<<<<<<<
@@ -5956,7 +5957,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         __Pyx_XDECREF_SET(__pyx_v_components_block, ((struct __pyx_obj_11kivent_core_15memory_handlers_5block_MemoryBlock *)__pyx_t_6));
         __pyx_t_6 = 0;
 
-        /* "nemo_sfx/sfx_renderer.pyx":113
+        /* "nemo_sfx/sfx_renderer.pyx":115
  *                     entity_components = batch.entity_components
  *                     components_block = entity_components.memory_block
  *                     used = components_block.used_count             # <<<<<<<<<<<<<<
@@ -5966,7 +5967,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         __pyx_t_8 = __pyx_v_components_block->__pyx_base.used_count;
         __pyx_v_used = __pyx_t_8;
 
-        /* "nemo_sfx/sfx_renderer.pyx":114
+        /* "nemo_sfx/sfx_renderer.pyx":116
  *                     components_block = entity_components.memory_block
  *                     used = components_block.used_count
  *                     component_count = entity_components.count             # <<<<<<<<<<<<<<
@@ -5976,7 +5977,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         __pyx_t_8 = __pyx_v_entity_components->count;
         __pyx_v_component_count = __pyx_t_8;
 
-        /* "nemo_sfx/sfx_renderer.pyx":115
+        /* "nemo_sfx/sfx_renderer.pyx":117
  *                     used = components_block.used_count
  *                     component_count = entity_components.count
  *                     component_data = <void**>components_block.data             # <<<<<<<<<<<<<<
@@ -5985,7 +5986,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
         __pyx_v_component_data = ((void **)__pyx_v_components_block->__pyx_base.data);
 
-        /* "nemo_sfx/sfx_renderer.pyx":116
+        /* "nemo_sfx/sfx_renderer.pyx":118
  *                     component_count = entity_components.count
  *                     component_data = <void**>components_block.data
  *                     frame_data = <VertexFormatSfx1*>(             # <<<<<<<<<<<<<<
@@ -5994,7 +5995,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
         __pyx_v_frame_data = ((__pyx_t_8nemo_sfx_11sfx_formats_VertexFormatSfx1 *)((struct __pyx_vtabstruct_11kivent_core_9rendering_8batching_IndexedBatch *)__pyx_v_batch->__pyx_vtab)->get_vbo_frame_to_draw(__pyx_v_batch));
 
-        /* "nemo_sfx/sfx_renderer.pyx":118
+        /* "nemo_sfx/sfx_renderer.pyx":120
  *                     frame_data = <VertexFormatSfx1*>(
  *                         batch.get_vbo_frame_to_draw())
  *                     frame_indices = <GLushort*>batch.get_indices_frame_to_draw()             # <<<<<<<<<<<<<<
@@ -6003,7 +6004,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
         __pyx_v_frame_indices = ((GLushort *)((struct __pyx_vtabstruct_11kivent_core_9rendering_8batching_IndexedBatch *)__pyx_v_batch->__pyx_vtab)->get_indices_frame_to_draw(__pyx_v_batch));
 
-        /* "nemo_sfx/sfx_renderer.pyx":119
+        /* "nemo_sfx/sfx_renderer.pyx":121
  *                         batch.get_vbo_frame_to_draw())
  *                     frame_indices = <GLushort*>batch.get_indices_frame_to_draw()
  *                     index_offset = 0             # <<<<<<<<<<<<<<
@@ -6012,7 +6013,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
         __pyx_v_index_offset = 0;
 
-        /* "nemo_sfx/sfx_renderer.pyx":120
+        /* "nemo_sfx/sfx_renderer.pyx":122
  *                     frame_indices = <GLushort*>batch.get_indices_frame_to_draw()
  *                     index_offset = 0
  *                     for c in range(used):             # <<<<<<<<<<<<<<
@@ -6023,7 +6024,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
         for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_8; __pyx_t_12+=1) {
           __pyx_v_c = __pyx_t_12;
 
-          /* "nemo_sfx/sfx_renderer.pyx":121
+          /* "nemo_sfx/sfx_renderer.pyx":123
  *                     index_offset = 0
  *                     for c in range(used):
  *                         real_index = c * component_count             # <<<<<<<<<<<<<<
@@ -6032,7 +6033,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
           __pyx_v_real_index = (__pyx_v_c * __pyx_v_component_count);
 
-          /* "nemo_sfx/sfx_renderer.pyx":122
+          /* "nemo_sfx/sfx_renderer.pyx":124
  *                     for c in range(used):
  *                         real_index = c * component_count
  *                         if component_data[real_index] == NULL:             # <<<<<<<<<<<<<<
@@ -6042,7 +6043,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
           __pyx_t_2 = (((__pyx_v_component_data[__pyx_v_real_index]) == NULL) != 0);
           if (__pyx_t_2) {
 
-            /* "nemo_sfx/sfx_renderer.pyx":123
+            /* "nemo_sfx/sfx_renderer.pyx":125
  *                         real_index = c * component_count
  *                         if component_data[real_index] == NULL:
  *                             continue             # <<<<<<<<<<<<<<
@@ -6051,7 +6052,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             goto __pyx_L10_continue;
 
-            /* "nemo_sfx/sfx_renderer.pyx":122
+            /* "nemo_sfx/sfx_renderer.pyx":124
  *                     for c in range(used):
  *                         real_index = c * component_count
  *                         if component_data[real_index] == NULL:             # <<<<<<<<<<<<<<
@@ -6060,7 +6061,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
           }
 
-          /* "nemo_sfx/sfx_renderer.pyx":124
+          /* "nemo_sfx/sfx_renderer.pyx":126
  *                         if component_data[real_index] == NULL:
  *                             continue
  *                         render_comp = <RenderStruct*>component_data[             # <<<<<<<<<<<<<<
@@ -6069,7 +6070,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
           __pyx_v_render_comp = ((__pyx_t_11kivent_core_7systems_9renderers_RenderStruct *)(__pyx_v_component_data[(__pyx_v_real_index + 0)]));
 
-          /* "nemo_sfx/sfx_renderer.pyx":126
+          /* "nemo_sfx/sfx_renderer.pyx":128
  *                         render_comp = <RenderStruct*>component_data[
  *                             real_index+0]
  *                         vert_offset = render_comp.vert_index             # <<<<<<<<<<<<<<
@@ -6079,7 +6080,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
           __pyx_t_7 = __pyx_v_render_comp->vert_index;
           __pyx_v_vert_offset = __pyx_t_7;
 
-          /* "nemo_sfx/sfx_renderer.pyx":127
+          /* "nemo_sfx/sfx_renderer.pyx":129
  *                             real_index+0]
  *                         vert_offset = render_comp.vert_index
  *                         model = <VertexModel>render_comp.model             # <<<<<<<<<<<<<<
@@ -6091,7 +6092,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
           __Pyx_XDECREF_SET(__pyx_v_model, ((struct __pyx_obj_11kivent_core_9rendering_5model_VertexModel *)__pyx_t_6));
           __pyx_t_6 = 0;
 
-          /* "nemo_sfx/sfx_renderer.pyx":128
+          /* "nemo_sfx/sfx_renderer.pyx":130
  *                         vert_offset = render_comp.vert_index
  *                         model = <VertexModel>render_comp.model
  *                         if render_comp.render:             # <<<<<<<<<<<<<<
@@ -6101,7 +6102,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
           __pyx_t_2 = (__pyx_v_render_comp->render != 0);
           if (__pyx_t_2) {
 
-            /* "nemo_sfx/sfx_renderer.pyx":129
+            /* "nemo_sfx/sfx_renderer.pyx":131
  *                         model = <VertexModel>render_comp.model
  *                         if render_comp.render:
  *                             pos_comp = <PositionStruct2D*>component_data[             # <<<<<<<<<<<<<<
@@ -6110,7 +6111,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_pos_comp = ((__pyx_t_11kivent_core_7systems_16position_systems_PositionStruct2D *)(__pyx_v_component_data[(__pyx_v_real_index + 1)]));
 
-            /* "nemo_sfx/sfx_renderer.pyx":131
+            /* "nemo_sfx/sfx_renderer.pyx":133
  *                             pos_comp = <PositionStruct2D*>component_data[
  *                                 real_index+1]
  *                             rot_comp = <RotateStruct2D*>component_data[             # <<<<<<<<<<<<<<
@@ -6119,7 +6120,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_rot_comp = ((__pyx_t_11kivent_core_7systems_14rotate_systems_RotateStruct2D *)(__pyx_v_component_data[(__pyx_v_real_index + 2)]));
 
-            /* "nemo_sfx/sfx_renderer.pyx":133
+            /* "nemo_sfx/sfx_renderer.pyx":135
  *                             rot_comp = <RotateStruct2D*>component_data[
  *                                 real_index+2]
  *                             sfx_comp = <SfxStruct2D*>component_data[             # <<<<<<<<<<<<<<
@@ -6128,7 +6129,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_sfx_comp = ((__pyx_t_8nemo_sfx_3sfx_SfxStruct2D *)(__pyx_v_component_data[(__pyx_v_real_index + 3)]));
 
-            /* "nemo_sfx/sfx_renderer.pyx":135
+            /* "nemo_sfx/sfx_renderer.pyx":137
  *                             sfx_comp = <SfxStruct2D*>component_data[
  *                                 real_index+3]
  *                             model_vertices = <VertexFormat4F*>(             # <<<<<<<<<<<<<<
@@ -6137,7 +6138,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_model_vertices = ((__pyx_t_11kivent_core_9rendering_14vertex_formats_VertexFormat4F *)__pyx_v_model->vertices_block->__pyx_base.data);
 
-            /* "nemo_sfx/sfx_renderer.pyx":140
+            /* "nemo_sfx/sfx_renderer.pyx":142
  *                             #    model.vertices_block.data)
  * 
  *                             model_indices = <GLushort*>model.indices_block.data             # <<<<<<<<<<<<<<
@@ -6146,7 +6147,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_model_indices = ((GLushort *)__pyx_v_model->indices_block->__pyx_base.data);
 
-            /* "nemo_sfx/sfx_renderer.pyx":141
+            /* "nemo_sfx/sfx_renderer.pyx":143
  * 
  *                             model_indices = <GLushort*>model.indices_block.data
  *                             for i in range(model._index_count):             # <<<<<<<<<<<<<<
@@ -6157,7 +6158,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
             for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
               __pyx_v_i = __pyx_t_14;
 
-              /* "nemo_sfx/sfx_renderer.pyx":142
+              /* "nemo_sfx/sfx_renderer.pyx":144
  *                             model_indices = <GLushort*>model.indices_block.data
  *                             for i in range(model._index_count):
  *                                 frame_indices[i+index_offset] = (             # <<<<<<<<<<<<<<
@@ -6167,7 +6168,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               (__pyx_v_frame_indices[(__pyx_v_i + __pyx_v_index_offset)]) = ((__pyx_v_model_indices[__pyx_v_i]) + __pyx_v_vert_offset);
             }
 
-            /* "nemo_sfx/sfx_renderer.pyx":144
+            /* "nemo_sfx/sfx_renderer.pyx":146
  *                                 frame_indices[i+index_offset] = (
  *                                     model_indices[i] + vert_offset)
  *                             for n in range(model._vertex_count):             # <<<<<<<<<<<<<<
@@ -6178,7 +6179,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
             for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
               __pyx_v_n = __pyx_t_14;
 
-              /* "nemo_sfx/sfx_renderer.pyx":145
+              /* "nemo_sfx/sfx_renderer.pyx":147
  *                                     model_indices[i] + vert_offset)
  *                             for n in range(model._vertex_count):
  *                                 vertex = &frame_data[n + vert_offset]             # <<<<<<<<<<<<<<
@@ -6187,7 +6188,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               __pyx_v_vertex = (&(__pyx_v_frame_data[(__pyx_v_n + __pyx_v_vert_offset)]));
 
-              /* "nemo_sfx/sfx_renderer.pyx":146
+              /* "nemo_sfx/sfx_renderer.pyx":148
  *                             for n in range(model._vertex_count):
  *                                 vertex = &frame_data[n + vert_offset]
  *                                 model_vertex = model_vertices[n]             # <<<<<<<<<<<<<<
@@ -6196,7 +6197,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               __pyx_v_model_vertex = (__pyx_v_model_vertices[__pyx_v_n]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":147
+              /* "nemo_sfx/sfx_renderer.pyx":149
  *                                 vertex = &frame_data[n + vert_offset]
  *                                 model_vertex = model_vertices[n]
  *                                 vertex.pos[0] = model_vertex.pos[0]             # <<<<<<<<<<<<<<
@@ -6205,7 +6206,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->pos[0]) = (__pyx_v_model_vertex.pos[0]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":148
+              /* "nemo_sfx/sfx_renderer.pyx":150
  *                                 model_vertex = model_vertices[n]
  *                                 vertex.pos[0] = model_vertex.pos[0]
  *                                 vertex.pos[1] = model_vertex.pos[1]             # <<<<<<<<<<<<<<
@@ -6214,7 +6215,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->pos[1]) = (__pyx_v_model_vertex.pos[1]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":149
+              /* "nemo_sfx/sfx_renderer.pyx":151
  *                                 vertex.pos[0] = model_vertex.pos[0]
  *                                 vertex.pos[1] = model_vertex.pos[1]
  *                                 vertex.uvs[0] = model_vertex.uvs[0]             # <<<<<<<<<<<<<<
@@ -6223,7 +6224,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->uvs[0]) = (__pyx_v_model_vertex.uvs[0]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":150
+              /* "nemo_sfx/sfx_renderer.pyx":152
  *                                 vertex.pos[1] = model_vertex.pos[1]
  *                                 vertex.uvs[0] = model_vertex.uvs[0]
  *                                 vertex.uvs[1] = model_vertex.uvs[1]             # <<<<<<<<<<<<<<
@@ -6232,7 +6233,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->uvs[1]) = (__pyx_v_model_vertex.uvs[1]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":151
+              /* "nemo_sfx/sfx_renderer.pyx":153
  *                                 vertex.uvs[0] = model_vertex.uvs[0]
  *                                 vertex.uvs[1] = model_vertex.uvs[1]
  *                                 vertex.rotate = rot_comp.r             # <<<<<<<<<<<<<<
@@ -6242,7 +6243,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_rot_comp->r;
               __pyx_v_vertex->rotate = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":152
+              /* "nemo_sfx/sfx_renderer.pyx":154
  *                                 vertex.uvs[1] = model_vertex.uvs[1]
  *                                 vertex.rotate = rot_comp.r
  *                                 vertex.center[0] = pos_comp.x#*sfx_comp.scale[0]             # <<<<<<<<<<<<<<
@@ -6252,7 +6253,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_pos_comp->x;
               (__pyx_v_vertex->center[0]) = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":153
+              /* "nemo_sfx/sfx_renderer.pyx":155
  *                                 vertex.rotate = rot_comp.r
  *                                 vertex.center[0] = pos_comp.x#*sfx_comp.scale[0]
  *                                 vertex.center[1] = pos_comp.y#*sfx_comp.scale[1]             # <<<<<<<<<<<<<<
@@ -6262,7 +6263,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_pos_comp->y;
               (__pyx_v_vertex->center[1]) = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":154
+              /* "nemo_sfx/sfx_renderer.pyx":156
  *                                 vertex.center[0] = pos_comp.x#*sfx_comp.scale[0]
  *                                 vertex.center[1] = pos_comp.y#*sfx_comp.scale[1]
  *                                 vertex.scale[0] = sfx_comp.scale[0]             # <<<<<<<<<<<<<<
@@ -6271,7 +6272,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->scale[0]) = (__pyx_v_sfx_comp->scale[0]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":155
+              /* "nemo_sfx/sfx_renderer.pyx":157
  *                                 vertex.center[1] = pos_comp.y#*sfx_comp.scale[1]
  *                                 vertex.scale[0] = sfx_comp.scale[0]
  *                                 vertex.scale[1] = sfx_comp.scale[1]             # <<<<<<<<<<<<<<
@@ -6280,29 +6281,49 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
               (__pyx_v_vertex->scale[1]) = (__pyx_v_sfx_comp->scale[1]);
 
-              /* "nemo_sfx/sfx_renderer.pyx":159
+              /* "nemo_sfx/sfx_renderer.pyx":160
+ *                                 #vertex.scale[0] = 1.
  *                                 #vertex.scale[1] = 1.
- * 
  *                                 for i in range(4):             # <<<<<<<<<<<<<<
  *                                     vertex.v_color[i] = sfx_comp.v_color[i]
- *                                 vertex.render_rotate = sfx_comp.render_rotate
+ *                                 for i in range(4):
  */
               for (__pyx_t_16 = 0; __pyx_t_16 < 4; __pyx_t_16+=1) {
                 __pyx_v_i = __pyx_t_16;
 
-                /* "nemo_sfx/sfx_renderer.pyx":160
- * 
+                /* "nemo_sfx/sfx_renderer.pyx":161
+ *                                 #vertex.scale[1] = 1.
  *                                 for i in range(4):
  *                                     vertex.v_color[i] = sfx_comp.v_color[i]             # <<<<<<<<<<<<<<
- *                                 vertex.render_rotate = sfx_comp.render_rotate
- *                                 vertex.x_trans = sfx_comp.x_trans
+ *                                 for i in range(4):
+ *                                     vertex.v_tint[i] = sfx_comp.v_tint[i]
  */
                 (__pyx_v_vertex->v_color[__pyx_v_i]) = (__pyx_v_sfx_comp->v_color[__pyx_v_i]);
               }
 
-              /* "nemo_sfx/sfx_renderer.pyx":161
+              /* "nemo_sfx/sfx_renderer.pyx":162
  *                                 for i in range(4):
  *                                     vertex.v_color[i] = sfx_comp.v_color[i]
+ *                                 for i in range(4):             # <<<<<<<<<<<<<<
+ *                                     vertex.v_tint[i] = sfx_comp.v_tint[i]
+ * 
+ */
+              for (__pyx_t_16 = 0; __pyx_t_16 < 4; __pyx_t_16+=1) {
+                __pyx_v_i = __pyx_t_16;
+
+                /* "nemo_sfx/sfx_renderer.pyx":163
+ *                                     vertex.v_color[i] = sfx_comp.v_color[i]
+ *                                 for i in range(4):
+ *                                     vertex.v_tint[i] = sfx_comp.v_tint[i]             # <<<<<<<<<<<<<<
+ * 
+ *                                 vertex.render_rotate = sfx_comp.render_rotate
+ */
+                (__pyx_v_vertex->v_tint[__pyx_v_i]) = (__pyx_v_sfx_comp->v_tint[__pyx_v_i]);
+              }
+
+              /* "nemo_sfx/sfx_renderer.pyx":165
+ *                                     vertex.v_tint[i] = sfx_comp.v_tint[i]
+ * 
  *                                 vertex.render_rotate = sfx_comp.render_rotate             # <<<<<<<<<<<<<<
  *                                 vertex.x_trans = sfx_comp.x_trans
  *                                 vertex.y_trans = sfx_comp.y_trans
@@ -6310,8 +6331,8 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_sfx_comp->render_rotate;
               __pyx_v_vertex->render_rotate = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":162
- *                                     vertex.v_color[i] = sfx_comp.v_color[i]
+              /* "nemo_sfx/sfx_renderer.pyx":166
+ * 
  *                                 vertex.render_rotate = sfx_comp.render_rotate
  *                                 vertex.x_trans = sfx_comp.x_trans             # <<<<<<<<<<<<<<
  *                                 vertex.y_trans = sfx_comp.y_trans
@@ -6320,7 +6341,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_sfx_comp->x_trans;
               __pyx_v_vertex->x_trans = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":163
+              /* "nemo_sfx/sfx_renderer.pyx":167
  *                                 vertex.render_rotate = sfx_comp.render_rotate
  *                                 vertex.x_trans = sfx_comp.x_trans
  *                                 vertex.y_trans = sfx_comp.y_trans             # <<<<<<<<<<<<<<
@@ -6330,7 +6351,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_sfx_comp->y_trans;
               __pyx_v_vertex->y_trans = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":164
+              /* "nemo_sfx/sfx_renderer.pyx":168
  *                                 vertex.x_trans = sfx_comp.x_trans
  *                                 vertex.y_trans = sfx_comp.y_trans
  *                                 vertex.x_shear = sfx_comp.x_shear             # <<<<<<<<<<<<<<
@@ -6340,7 +6361,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_sfx_comp->x_shear;
               __pyx_v_vertex->x_shear = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":165
+              /* "nemo_sfx/sfx_renderer.pyx":169
  *                                 vertex.y_trans = sfx_comp.y_trans
  *                                 vertex.x_shear = sfx_comp.x_shear
  *                                 vertex.y_shear = sfx_comp.y_shear             # <<<<<<<<<<<<<<
@@ -6350,7 +6371,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_t_15 = __pyx_v_sfx_comp->y_shear;
               __pyx_v_vertex->y_shear = __pyx_t_15;
 
-              /* "nemo_sfx/sfx_renderer.pyx":166
+              /* "nemo_sfx/sfx_renderer.pyx":170
  *                                 vertex.x_shear = sfx_comp.x_shear
  *                                 vertex.y_shear = sfx_comp.y_shear
  *                                 for i in range(4):             # <<<<<<<<<<<<<<
@@ -6360,7 +6381,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               for (__pyx_t_16 = 0; __pyx_t_16 < 4; __pyx_t_16+=1) {
                 __pyx_v_i = __pyx_t_16;
 
-                /* "nemo_sfx/sfx_renderer.pyx":167
+                /* "nemo_sfx/sfx_renderer.pyx":171
  *                                 vertex.y_shear = sfx_comp.y_shear
  *                                 for i in range(4):
  *                                     vertex.edge_effect_color[i] = sfx_comp.edge_effect_color[i]             # <<<<<<<<<<<<<<
@@ -6370,7 +6391,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
                 (__pyx_v_vertex->edge_effect_color[__pyx_v_i]) = (__pyx_v_sfx_comp->edge_effect_color[__pyx_v_i]);
               }
 
-              /* "nemo_sfx/sfx_renderer.pyx":168
+              /* "nemo_sfx/sfx_renderer.pyx":172
  *                                 for i in range(4):
  *                                     vertex.edge_effect_color[i] = sfx_comp.edge_effect_color[i]
  *                                 vertex.edge_effect_thresh = sfx_comp.edge_effect_thresh             # <<<<<<<<<<<<<<
@@ -6381,7 +6402,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
               __pyx_v_vertex->edge_effect_thresh = __pyx_t_15;
             }
 
-            /* "nemo_sfx/sfx_renderer.pyx":186
+            /* "nemo_sfx/sfx_renderer.pyx":190
  *                                 '''
  * 
  *                             index_offset += model._index_count             # <<<<<<<<<<<<<<
@@ -6390,7 +6411,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
             __pyx_v_index_offset = (__pyx_v_index_offset + __pyx_v_model->_index_count);
 
-            /* "nemo_sfx/sfx_renderer.pyx":128
+            /* "nemo_sfx/sfx_renderer.pyx":130
  *                         vert_offset = render_comp.vert_index
  *                         model = <VertexModel>render_comp.model
  *                         if render_comp.render:             # <<<<<<<<<<<<<<
@@ -6401,7 +6422,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
           __pyx_L10_continue:;
         }
 
-        /* "nemo_sfx/sfx_renderer.pyx":187
+        /* "nemo_sfx/sfx_renderer.pyx":191
  * 
  *                             index_offset += model._index_count
  *                     batch.set_index_count_for_frame(index_offset)             # <<<<<<<<<<<<<<
@@ -6410,7 +6431,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
         ((struct __pyx_vtabstruct_11kivent_core_9rendering_8batching_IndexedBatch *)__pyx_v_batch->__pyx_vtab)->set_index_count_for_frame(__pyx_v_batch, __pyx_v_index_offset);
 
-        /* "nemo_sfx/sfx_renderer.pyx":110
+        /* "nemo_sfx/sfx_renderer.pyx":112
  *             batches = batch_groups[batch_key]
  *             for batch in batches:
  *                 if not static_rendering or force_update:             # <<<<<<<<<<<<<<
@@ -6419,31 +6440,31 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
  */
       }
 
-      /* "nemo_sfx/sfx_renderer.pyx":188
+      /* "nemo_sfx/sfx_renderer.pyx":192
  *                             index_offset += model._index_count
  *                     batch.set_index_count_for_frame(index_offset)
  *                 mesh_instruction = batch.mesh_instruction             # <<<<<<<<<<<<<<
  *                 mesh_instruction.flag_update()
  * 
  */
-      if (!(likely(((__pyx_v_batch->mesh_instruction) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_batch->mesh_instruction, __pyx_ptype_11kivent_core_9rendering_5cmesh_CMesh))))) __PYX_ERR(0, 188, __pyx_L1_error)
+      if (!(likely(((__pyx_v_batch->mesh_instruction) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_batch->mesh_instruction, __pyx_ptype_11kivent_core_9rendering_5cmesh_CMesh))))) __PYX_ERR(0, 192, __pyx_L1_error)
       __pyx_t_6 = __pyx_v_batch->mesh_instruction;
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_XDECREF_SET(__pyx_v_mesh_instruction, ((struct __pyx_obj_11kivent_core_9rendering_5cmesh_CMesh *)__pyx_t_6));
       __pyx_t_6 = 0;
 
-      /* "nemo_sfx/sfx_renderer.pyx":189
+      /* "nemo_sfx/sfx_renderer.pyx":193
  *                     batch.set_index_count_for_frame(index_offset)
  *                 mesh_instruction = batch.mesh_instruction
  *                 mesh_instruction.flag_update()             # <<<<<<<<<<<<<<
  * 
  * cdef unsigned char blend_integer_colors(unsigned char color1,
  */
-      __pyx_t_6 = ((struct __pyx_vtabstruct_11kivent_core_9rendering_5cmesh_CMesh *)__pyx_v_mesh_instruction->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_mesh_instruction), 0, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
+      __pyx_t_6 = ((struct __pyx_vtabstruct_11kivent_core_9rendering_5cmesh_CMesh *)__pyx_v_mesh_instruction->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_mesh_instruction), 0, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 193, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "nemo_sfx/sfx_renderer.pyx":109
+      /* "nemo_sfx/sfx_renderer.pyx":111
  *         for batch_key in batch_groups:
  *             batches = batch_groups[batch_key]
  *             for batch in batches:             # <<<<<<<<<<<<<<
@@ -6455,7 +6476,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":77
+  /* "nemo_sfx/sfx_renderer.pyx":79
  * 
  * 
  *     def update(self, force_update, dt):             # <<<<<<<<<<<<<<
@@ -6486,7 +6507,7 @@ static PyObject *__pyx_pf_8nemo_sfx_12sfx_renderer_11SfxRenderer_update(struct _
   return __pyx_r;
 }
 
-/* "nemo_sfx/sfx_renderer.pyx":191
+/* "nemo_sfx/sfx_renderer.pyx":195
  *                 mesh_instruction.flag_update()
  * 
  * cdef unsigned char blend_integer_colors(unsigned char color1,             # <<<<<<<<<<<<<<
@@ -6499,7 +6520,7 @@ static unsigned char __pyx_f_8nemo_sfx_12sfx_renderer_blend_integer_colors(unsig
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("blend_integer_colors", 0);
 
-  /* "nemo_sfx/sfx_renderer.pyx":193
+  /* "nemo_sfx/sfx_renderer.pyx":197
  * cdef unsigned char blend_integer_colors(unsigned char color1,
  *                                         unsigned char color2):
  *     return <unsigned char>((<float>color1 / 255.) * (             # <<<<<<<<<<<<<<
@@ -6509,7 +6530,7 @@ static unsigned char __pyx_f_8nemo_sfx_12sfx_renderer_blend_integer_colors(unsig
   __pyx_r = ((unsigned char)(((((float)__pyx_v_color1) / 255.) * (((float)__pyx_v_color2) / 255.)) * 255.0));
   goto __pyx_L0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":191
+  /* "nemo_sfx/sfx_renderer.pyx":195
  *                 mesh_instruction.flag_update()
  * 
  * cdef unsigned char blend_integer_colors(unsigned char color1,             # <<<<<<<<<<<<<<
@@ -6586,7 +6607,7 @@ static PyTypeObject __pyx_type_8nemo_sfx_12sfx_renderer_SfxRenderer = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "\n    Processing Depends On: SfxSystem, PositionSystem2D, \n    RotateSystem2D\n\n    The renderer draws with the VertexFormatSfx1:\n\n    .. code-block:: cython\n\n        ctypedef struct VertexFormatSfx1:\n            GLfloat[2] pos\n            GLfloat[2] uvs\n            GLfloat[2] center\n            GLubyte[4] v_color\n            #TODO rewrite comments\n\n    ", /*tp_doc*/
+  "\n    Processing Depends On: SfxSystem, PositionSystem2D, \n    RotateSystem2D\n\n    The renderer draws with the VertexFormatSfx1:\n\n    .. code-block:: cython\n\n        ctypedef struct VertexFormatSfx1:\n            GLfloat[2] pos\n            GLfloat[2] uvs\n            GLfloat[2] center\n            GLubyte[4] v_color\n            GLfloat[4] v_tint\n   \n            #TODO rewrite comments\n\n    ", /*tp_doc*/
   __pyx_tp_traverse_8nemo_sfx_12sfx_renderer_SfxRenderer, /*tp_traverse*/
   __pyx_tp_clear_8nemo_sfx_12sfx_renderer_SfxRenderer, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -6677,7 +6698,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 122, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -6687,23 +6708,23 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "nemo_sfx/sfx_renderer.pyx":58
+  /* "nemo_sfx/sfx_renderer.pyx":60
  *     system_names = ListProperty(['sfx_renderer', 'position',
  *                                  'rotate','sfx'])
  *     system_id = StringProperty('sfx_renderer')             # <<<<<<<<<<<<<<
  *     #size_of_batches = NumericProperty(512) #default 256
  * 
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_sfx_renderer); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_sfx_renderer); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "nemo_sfx/sfx_renderer.pyx":200
+  /* "nemo_sfx/sfx_renderer.pyx":204
  * 
  * 
  * Factory.register('SfxRenderer', cls=SfxRenderer)             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_SfxRenderer); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_SfxRenderer); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
   __Pyx_RefNannyFinishContext();
@@ -6975,9 +6996,9 @@ PyMODINIT_FUNC PyInit_sfx_renderer(void)
   __pyx_ptype_11kivent_core_7systems_16position_systems_PositionComponent2D = __Pyx_ImportType("kivent_core.systems.position_systems", "PositionComponent2D", sizeof(struct __pyx_obj_11kivent_core_7systems_16position_systems_PositionComponent2D), 1); if (unlikely(!__pyx_ptype_11kivent_core_7systems_16position_systems_PositionComponent2D)) __PYX_ERR(31, 10, __pyx_L1_error)
   __pyx_ptype_11kivent_core_7systems_16position_systems_PositionSystem2D = __Pyx_ImportType("kivent_core.systems.position_systems", "PositionSystem2D", sizeof(struct __pyx_obj_11kivent_core_7systems_16position_systems_PositionSystem2D), 1); if (unlikely(!__pyx_ptype_11kivent_core_7systems_16position_systems_PositionSystem2D)) __PYX_ERR(31, 14, __pyx_L1_error)
   __pyx_vtabptr_11kivent_core_7systems_16position_systems_PositionSystem2D = (struct __pyx_vtabstruct_11kivent_core_7systems_16position_systems_PositionSystem2D*)__Pyx_GetVtable(__pyx_ptype_11kivent_core_7systems_16position_systems_PositionSystem2D->tp_dict); if (unlikely(!__pyx_vtabptr_11kivent_core_7systems_16position_systems_PositionSystem2D)) __PYX_ERR(31, 14, __pyx_L1_error)
-  __pyx_ptype_8nemo_sfx_3sfx_SfxComponent = __Pyx_ImportType("nemo_sfx.sfx", "SfxComponent", sizeof(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent), 1); if (unlikely(!__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)) __PYX_ERR(32, 26, __pyx_L1_error)
-  __pyx_ptype_8nemo_sfx_3sfx_SfxSystem = __Pyx_ImportType("nemo_sfx.sfx", "SfxSystem", sizeof(struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem), 1); if (unlikely(!__pyx_ptype_8nemo_sfx_3sfx_SfxSystem)) __PYX_ERR(32, 30, __pyx_L1_error)
-  __pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem = (struct __pyx_vtabstruct_8nemo_sfx_3sfx_SfxSystem*)__Pyx_GetVtable(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict); if (unlikely(!__pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem)) __PYX_ERR(32, 30, __pyx_L1_error)
+  __pyx_ptype_8nemo_sfx_3sfx_SfxComponent = __Pyx_ImportType("nemo_sfx.sfx", "SfxComponent", sizeof(struct __pyx_obj_8nemo_sfx_3sfx_SfxComponent), 1); if (unlikely(!__pyx_ptype_8nemo_sfx_3sfx_SfxComponent)) __PYX_ERR(32, 27, __pyx_L1_error)
+  __pyx_ptype_8nemo_sfx_3sfx_SfxSystem = __Pyx_ImportType("nemo_sfx.sfx", "SfxSystem", sizeof(struct __pyx_obj_8nemo_sfx_3sfx_SfxSystem), 1); if (unlikely(!__pyx_ptype_8nemo_sfx_3sfx_SfxSystem)) __PYX_ERR(32, 31, __pyx_L1_error)
+  __pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem = (struct __pyx_vtabstruct_8nemo_sfx_3sfx_SfxSystem*)__Pyx_GetVtable(__pyx_ptype_8nemo_sfx_3sfx_SfxSystem->tp_dict); if (unlikely(!__pyx_vtabptr_8nemo_sfx_3sfx_SfxSystem)) __PYX_ERR(32, 31, __pyx_L1_error)
   __pyx_ptype_11kivent_core_7systems_14rotate_systems_RotateComponent2D = __Pyx_ImportType("kivent_core.systems.rotate_systems", "RotateComponent2D", sizeof(struct __pyx_obj_11kivent_core_7systems_14rotate_systems_RotateComponent2D), 1); if (unlikely(!__pyx_ptype_11kivent_core_7systems_14rotate_systems_RotateComponent2D)) __PYX_ERR(33, 9, __pyx_L1_error)
   __pyx_ptype_11kivent_core_7systems_14rotate_systems_RotateSystem2D = __Pyx_ImportType("kivent_core.systems.rotate_systems", "RotateSystem2D", sizeof(struct __pyx_obj_11kivent_core_7systems_14rotate_systems_RotateSystem2D), 1); if (unlikely(!__pyx_ptype_11kivent_core_7systems_14rotate_systems_RotateSystem2D)) __PYX_ERR(33, 13, __pyx_L1_error)
   __pyx_vtabptr_11kivent_core_7systems_14rotate_systems_RotateSystem2D = (struct __pyx_vtabstruct_11kivent_core_7systems_14rotate_systems_RotateSystem2D*)__Pyx_GetVtable(__pyx_ptype_11kivent_core_7systems_14rotate_systems_RotateSystem2D->tp_dict); if (unlikely(!__pyx_vtabptr_11kivent_core_7systems_14rotate_systems_RotateSystem2D)) __PYX_ERR(33, 13, __pyx_L1_error)
@@ -7097,16 +7118,16 @@ PyMODINIT_FUNC PyInit_sfx_renderer(void)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "nemo_sfx/sfx_renderer.pyx":56
+  /* "nemo_sfx/sfx_renderer.pyx":58
  * 
  *     '''
  *     system_names = ListProperty(['sfx_renderer', 'position',             # <<<<<<<<<<<<<<
  *                                  'rotate','sfx'])
  *     system_id = StringProperty('sfx_renderer')
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_ListProperty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_ListProperty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_n_s_sfx_renderer);
   __Pyx_GIVEREF(__pyx_n_s_sfx_renderer);
@@ -7131,14 +7152,14 @@ PyMODINIT_FUNC PyInit_sfx_renderer(void)
     }
   }
   if (!__pyx_t_7) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -7147,59 +7168,59 @@ PyMODINIT_FUNC PyInit_sfx_renderer(void)
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer->tp_dict, __pyx_n_s_system_names, __pyx_t_4) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer->tp_dict, __pyx_n_s_system_names, __pyx_t_4) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer);
 
-  /* "nemo_sfx/sfx_renderer.pyx":58
+  /* "nemo_sfx/sfx_renderer.pyx":60
  *     system_names = ListProperty(['sfx_renderer', 'position',
  *                                  'rotate','sfx'])
  *     system_id = StringProperty('sfx_renderer')             # <<<<<<<<<<<<<<
  *     #size_of_batches = NumericProperty(512) #default 256
  * 
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_StringProperty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_StringProperty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer->tp_dict, __pyx_n_s_system_id, __pyx_t_5) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer->tp_dict, __pyx_n_s_system_id, __pyx_t_5) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   PyType_Modified(__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer);
 
-  /* "nemo_sfx/sfx_renderer.pyx":200
+  /* "nemo_sfx/sfx_renderer.pyx":204
  * 
  * 
  * Factory.register('SfxRenderer', cls=SfxRenderer)             # <<<<<<<<<<<<<<
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_Factory); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_Factory); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_register); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_register); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_cls, ((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer)) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
-  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__2, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 200, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_cls, ((PyObject *)__pyx_ptype_8nemo_sfx_12sfx_renderer_SfxRenderer)) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__2, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;

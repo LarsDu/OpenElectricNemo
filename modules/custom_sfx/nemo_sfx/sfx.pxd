@@ -13,13 +13,14 @@ ctypedef struct SfxStruct2D:
     float[2] scale
     float render_rotate
     unsigned char[4] v_color
+    float[4] v_tint
     float x_trans
     float y_trans
     float x_shear
     float y_shear
     unsigned char[4] edge_effect_color
     float edge_effect_thresh
-    float sfx_flag
+    #float sfx_flag
 
 
 

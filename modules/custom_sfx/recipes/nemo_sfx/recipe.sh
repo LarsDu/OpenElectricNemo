@@ -4,7 +4,7 @@ VERSION_nemo_sfx=0.1.0
 URL_nemo_sfx=https://github.com/LarsDu/OpenElectricNemo/archive/master.zip
 MD5_nemo_sfx=
 DEPS_nemo_sfx=(python kivy)
-BUILD_nemo_sfx=$BUILD_PATH/nemo_sfx/master/modules/particles
+BUILD_nemo_sfx=$BUILD_PATH/nemo_sfx/master/modules/custom_sfx
 RECIPE_nemo_sfx=$RECIPES_PATH/nemo_sfx
 
 function prebuild_nemo_sfx() {
